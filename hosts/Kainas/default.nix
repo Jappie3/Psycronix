@@ -1,11 +1,15 @@
-{ config, inputs, lib, pkgs, ... }: {
-
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
 
   nixpkgs = {
-
     # add overlays
     #overlays = [
     #];
@@ -21,7 +25,7 @@
     package = pkgs.nixUnstable;
     settings = {
       # enable flakes & nix command
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       # deduplicate & optimize nix store
       auto-optimise-store = true;
     };
@@ -86,7 +90,7 @@
 
   security = {
     polkit.enable = true;
-    sudo.package = pkgs.sudo.override { withInsults = true; };
+    sudo.package = pkgs.sudo.override {withInsults = true;};
   };
 
   # Select internationalisation properties.
@@ -106,7 +110,7 @@
   # };
 
   xdg.portal.wlr.enable = true;
-  
+
   xdg.portal = {
     enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
@@ -121,7 +125,7 @@
     opengl.driSupport32Bit = true; # support for 32-bit programs (e.g. Wine)
     nvidia.modesetting.enable = true;
   };
-  
+
   time.timeZone = "Europe/Brussels";
 
   services = {
@@ -163,9 +167,9 @@
     services.NetworkManager-wait-online.enable = false;
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -178,7 +182,7 @@
 
   users.users.jasper = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = ["wheel" "networkmanager"];
     packages = with pkgs; [
       neofetch
     ];
@@ -187,7 +191,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
-    
     # global variables
     variables = {
       EDITOR = "nvim";
@@ -227,40 +230,70 @@
 
     systemPackages = with pkgs; [
       # editors
-      vim neovim vscodium
-      
+      vim
+      neovim
+      vscodium
+
       # terminals
-      alacritty kitty
-      
+      alacritty
+      kitty
+
       # cli
-      curl wget
+      curl
+      wget
       git
-      nixpkgs-fmt
+      alejandra #nixpkgs-fmt
       acpi
-      man tldr
+      man
+      tldr
       strace
       rsync
-      pciutils lshw
-      nvtop nvtop-amd
+      pciutils
+      lshw
+      nvtop
+      nvtop-amd
       auto-cpufreq
-      tree pstree killall
-      ydotool jq ripgrep socat
-      imv feh grim slurp swappy
+      tree
+      pstree
+      killall
+      ydotool
+      jq
+      ripgrep
+      socat
+      imv
+      feh
+      grim
+      slurp
+      swappy
+      mpv
       shared-mime-info
-      playerctl pamixer
-      wl-clipboard wf-recorder ffmpeg
-      neofetch cava sl cowsay lolcat
+      playerctl
+      pamixer
+      wl-clipboard
+      wf-recorder
+      ffmpeg
+      neofetch
+      cava
+      sl
+      cowsay
+      lolcat
       wayvnc
-      testssl mtr dig nmap
-      k9s kubectx
+      testssl
+      mtr
+      dig
+      nmap
+      whois
+      k9s
+      kubectx
       atool
       lynx
       bottom
       ydotool
-  
+
       # browsers
-      firefox librewolf
-      
+      firefox
+      librewolf
+
       # desktop
       #hyprland hyprland-protocols hyprland-share-picker xdg-desktop-portal-hyprland
       polkit
@@ -269,7 +302,7 @@
       pipewire
       brightnessctl
       #linuxKernel.packages.linux_6_4.ddcci-driver # ddc/ci driver (control protocol for monitor settings)
-      
+
       # programs
       eww-wayland
       nerdfonts
@@ -288,10 +321,9 @@
       signal-desktop
       obsidian
     ];
-  
+
     # no default packages
     defaultPackages = [];
-
   };
 
   fonts = {
@@ -351,7 +383,7 @@
     sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
     formatted = builtins.concatStringsSep "\n" sortedUnique;
   in
-    formatted; 
+    formatted;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -366,6 +398,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
-

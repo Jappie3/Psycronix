@@ -1,4 +1,4 @@
-_:{
+_: {
   imports = [
     ./hyprland.nix
     ./anyrun.nix

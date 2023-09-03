@@ -9,10 +9,10 @@ in {
 
   # add secret to a NixOS module config:
   #age.secrets.some-secret.file = ../secrets/some-necret.age;
-  
+
   # reference the mount path of the secret somewhere:
   #config.age.secrets.some-secret.path
-  
+
   # define who can decrypt it:
   #"some-secret.age".publicKeys = [jasper];
 }

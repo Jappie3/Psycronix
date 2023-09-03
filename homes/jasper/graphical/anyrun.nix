@@ -1,5 +1,5 @@
 {
-  config, 
+  config,
   inputs,
   pkgs,
   ...
@@ -11,12 +11,12 @@
     enable = true;
     config = {
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
-          applications
-          dictionary
-          kidex
-          rink
-          symbols
-          translate
+        applications
+        dictionary
+        kidex
+        rink
+        symbols
+        translate
       ];
       #width = { fraction = 0.3; };
       #position = "top";
@@ -29,8 +29,8 @@
       showResultsImmediately = false;
       maxEntries = null;
     };
-      extraCss = ''
-      '';
+    extraCss = ''
+    '';
     extraConfigFiles."some-plugin.ron".text = ''
       Config(
         // for any other plugin
