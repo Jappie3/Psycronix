@@ -1,22 +1,20 @@
-{ 
-  config, 
+{
+  config,
   inputs,
   pkgs,
   lib,
   ...
 }: {
   imports = [
-    # inputs.hyprland.homeManagerModules.default
-    inputs.neovim-flake.homeManagerModules.default
     ./graphical
+    ./programs
   ];
 
   config = {
-
     programs = {
       # let Home Manager manage itself when in standalone mode
       home-manager.enable = true;
-      
+
       direnv = {
         enable = true;
         nix-direnv.enable = true;
@@ -26,12 +24,13 @@
         enable = true;
         userName = "Jappie3";
         userEmail = "jasper22034@gmail.com";
-	package = pkgs.gitFull;
-	extraConfig = {
+        package = pkgs.gitFull;
+        extraConfig = {
+          # yes master cry about it
           init.defaultBranch = "master";
-	  url = {
+          url = {
             "https://github.com/".insteadOf = "github:";
-	    "ssh://git@github.com/".pushInsteadOf = "github:";
+            "ssh://git@github.com/".pushInsteadOf = "github:";
             "https://gitlab.com/".insteadOf = "gitlab:";
             "ssh://git@gitlab.com/".pushInsteadOf = "gitlab:";
             "https://aur.archlinux.org/".insteadOf = "aur:";
@@ -40,8 +39,8 @@
             "ssh://git@git.sr.ht/".pushInsteadOf = "srht:";
             "https://codeberg.org/".insteadOf = "codeberg:";
             "ssh://git@codeberg.org/".pushInsteadOf = "codeberg:";
-	  };
-	};
+          };
+        };
       };
     };
 
@@ -50,6 +49,11 @@
       homeDirectory = "/home/jasper";
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       stateVersion = "23.05";
+
+      packages = with pkgs; [
+        inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+        inputs.shadower.packages.${pkgs.system}.shadower
+      ];
     };
 
     manual = {
@@ -57,6 +61,5 @@
       json.enable = false;
       manpages.enable = true;
     };
-
   };
 }
