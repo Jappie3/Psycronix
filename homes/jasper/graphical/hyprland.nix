@@ -9,7 +9,6 @@
     systemdIntegration = true;
     enableNvidiaPatches = true;
     settings = {
-      
       monitor = [
         "eDP-2, 1920x1080@165.009995, 0x0, 1"
         "DP-2, 3840x2160@60.000000, 1920x0, 2"
@@ -19,10 +18,10 @@
       env = [
         # log WLR stuff
         #"HYPRLAND_LOG_WLR,1"
-	# avoid loading Nvidia modules - not tested on NixOS
-	#"__EGL_VENDOR_LIBRARY_FILENAMES,/usr/share/glvnd/egl/vendor.d/50_mesa.json"
-	# force GBM as backend (buffer API) - causes problems with Firefox
-	#"GBM_BACKEND,nvidia-drm"
+        # avoid loading Nvidia modules - not tested on NixOS
+        #"__EGL_VENDOR_LIBRARY_FILENAMES,/usr/share/glvnd/egl/vendor.d/50_mesa.json"
+        # force GBM as backend (buffer API) - causes problems with Firefox
+        #"GBM_BACKEND,nvidia-drm"
 
         # add some locations to PATH
         #"PATH,$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/JetBrains/Toolbox/scripts"
@@ -64,7 +63,7 @@
         "sleep 6; noisetorch -i" # -i -> load supressor for input
         "wlsunset -T 6000 -t 5000 &"
         #"swww init; sleep 1; $HOME/.config/eww/scripts/wrapper.sh init"
-        "swww init; sleep .2; swww img ./alena-aenami-rooflinesgirl-1k-2.jpg --transition-step 12 --transition-fps 165 --transition-type simple --transition-duration 0.2 --transition-bezier .45,.10,.96,.67"
+        "swww init; sleep .3; swww img ./alena-aenami-rooflinesgirl-1k-2.jpg --transition-step 12 --transition-fps 165 --transition-type simple --transition-duration 0.2 --transition-bezier .45,.10,.96,.67"
 
         # Gammastep
         #"gammastep"
@@ -111,11 +110,11 @@
         numlock_by_default = true;
 
         touchpad = {
-            natural_scroll = true;
-            disable_while_typing = true;
-            middle_button_emulation = false;
-            clickfinger_behavior = true;
-            drag_lock = true;
+          natural_scroll = true;
+          disable_while_typing = true;
+          middle_button_emulation = false;
+          clickfinger_behavior = true;
+          drag_lock = false;
         };
       };
 
@@ -143,7 +142,7 @@
           contrast = 1;
           brightness = 0.8;
         };
-        
+
         rounding = 6;
         drop_shadow = true;
         multisample_edges = true;
@@ -161,7 +160,7 @@
 
       animations = {
         # this somehow errors
-	#enabled = true;
+        #enabled = true;
 
         bezier = [
           "defaultBezier, 0.05, 0.9, 0.1, 1.05"
@@ -187,7 +186,7 @@
         # resizing direction determined by cursor's position on the window
         smart_resizing = true;
       };
-      
+
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
@@ -198,17 +197,17 @@
         vrr = 2;
         # auto-reload config
         disable_autoreload = false;
-        
+
         # VESA Display Power Management Scaling (standard for power management of video monitors)
         # set to off -> wake up monitors when mouse moves / key is pressed
         mouse_move_enables_dpms = false;
         key_press_enables_dpms = false;
-        
+
         # mouse focus follows mouse when drag-and-dropping
         always_follow_on_dnd = true;
         # keyboard-interactive layers keep their focus on mouse movement (e.g. wofi)
         layers_hog_keyboard_focus = true;
-        
+
         # animate manual resizes / moves
         animate_manual_resizes = true;
         # animate windows dragged by mouse
@@ -224,7 +223,7 @@
         no_direct_scanout = true;
         # whether mouse moving to different monitor should focus it
         mouse_move_focuses_monitor = true;
-        
+
         render_titles_in_groupbar = true;
         group_insert_after_current = true;
         groupbar_gradients = false;
@@ -246,7 +245,6 @@
       # this config is for dvorak
       "$MOD" = "SUPER";
       bind = [
-
         # flags:
         # l -> locked, aka. works also when an input inhibitor (e.g. a lockscreen) is active.
         # r -> release, will trigger on release of a key.
@@ -276,13 +274,16 @@
         "$MOD, mouse_up, workspace, e+1"
 
         # take screenshot of the entire screen & copy it
-        ", print, exec, grimblast copy screen"
+        #", print, exec, grimblast --cursor copy screen"
+        '', print, exec, grim - | shadower | wl-copy''
         # take screenshot of the entire screen & save it to ~/Pictures/screenshots/
-        "$MOD, print, exec, grimblast save screen ~/Pictures/screenshots/$(date +'%Y-%m-%dT%H:%M:%S').png"
+        #"$MOD, print, exec, grimblast --cursor save screen ~/Pictures/screenshots/$(date +'%Y-%m-%dT%H:%M:%S').png"
+        ''$MOD, print, exec, grim - | shadower > "~/Pictures/screenshots/$(date +'%Y-%m-%dT%H:%M:%S').png"''
         # take screenshot of an area & copy it
-        "$MOD, O, exec, grimblast copy area"
+        #"$MOD, O, exec, grimblast --cursor copy area"
+        ''$MOD, O, exec, grim -g "$(slurp)" - | shadower | wl-copy''
         # take screenshot of an area & edit it using Swappy
-        ''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -''
+        #''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -''
 
         # create tabbed window
         "$MOD, n, togglegroup"
@@ -359,7 +360,7 @@
         #, XF86MonBrightnessUp, exec, xbacklight -inc 5
         #, XF86MonBrightnessDown, exec, xbacklight -dec 5
       ];
-      
+
       bindl = [
         ", XF86AudioMedia, exec, playerctl play-pause"
         ", XF86AudioPlay, exec, playerctl play-pause"
@@ -376,7 +377,7 @@
         #"float, class:^(libreoffice.*)$"
         "float, class:^(.*polkit-kde-authentication-agent.*)$"
         "float, class:^(pavucontrol)$"
-	"float, class:^(com.saivert.pwvucontrol)$"
+        "float, class:^(com.saivert.pwvucontrol)$"
         #"float, class:^(Signal)$"
 
         "float, class:^(nm-connection-editor)$"
@@ -436,7 +437,6 @@
         "idleinhibit fullscreen, class:^(firefox)$"
 
         "dimaround, class:^(gcr-prompter)$"
-
       ];
 
       layerrule = [
@@ -445,5 +445,4 @@
       ];
     };
   };
-
 }
