@@ -1,11 +1,15 @@
 {
   description = "Jappie3's NixOS config";
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
-    let
-      inherit (nixpkgs) lib;
-    in {
-      nixosConfigurations = import ./hosts { inherit nixpkgs self lib; };
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    inherit (nixpkgs) lib;
+  in {
+    nixosConfigurations = import ./hosts {inherit nixpkgs self lib;};
   };
 
   inputs = {
@@ -24,20 +28,20 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    # hyprcontrib = {
-    #     url = "github:hyprwm/contrib";
-    #     inputs.hyprland.follows = "hyprland";
-    # };
-    # hyprland-plugins = {
-    #     url = "github:hyprwm/hyprland-plugins";
-    #     inputs.hyprland.follows = "hyprland";
-    # };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     # split-monitor-workspaces = {
     #     url = "github:jacekpoz/split-monitor-workspaces";
     #     inputs.hyprland.follows = "hyprland";
     # };
 
-    # shadower.url = "github:n3oney/shadower";
+    shadower.url = "github:n3oney/shadower";
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -54,7 +58,6 @@
       url = "github:notashelf/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   nixConfig = {
@@ -69,6 +72,4 @@
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
     ];
   };
-
 }
-
