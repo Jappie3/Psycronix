@@ -256,6 +256,7 @@
       tree
       pstree
       killall
+      wev
       ydotool
       jq
       ripgrep
