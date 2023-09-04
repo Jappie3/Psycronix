@@ -33,6 +33,7 @@
       "workbench.colorTheme" = "Dark Modern";
     };
 
+    # TODO figure out how to use https://github.com/nix-community/nix-vscode-extensions/
     extensions = with pkgs.vscode-extensions;
       [
         # General
