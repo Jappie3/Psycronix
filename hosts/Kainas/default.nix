@@ -317,7 +317,6 @@
       dunst
       wlsunset
       rofi-wayland
-      vscodium
       webcord-vencord
       signal-desktop
       obsidian
