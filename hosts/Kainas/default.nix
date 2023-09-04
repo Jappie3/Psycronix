@@ -133,14 +133,6 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
-  # Enable Hyprland
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  #   enableNvidiaPatches = true;
-  #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  # };
-
   xdg.portal.wlr.enable = true;
 
   xdg.portal = {
