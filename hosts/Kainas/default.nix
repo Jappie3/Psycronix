@@ -321,7 +321,7 @@
       atool
       lynx
       bottom
-      ydotool
+      bandwhich
 
       # browsers
       firefox
