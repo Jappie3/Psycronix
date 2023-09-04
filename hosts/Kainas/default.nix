@@ -93,8 +93,40 @@
     sudo.package = pkgs.sudo.override {withInsults = true;};
   };
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    # I hate glibc
+    # https://www.localeplanet.com/icu/en-150/index.html
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=22473
+    # defaultLocale = "en_150.UTF-8/UTF-8";
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [
+      # Europe - English
+      #"en_150.UTF-8/UTF-8"
+      # US - English
+      "en_US.UTF-8/UTF-8"
+      # no stupid measurements or dates
+      "en_IE.UTF-8/UTF-8"
+      "en_DK.UTF-8/UTF-8"
+    ];
+    # https://sourceware.org/glibc/wiki/Locales
+    extraLocaleSettings = {
+      LANG = "en_US.UTF-8/UTF-8";
+      # interpretation of sequences of bytes of text data characters, classification of characters, etc.
+      LC_CTYPE = "en_US.UTF-8/UTF-8";
+      # collation rules
+      LC_COLLATE = "en_IE.UTF-8/UTF-8";
+      # affirmative & negative responses for messages and menus
+      LC_MESSAGES = "en_IE.UTF-8/UTF-8";
+      # monetary-related formatting
+      LC_MONETARY = "en_IE.UTF-8/UTF-8"; #"en_US.UTF-8/UTF-8@euro";
+      # nonmonetary numeric formatting
+      LC_NUMERIC = "en_IE.UTF-8/UTF-8";
+      # date & time formatting
+      LC_TIME = "en_IE.UTF-8/UTF-8";
+      # not set here: paper, name, address, telephone, measurement, identification
+    };
+  };
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = pkgs.lib.mkForce "dvorak"; #"us";
