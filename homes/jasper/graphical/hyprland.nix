@@ -383,6 +383,7 @@
         "float, class:^(nm-connection-editor)$"
         "float, class:^(wdisplays)$"
         "float, class:^(blueman-manager)$"
+        "float, class:^(.blueman-manager-wrapped)$"
         "float, class:^(wpa_gui)$"
 
         "float, class:^(zenity)$"
