@@ -18,6 +18,15 @@
     config = {
       # allow proprietary software
       allowUnfree = true;
+
+      # enable nix-helper
+      nh = {
+        enable = true;
+        clean = {
+          enable = true;
+          dates = "daily";
+        };
+      };
     };
   };
 

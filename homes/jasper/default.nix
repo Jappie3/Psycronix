@@ -53,6 +53,7 @@
       packages = with pkgs; [
         inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         inputs.shadower.packages.${pkgs.system}.shadower
+        inputs.nh.packages.${pkgs.system}.default
       ];
     };
 
