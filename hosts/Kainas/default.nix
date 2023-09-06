@@ -110,19 +110,20 @@
     ];
     # https://sourceware.org/glibc/wiki/Locales
     extraLocaleSettings = {
-      LANG = "en_US.UTF-8/UTF-8";
+      LC_ALL = "en_US.UTF-8";
+      LANG = "en_US.UTF-8";
       # interpretation of sequences of bytes of text data characters, classification of characters, etc.
-      LC_CTYPE = "en_US.UTF-8/UTF-8";
+      LC_CTYPE = "en_US.UTF-8";
       # collation rules
-      LC_COLLATE = "en_IE.UTF-8/UTF-8";
+      LC_COLLATE = "en_IE.UTF-8";
       # affirmative & negative responses for messages and menus
-      LC_MESSAGES = "en_IE.UTF-8/UTF-8";
+      LC_MESSAGES = "en_IE.UTF-8";
       # monetary-related formatting
-      LC_MONETARY = "en_IE.UTF-8/UTF-8"; #"en_US.UTF-8/UTF-8@euro";
+      LC_MONETARY = "en_IE.UTF-8"; #"en_US.UTF-8/UTF-8@euro";
       # nonmonetary numeric formatting
-      LC_NUMERIC = "en_IE.UTF-8/UTF-8";
+      LC_NUMERIC = "en_IE.UTF-8";
       # date & time formatting
-      LC_TIME = "en_IE.UTF-8/UTF-8";
+      LC_TIME = "en_IE.UTF-8";
       # not set here: paper, name, address, telephone, measurement, identification
     };
   };
