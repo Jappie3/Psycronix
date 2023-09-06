@@ -134,6 +134,8 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
+  programs.hyprland.enable = true;
+
   xdg.portal.wlr.enable = true;
 
   xdg.portal = {
