@@ -42,20 +42,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
-      inputs.hyprland.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    # split-monitor-workspaces = {
-    #     url = "github:jacekpoz/split-monitor-workspaces";
-    #     inputs.hyprland.follows = "hyprland";
-    # };
+    split-monitor-workspaces = {
+      url = "github:jacekpoz/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     shadower.url = "github:n3oney/shadower";
 
