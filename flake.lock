@@ -24,6 +24,26 @@
         "type": "github"
       }
     },
+    "ags": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1694028835,
+        "narHash": "sha256-0fw4sLr8JjnEpcJUJw593Qfu+4sTRTAOM1XklUOouUQ=",
+        "owner": "Aylur",
+        "repo": "ags",
+        "rev": "d1992490adfe8919a47f7fe652a0c9b3366bab46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Aylur",
+        "repo": "ags",
+        "type": "github"
+      }
+    },
     "alpha-nvim": {
       "flake": false,
       "locked": {
@@ -2008,6 +2028,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "ags": "ags",
         "anyrun": "anyrun",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
