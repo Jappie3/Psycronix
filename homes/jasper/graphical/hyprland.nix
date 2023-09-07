@@ -6,14 +6,28 @@
 }: {
   config.wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemdIntegration = true;
     enableNvidiaPatches = true;
+    xwayland.enable = true;
+
+    plugins = [
+      # wait for https://github.com/Duckonaut/split-monitor-workspaces/pull/27/
+      # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+    ];
+
     settings = {
       monitor = [
         "eDP-2, 1920x1080@165.009995, 0x0, 1"
         "DP-2, 3840x2160@60.000000, 1920x0, 2"
         ", preferred, auto, 1"
       ];
+
+      plugin = {
+        # split-monitor-workspaces = {
+        #   count = 10;
+        # };
+      };
 
       env = [
         # log WLR stuff
