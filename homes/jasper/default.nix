@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    inputs.anyrun.homeManagerModules.default
     ./graphical
     ./programs
   ];

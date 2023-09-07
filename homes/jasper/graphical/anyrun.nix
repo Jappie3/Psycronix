@@ -4,8 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.anyrun.homeManagerModules.default];
-
   # https://github.com/Kirottu/anyrun#home-manager-module
   config.programs.anyrun = {
     enable = true;
