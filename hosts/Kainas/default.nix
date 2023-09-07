@@ -331,16 +331,15 @@
       firefox
       librewolf
 
-      # desktop
+      # programs
       #hyprland hyprland-protocols hyprland-share-picker xdg-desktop-portal-hyprland
+      #linuxKernel.packages.linux_6_4.ddcci-driver # ddc/ci driver (control protocol for monitor settings)
       polkit
       polkit_gnome
       seatd
       pipewire
       brightnessctl
-      #linuxKernel.packages.linux_6_4.ddcci-driver # ddc/ci driver (control protocol for monitor settings)
-
-      # programs
+      thunderbird
       eww-wayland
       nerdfonts
       gnome.gucharmap
