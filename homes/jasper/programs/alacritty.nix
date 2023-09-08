@@ -9,7 +9,7 @@
     package = pkgs.alacritty;
     settings = {
       window = {
-        opacity = 0.6;
+        #opacity = 0.6;
         startup_mode = "Windowed";
         # allow terminal applications to change the window title
         dynamic_title = true;
@@ -145,7 +145,7 @@
       live_config_reload = true;
       #shell = {};
       mouse = {
-        hide_when_typing = true;
+        hide_when_typing = false;
       };
     };
   };
