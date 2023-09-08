@@ -181,10 +181,6 @@
     ntp.enable = true;
     # Gnome keyring
     gnome.gnome-keyring.enable = true;
-    # automatic CPU speed & power optimizer
-    auto-cpufreq.enable = true;
-    # DBus daemon, allows changing system behavior based on user-selected power profiles
-    power-profiles-daemon.enable = true;
     # sound
     pipewire = {
       enable = true;
@@ -208,6 +204,33 @@
       xkbVariant = "dvorak";
       # touchpad support
       libinput.enable = true;
+    };
+    # DBus daemon, allows changing system behavior based on user-selected power profiles
+    power-profiles-daemon.enable = true;
+    # automatic CPU speed & power optimizer
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        # list of governors: cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+        # frequencies are in MHz
+        battery = {
+          governor = "schedutil";
+          turbo = "never";
+        };
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
+    # DBus service that provides power management support to applications.
+    upower = {
+      enable = true;
+      percentageLow = 15;
+      percentageCritical = 8;
+      percentageAction = 6;
+      # PowerOff, Hibernate, HybridSleep
+      criticalPowerAction = "Hibernate";
     };
   };
 
@@ -292,16 +315,18 @@
       less
       git
       alejandra #nixpkgs-fmt
-      acpi
       man
       tldr
-      strace
-      rsync
       pciutils
       lshw
       nvtop
       nvtop-amd
+      acpi
+      powertop
+      power-profiles-daemon
       auto-cpufreq
+      strace
+      rsync
       tree
       pstree
       killall
