@@ -434,6 +434,9 @@
         # start Tidal in workspace 9 by default
         "workspace 9 silent, class:^(tidal-hifi)$"
 
+        # Alacritty opacity
+        "opacity 0.8 0.6,class:^(Alacritty)$"
+
         # Firefox PiP sticky & floating
         "pin, title:^(Picture-in-Picture)$"
         "float, title:^(Picture-in-Picture)$"
