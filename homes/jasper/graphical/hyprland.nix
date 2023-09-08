@@ -58,33 +58,25 @@
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-
-        # status bar
-        #"waybar"
-        #"eww open bar_left && eww open bar_center && eww open bar_right"
-
-        # Alacritty
-        "[ workspace special:alacritty ] alacritty"
-
-        # Swayidle
-        "swayidle -w timeout 180 'if [ $(dunstctl is-paused) == false ]; then dunstctl set-paused true; touch /tmp/swayidle_paused_notifs_true; fi; gtklock' resume 'if [ -e /tmp/swayidle_paused_notifs_true ]; then dunstctl set-paused false; rm /tmp/swayidle_paused_notifs_true; fi'"
-
         "dunst &"
         "/usr/lib/polkit-kde-authentication-agent-1"
         #"blueman-applet"
         #"discover-overlay &"
         "sleep 6; noisetorch -i" # -i -> load supressor for input
         "wlsunset -T 6000 -t 5000 &"
-        #"swww init; sleep 1; $HOME/.config/eww/scripts/wrapper.sh init"
-        "swww init; sleep .3; swww img ./alena-aenami-rooflinesgirl-1k-2.jpg --transition-step 12 --transition-fps 165 --transition-type simple --transition-duration 0.2 --transition-bezier .45,.10,.96,.67"
 
-        # Gammastep
-        #"gammastep"
-        # Hyprpaper (wallpaper)
-        #"hyprpaper &"
+        # wallpaper
+        "swww init && sleep .5"
 
-        # startup script for a bunch of other stuff
-        #"$HOME/.config/hypr/hyprland-startup.sh"
+        # Alacritty (to eliminate future startup delay)
+        "[ workspace special:alacritty ] alacritty"
+
+        # Swayidle
+        "swayidle -w timeout 180 'if [ $(dunstctl is-paused) == false ]; then dunstctl set-paused true; touch /tmp/swayidle_paused_notifs_true; fi; gtklock' resume 'if [ -e /tmp/swayidle_paused_notifs_true ]; then dunstctl set-paused false; rm /tmp/swayidle_paused_notifs_true; fi'"
+      ];
+
+      exec = [
+        "swww img ~/Media/Pictures/Walls/alena-aenami-rooflinesgirl-1k-2.jpg"
       ];
 
       general = {
