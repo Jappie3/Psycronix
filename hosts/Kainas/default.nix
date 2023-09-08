@@ -34,10 +34,45 @@
     package = pkgs.nixUnstable;
     settings = {
       # enable flakes & nix command
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       # deduplicate & optimize nix store
       auto-optimise-store = true;
+      # sandbox builds (default)
+      sandbox = true;
+      # keep build-time dependencies
+      keep-outputs = true;
+      keep-derivations = true;
+      # more logs
+      log-lines = 25;
+      # no dirty git tree warning
+      warn-dirty = false;
     };
+  };
+
+  documentation = {
+    enable = true;
+    nixos = {
+      # NixOS' own documentation
+      enable = true;
+      includeAllModules = true;
+      options.splitBuild = true;
+    };
+    man = {
+      enable = true;
+      # whether to generate manual page index caches
+      generateCaches = true;
+      # use man-db (default)
+      man-db.enable = true;
+    };
+    # info pages & info command
+    info.enable = true;
+    # documentation distributed in packages' /share/doc
+    doc.enable = true;
+    # documentation targeted at developers
+    dev.enable = false;
   };
 
   boot = {
