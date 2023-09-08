@@ -149,7 +149,11 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
-  programs.hyprland.enable = true;
+  programs = {
+    hyprland.enable = true;
+    thefuck.enable = true;
+    less.enable = true;
+  };
 
   xdg.portal.wlr.enable = true;
 
@@ -285,6 +289,7 @@
       # cli
       curl
       wget
+      less
       git
       alejandra #nixpkgs-fmt
       acpi
@@ -300,6 +305,7 @@
       tree
       pstree
       killall
+      thefuck
       wev
       ydotool
       jq
@@ -328,6 +334,7 @@
       dig
       nmap
       whois
+      kubectl
       k9s
       kubectx
       atool
