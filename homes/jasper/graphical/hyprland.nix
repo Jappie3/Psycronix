@@ -237,6 +237,7 @@
         # whether mouse moving to different monitor should focus it
         mouse_move_focuses_monitor = true;
 
+        # window groups
         render_titles_in_groupbar = true;
         group_insert_after_current = true;
         groupbar_gradients = false;
