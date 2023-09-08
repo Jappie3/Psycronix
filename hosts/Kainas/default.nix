@@ -338,6 +338,7 @@
       socat
       imv
       feh
+      zathura
       grim
       slurp
       swappy
