@@ -12,8 +12,7 @@
     xwayland.enable = true;
 
     plugins = [
-      # wait for https://github.com/Duckonaut/split-monitor-workspaces/pull/27/
-      # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+      inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
 
     settings = {
@@ -24,9 +23,9 @@
       ];
 
       plugin = {
-        # split-monitor-workspaces = {
-        #   count = 10;
-        # };
+        split-monitor-workspaces = {
+          count = 10;
+        };
       };
 
       env = [

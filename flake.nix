@@ -61,7 +61,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     split-monitor-workspaces = {
-      url = "github:jacekpoz/split-monitor-workspaces";
+      url = "github:NotAShelf/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
 
