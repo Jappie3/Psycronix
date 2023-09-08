@@ -150,7 +150,7 @@
           size = 5;
           passes = 3;
           new_optimizations = true;
-          xray = true;
+          #xray = true; # why did I ever put this in here lol
           noise = 0;
           contrast = 1;
           brightness = 0.8;
