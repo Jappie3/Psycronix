@@ -155,11 +155,12 @@
     less.enable = true;
   };
 
-  xdg.portal.wlr.enable = true;
-
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
   };
 
   sound.enable = true;
