@@ -32,7 +32,7 @@
 
       rm = "rm -i";
       cp = "cp -i";
-      mv = "mv-i";
+      mv = "mv -i";
     };
 
     sessionVariables = {
