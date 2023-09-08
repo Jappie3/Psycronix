@@ -205,6 +205,12 @@
       # touchpad support
       libinput.enable = true;
     };
+    btrfs = {
+      autoScrub = {
+        enable = true;
+        interval = "weekly";
+      };
+    };
     # DBus daemon, allows changing system behavior based on user-selected power profiles
     power-profiles-daemon.enable = true;
     # automatic CPU speed & power optimizer
