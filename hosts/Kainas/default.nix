@@ -41,6 +41,8 @@
   };
 
   boot = {
+    # clean /tmp on boot because I fill it with random crap
+    tmp.cleanOnBoot = true;
     # kernel console loglevel
     consoleLogLevel = 0;
     # which kernel to use
