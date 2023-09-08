@@ -405,6 +405,8 @@
 
         "float, title: Open Folder, class: electron"
 
+        "float, title: Open Folder, class:^(codium)$"
+
         "float, title:^(File Operation Progress)$"
         "float, title:^(Compress)$"
         "float, title:^(Confirm to replace files)$"
