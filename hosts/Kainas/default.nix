@@ -342,6 +342,7 @@
       grim
       slurp
       swappy
+      gimp
       mpv
       shared-mime-info
       playerctl
