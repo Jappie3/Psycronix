@@ -69,7 +69,7 @@
         "swww init && sleep .5"
 
         # Alacritty (to eliminate future startup delay)
-        "[ workspace special:alacritty ] alacritty"
+        "[ workspace special:alacritty silent ] alacritty"
 
         # Swayidle
         "swayidle -w timeout 180 'if [ $(dunstctl is-paused) == false ]; then dunstctl set-paused true; touch /tmp/swayidle_paused_notifs_true; fi; gtklock' resume 'if [ -e /tmp/swayidle_paused_notifs_true ]; then dunstctl set-paused false; rm /tmp/swayidle_paused_notifs_true; fi'"
@@ -259,6 +259,7 @@
         # m -> mouse
 
         "$MOD, U, exec, alacritty msg create-window || alacritty &,"
+        "$MOD, Escape, togglespecialworkspace"
         "$MOD, J, exec, killall rofi || rofi -show drun"
         "$MOD, H, exec, firefox &,"
         "$MOD, D, exec, thunar &,"
