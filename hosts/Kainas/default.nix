@@ -225,6 +225,11 @@
     ntp.enable = true;
     # Gnome keyring
     gnome.gnome-keyring.enable = true;
+    # Profile Sync Daemon (browser profiles)
+    psd = {
+      enable = true;
+      resyncTimer = "30m";
+    };
     # sound
     pipewire = {
       enable = true;
