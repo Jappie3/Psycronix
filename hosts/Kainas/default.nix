@@ -440,7 +440,6 @@
       brightnessctl
       thunderbird
       eww-wayland
-      nerdfonts
       gnome.gucharmap
       pwvucontrol
       pavucontrol
@@ -465,31 +464,48 @@
     packages = with pkgs; [
       # icon fonts
       material-symbols
+      material-design-icons
 
       # normal fonts
-      comic-mono
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
+      comic-mono
       roboto
       jost
       lexend
+      inter
 
       # nerdfonts
-      (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "RobotoMono" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "JetBrainsMono"
+          "RobotoMono"
+          "NerdFontsSymbolsOnly"
+        ];
+      })
     ];
+
+    fontDir = {
+      # create directory with links to all fonts:
+      # /run/current-system/sw/share/X11/fonts
+      enable = true;
+      decompressFonts = true;
+    };
 
     # use fonts specified by user rather than default ones
     enableDefaultPackages = false;
 
     # user defined fonts
-    # the reason there's Noto Color Emoji everywhere is to override DejaVu's
-    # B&W emojis that would sometimes show instead of some Color emojis
-    fontconfig.defaultFonts = {
-      serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Noto Sans" "Noto Color Emoji"];
-      monospace = ["Comic Mono" "JetBrainsMono Nerd Font" "Noto Color Emoji"];
-      emoji = ["Noto Color Emoji"];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = ["Roboto Serif"];
+        sansSerif = ["Inter"];
+        monospace = ["JetBrainsMono Nerd Font"];
+        emoji = ["Symbols Nerd Font" "Material Symbols Rounded" "Noto Color Emoji" "FireCode Nerd Font"];
+      };
     };
   };
 
