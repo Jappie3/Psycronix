@@ -142,6 +142,8 @@
 
   security = {
     polkit.enable = true;
+    # RealtimeKit system service, hands out realtime scheduling priority to user processes on demand
+    rtkit.enable = true;
     sudo.package = pkgs.sudo.override {withInsults = true;};
   };
 
@@ -188,6 +190,7 @@
 
   programs = {
     hyprland.enable = true;
+    noisetorch.enable = true;
     thefuck.enable = true;
     less.enable = true;
   };
@@ -200,7 +203,10 @@
     ];
   };
 
-  sound.enable = true;
+  sound = {
+    enable = true;
+    mediaKeys.enable = true;
+  };
 
   hardware = {
     pulseaudio.enable = false;
@@ -228,6 +234,7 @@
       };
       pulse.enable = true;
       jack.enable = true;
+      wireplumber.enable = true;
     };
     # CUPS
     printing.enable = true;
@@ -429,7 +436,8 @@
       eww-wayland
       nerdfonts
       gnome.gucharmap
-      pwvucontrol #pavucontrol
+      pwvucontrol
+      pavucontrol
       wdisplays
       blueman
       tidal-hifi
