@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    inputs.anyrun.homeManagerModules.default
     ./xdg.nix
     ./graphical
     ./programs
