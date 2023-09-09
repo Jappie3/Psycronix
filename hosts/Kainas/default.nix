@@ -388,6 +388,7 @@
       killall
       thefuck
       wev
+      wlr-randr
       ydotool
       jq
       ripgrep
