@@ -19,8 +19,8 @@
         # spread additional padding evenly around terminal content
         dynamic_padding = true;
         padding = {
-          x = 6;
-          y = 6;
+          x = 2;
+          y = 2;
         };
       };
       scrolling.history = 10000;
