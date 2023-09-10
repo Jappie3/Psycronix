@@ -5,12 +5,22 @@
     self,
     nixpkgs,
     home-manager,
+    flake-parts,
     ...
-  } @ inputs: let
-    inherit (nixpkgs) lib;
-  in {
-    nixosConfigurations = import ./hosts {inherit nixpkgs self lib;};
-  };
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [
+        # systems for which to build the 'perSystem' attribute
+        "x86_64-linux"
+      ];
+      flake = let
+        inherit (nixpkgs) lib;
+      in {
+        nixosConfigurations = import ./hosts {inherit nixpkgs self lib;};
+      };
+      perSystem = {config, ...}: {
+      };
+    };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
