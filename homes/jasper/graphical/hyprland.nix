@@ -76,6 +76,7 @@
       ];
 
       exec = [
+        # set wallpaper
         "swww img ~/Media/Pictures/Walls/alena-aenami-rooflinesgirl-1k-2.jpg"
       ];
 
