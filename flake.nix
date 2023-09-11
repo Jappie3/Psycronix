@@ -5,10 +5,9 @@
     self,
     nixpkgs,
     home-manager,
-    flake-parts,
     ...
   } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         # systems for which to build the 'perSystem' attribute
         "x86_64-linux"
