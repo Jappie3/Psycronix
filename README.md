@@ -1,4 +1,4 @@
-# Psychronix - My NixOS config
+# Psycronix - My NixOS config
 
 I am still learning Nix, and have a long way to go. Publishing my dots here in the hopes that some other beginner(s) might find it useful.
 
