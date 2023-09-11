@@ -228,7 +228,7 @@
     # Profile Sync Daemon (browser profiles)
     psd = {
       enable = true;
-      resyncTimer = "30m";
+      resyncTimer = "10m";
     };
     # sound
     pipewire = {
