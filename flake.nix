@@ -68,7 +68,7 @@
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:Jappie3/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
