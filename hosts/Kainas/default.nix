@@ -382,6 +382,7 @@
       alejandra #nixpkgs-fmt
       man
       tldr
+      file
       pciutils
       lshw
       nvtop
