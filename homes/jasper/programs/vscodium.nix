@@ -39,6 +39,7 @@
       # use Nil as LSP
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
+      "nix.formatterPath" = "alejandra";
     };
 
     # TODO figure out how to use https://github.com/nix-community/nix-vscode-extensions/
