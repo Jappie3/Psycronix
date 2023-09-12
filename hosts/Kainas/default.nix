@@ -193,6 +193,13 @@
     noisetorch.enable = true;
     thefuck.enable = true;
     less.enable = true;
+    steam = {
+      # TODO: env var for STEAM_EXTRA_COMPAT_TOOLS_PATHS ?
+      enable = true;
+      # Steam Remote Play & Source Dedicated Server
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
   };
 
   xdg.portal = {
@@ -209,6 +216,8 @@
   };
 
   hardware = {
+    # support for e.g. Steam Controller
+    steam-hardware.enable = true;
     pulseaudio.enable = false;
     bluetooth.enable = true;
     opengl.enable = true;
@@ -454,6 +463,8 @@
       webcord-vencord
       signal-desktop
       obsidian
+      steam
+      inputs.nix-gaming.packages.${pkgs.system}.proton-ge
     ];
 
     # no default packages
