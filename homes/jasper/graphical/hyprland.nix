@@ -384,6 +384,7 @@
       windowrulev2 = [
         "noshadow, floating:0"
         "float, class:Steam, title:^(Friends.*)$"
+        "float, title:Steam Settings"
         "float, class:^(virt-manager)$"
         #"float, class:^(libreoffice.*)$"
         "float, class:^(.*polkit-kde-authentication-agent.*)$"
