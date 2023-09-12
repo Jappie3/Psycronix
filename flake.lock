@@ -1432,6 +1432,29 @@
         "type": "github"
       }
     },
+    "nix-gaming": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1694504359,
+        "narHash": "sha256-7OFonlxxgnXADfH7KRSATxCSckPsM9vhxJsPUJpjJQw=",
+        "owner": "fufexan",
+        "repo": "nix-gaming",
+        "rev": "f7b06b2b2f13b2599bc4b3b4aace72eac17b0d05",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "repo": "nix-gaming",
+        "type": "github"
+      }
+    },
     "nixpak": {
       "inputs": {
         "flake-parts": [
@@ -2202,6 +2225,7 @@
         "hyprland-plugins": "hyprland-plugins",
         "neovim-flake": "neovim-flake",
         "nh": "nh",
+        "nix-gaming": "nix-gaming",
         "nixpak": "nixpak",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-stable": "nixpkgs-stable",
