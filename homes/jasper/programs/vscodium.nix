@@ -4,6 +4,9 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    nil
+  ];
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -31,6 +34,10 @@
 
       "workbench.startupEditor" = "none";
       "workbench.colorTheme" = "Dark Modern";
+
+      # use Nil as LSP
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
     };
 
     # TODO figure out how to use https://github.com/nix-community/nix-vscode-extensions/
@@ -46,6 +53,7 @@
 
         # Nix
         bbenoist.nix
+        jnoortheen.nix-ide
         kamadorueda.alejandra
         arrterian.nix-env-selector
         mkhl.direnv
