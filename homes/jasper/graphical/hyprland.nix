@@ -79,7 +79,8 @@
         # set wallpaper
         "swww img ~/Media/Pictures/Walls/alena-aenami-rooflinesgirl-1k-2.jpg"
         # quit & re-launch ags
-        "ags -q; ags"
+        # a window very briefly pops up before the widget shows -> silently send it to special:ags
+        "[ workspace special:ags silent ] sleep .5; ags -q; ags"
       ];
 
       general = {
