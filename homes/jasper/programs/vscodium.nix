@@ -15,22 +15,23 @@
     enableExtensionUpdateCheck = false;
 
     userSettings = {
-      "git.autofetch" = true;
+      # keycodes cuz position of key > what letter pressed
       "keyboard.dispatch" = "keyCode";
+      "git.autofetch" = true;
       "files.autoSave" = "onFocusChange";
       "explorer.autoReveal" = true;
 
       "extensions.autoUpdate" = false;
       "extensions.autoCheckUpdates" = true;
 
-      "editor.fontFamily" = "JetBrainsMono Nerd Font, Material Design Icons, 'monospace', monospace";
       "editor.formatOnSave" = true;
       "editor.formatOnPaste" = true;
       "editor.formatOnType" = false;
+      "editor.smoothScrolling" = true;
       "editor.inlineSuggest.enabled" = true;
       "editor.minimap.autohide" = true;
       "editor.minimap.renderCharacters" = true;
-      "editor.smoothScrolling" = true;
+      "editor.fontFamily" = "JetBrainsMono Nerd Font, Material Design Icons, 'monospace', monospace";
 
       "workbench.startupEditor" = "none";
       "workbench.colorTheme" = "Dark Modern";
