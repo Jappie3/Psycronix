@@ -435,6 +435,7 @@
       lynx
       bottom
       bandwhich
+      sassc
 
       # browsers
       firefox
