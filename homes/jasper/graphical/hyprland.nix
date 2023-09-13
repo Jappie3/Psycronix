@@ -17,9 +17,12 @@
 
     settings = {
       monitor = [
-        "eDP-2, 1920x1080@165.009995, 0x0, 1"
-        "DP-2, 3840x2160@60.000000, 1920x0, 2"
-        ", preferred, auto, 1"
+        # name    resolution@framerate    pos       scale
+        "eDP-1,   1920x1080@165.009995,   0x0,      1"
+        "DP-2,    3840x2160@60.000000,    1920x0,   2"
+        ",        preferred,              auto,     1"
+        # name    reserved area   T   B   L   R
+        "eDP-1,   addreserved,    35, 0,  0,  0"
       ];
 
       plugin = {
