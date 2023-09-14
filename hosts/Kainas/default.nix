@@ -361,6 +361,7 @@
       # fuck electron
       NIXOS_OZONE_WL = "1";
 
+      # XDG
       XDG_SESSION_TYPE = "wayland";
     };
 
