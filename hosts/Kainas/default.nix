@@ -193,6 +193,19 @@
     noisetorch.enable = true;
     thefuck.enable = true;
     less.enable = true;
+    ssh = {
+      # start OpenSSH agent upon login
+      startAgent = true;
+      # find these with `ssh-keyscan <hostname>`
+      knownHosts = {
+        github-ed25519.hostNames = ["github.com"];
+        github-ed25519.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+        gitlab-ed25519.hostNames = ["gitlab.com"];
+        gitlab-ed25519.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf";
+        codeberg-ed25519.hostNames = ["codeberg."];
+        codeberg-ed25519.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIVIC02vnjFyL+I4RHfvIGNtOgJMe769VTF1VR4EB3ZB";
+      };
+    };
     steam = {
       # TODO: env var for STEAM_EXTRA_COMPAT_TOOLS_PATHS ?
       enable = true;
@@ -229,7 +242,34 @@
 
   services = {
     # OpenSSH daemon
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      # systemd will start an SSHD instance for each incoming connection
+      startWhenNeeded = true;
+      # port on which SSH daemon listens
+      ports = [22];
+      # automatically open firewall
+      openFirewall = true;
+      # City of Tears
+      banner = "\n\tThe great gates have been sealed.\n\t\tNone shall enter.\n\t\tNone shall leave.\n\n\n";
+      # some security stuff
+      settings = {
+        X11Forwarding = false;
+        UseDns = false;
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        # key exchange algorithms recommended by nixpkgs#ssh-audit
+        # see https://github.com/numtide/srvos/blob/main/nixos/common/openssh.nix
+        KexAlgorithms = [
+          "curve25519-sha256"
+          "curve25519-sha256@libssh.org"
+          "diffie-hellman-group16-sha512"
+          "diffie-hellman-group18-sha512"
+          "sntrup761x25519-sha512@openssh.com"
+        ];
+      };
+    };
     # NTP
     ntp.enable = true;
     # Gnome keyring
@@ -319,6 +359,11 @@
   users.users.jasper = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager"];
+    # don't set this when using NixOps
+    openssh.authorizedKeys.keys = [
+      # my own public key
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1mAN5Db7eZ0iuBGGxdPqQCR2l6jDZBjgX4ZVOcip27 jasper@Kainas"
+    ];
     packages = with pkgs; [
       neofetch
     ];
