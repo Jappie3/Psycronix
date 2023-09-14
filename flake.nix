@@ -94,7 +94,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     split-monitor-workspaces = {
-      url = "github:NotAShelf/split-monitor-workspaces";
+      url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
 
