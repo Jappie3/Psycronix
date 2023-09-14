@@ -363,6 +363,9 @@
 
       # XDG
       XDG_SESSION_TYPE = "wayland";
+
+      # for NH
+      FLAKE = "$HOME/.config/psycronix";
     };
 
     systemPackages = with pkgs; [
