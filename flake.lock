@@ -31,15 +31,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1694438519,
-        "narHash": "sha256-ZghWd4p40KQFtdacVvU/qWEXFjfewN5i5TvZgeYNd9c=",
-        "owner": "Jappie3",
+        "lastModified": 1694614674,
+        "narHash": "sha256-EEumhgI8b3s4iA3rbZHyHVRST0zaWTPS6LOD2G7fhMQ=",
+        "owner": "Aylur",
         "repo": "ags",
-        "rev": "7c0f231f0986d995d3ea16cacb9b576553f95394",
+        "rev": "d55414634436a0422af31373aa82f046c5a6eae7",
         "type": "github"
       },
       "original": {
-        "owner": "Jappie3",
+        "owner": "Aylur",
         "repo": "ags",
         "type": "github"
       }
@@ -2364,15 +2364,15 @@
         "nix-filter": "nix-filter_2"
       },
       "locked": {
-        "lastModified": 1694032092,
-        "narHash": "sha256-oEkWQQRl1m2sjQ9BvvlPjAsnjcxPs0low8mLI4oPwd0=",
-        "owner": "NotAShelf",
+        "lastModified": 1694620282,
+        "narHash": "sha256-MYXCjLkLP/2AKrFNTv4kbo0IGnzgIskiRpYiJ3Gdxcs=",
+        "owner": "Duckonaut",
         "repo": "split-monitor-workspaces",
-        "rev": "3d234263ec38f09a89546cd6e217a2a177c96bba",
+        "rev": "d8c97d60753f70d686588ad3b0a877e2ca67ff72",
         "type": "github"
       },
       "original": {
-        "owner": "NotAShelf",
+        "owner": "Duckonaut",
         "repo": "split-monitor-workspaces",
         "type": "github"
       }
