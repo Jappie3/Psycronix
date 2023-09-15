@@ -436,6 +436,7 @@
       lshw
       nvtop
       nvtop-amd
+      sysstat
       acpi
       powertop
       power-profiles-daemon
