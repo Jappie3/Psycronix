@@ -125,9 +125,10 @@
       ];
     };
     # kernel modules for second stage, see hardware-configuration.nix
-    #kernelModules = [
-    #  "kvm-amd"
-    #];
+    kernelModules = [
+      # load AMD KVM kernel module, see https://wiki.archlinux.org/title/KVM
+      "kvm-amd"
+    ];
     # https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
     #kernelParams = [];
   };
