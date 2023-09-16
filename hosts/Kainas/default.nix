@@ -529,7 +529,6 @@
       k9s
       kubectx
       atool
-      lynx
       bottom
       bandwhich
       sassc
@@ -538,6 +537,7 @@
       nyxt
       firefox
       librewolf
+      lynx
       tor
       tor-browser-bundle-bin
 
