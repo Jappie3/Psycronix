@@ -129,10 +129,7 @@
     #kernelParams = [];
   };
 
-  networking = {
-    hostName = "Kainas";
-    networkmanager.enable = true;
-  };
+  networking.networkmanager.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
