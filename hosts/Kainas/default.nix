@@ -524,6 +524,7 @@
       dig
       nmap
       whois
+      ansible
       kubectl
       k9s
       kubectx
@@ -537,6 +538,8 @@
       nyxt
       firefox
       librewolf
+      tor
+      tor-browser-bundle-bin
 
       # programs
       #hyprland hyprland-protocols hyprland-share-picker xdg-desktop-portal-hyprland
@@ -547,6 +550,7 @@
       pipewire
       brightnessctl
       thunderbird
+      obs-studio
       eww-wayland
       gnome.gucharmap
       pwvucontrol
