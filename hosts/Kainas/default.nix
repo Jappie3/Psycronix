@@ -103,7 +103,7 @@
       #kernelModules = [];
       # kernel modules available in first stage (loaded when needed)
       availableKernelModules = [
-        "btrfs"
+        "btrfs" # butter filesystem
         "dm_mod" # device mapper
         "nvme" # NVMe drives
         "xhci_pci" # USB 3.0 eXtensible Host Controller Interface
@@ -111,8 +111,8 @@
         "usbhid" # USB Human Interface Device
         "usb_storage" # USB Mass Storage (USB flash drives)
         "ahci" # SATA devices on modern AHCI controllers
+        "sd_mod" # SCSI, SATA & PATA (IDI) devices
         #"uas" # USB attached SCSI drive
-        #"sd_mod" # SCSI, SATA & PATA (IDI) devices
         #"sdhci_pci" # Secure Digital Host Controller Interface (SD cards)
         #"rtsx_pci_sdmmc" # Realtek PCI-E SD-MMC card host drive
       ];
@@ -230,8 +230,12 @@
     steam-hardware.enable = true;
     pulseaudio.enable = false;
     bluetooth.enable = true;
-    opengl.enable = true;
-    opengl.driSupport32Bit = true; # support for 32-bit programs (e.g. Wine)
+    opengl = {
+      enable = true;
+      driSupport = true;
+      # support for 32-bit programs (e.g. Wine)
+      driSupport32Bit = true;
+    };
     nvidia.modesetting.enable = true;
   };
 
@@ -366,8 +370,6 @@
     ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment = {
     # global variables
     variables = {
@@ -406,7 +408,7 @@
       # XDG
       XDG_SESSION_TYPE = "wayland";
 
-      # for NH
+      # NH
       FLAKE = "$HOME/.config/psycronix";
     };
 
@@ -425,7 +427,7 @@
       wget
       less
       git
-      alejandra #nixpkgs-fmt
+      alejandra
       man
       tldr
       file
