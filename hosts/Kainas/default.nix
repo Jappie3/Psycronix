@@ -100,7 +100,10 @@
       };
       verbose = true;
       # always loaded in first stage
-      #kernelModules = [];
+      # https://wiki.archlinux.org/title/Kernel_mode_setting#Early_KMS_start
+      # kernelModules = [
+      #   "amdgpu"
+      # ];
       # kernel modules available in first stage (loaded when needed)
       availableKernelModules = [
         "btrfs" # butter filesystem
@@ -236,7 +239,32 @@
       # support for 32-bit programs (e.g. Wine)
       driSupport32Bit = true;
     };
-    nvidia.modesetting.enable = true;
+    # https://nixos.wiki/wiki/Nvidia
+    nvidia = {
+      #package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      # use the Nvidia open source kernel module
+      open = true;
+      # enable Nvidia settings menu, see nvidia-settings
+      nvidiaSettings = true;
+      # enable kernel modesetting
+      modesetting.enable = true;
+      powerManagement = {
+        # experimental power management through systemd, can cause sleep/suspend to fail
+        enable = false;
+        # experimental power management, turns off GPU when not in use (Turing or newer)
+        finegrained = false;
+      };
+      # offloading to dGPU
+      prime = {
+        # enable PRIME offloading
+        offload.enable = true;
+        # lspci | grep VGA | grep 'Advanced Micro Devices' -> 06:00.0
+        amdgpuBusId = "PCI:6:0:0";
+        # lspci | grep VGA | grep 'NVIDIA' -> 01:00.0
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
   };
 
   time.timeZone = "Europe/Brussels";
@@ -297,9 +325,9 @@
     blueman.enable = true;
     # X
     xserver = {
-      enable = false;
+      enable = true;
       displayManager.lightdm.enable = false;
-      videoDrivers = ["nvidia" "amdgpu"];
+      videoDrivers = ["nvidia"]; #"amdgpu"];
       layout = "us";
       xkbVariant = "dvorak";
       # touchpad support
@@ -412,7 +440,24 @@
       FLAKE = "$HOME/.config/psycronix";
     };
 
-    systemPackages = with pkgs; [
+    systemPackages = with pkgs; let
+      nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+        export __NV_PRIME_RENDER_OFFLOAD=1
+        export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+        export __GLX_VENDOR_LIBRARY_NAME=nvidia
+        export __VK_LAYER_NV_optimus=NVIDIA_only
+        exec "$@"
+      '';
+    in [
+      # run 'nvidia-offload someProgram' to run it on dGPU
+      nvidia-offload
+
+      # drivers
+      mesa
+      nvidia-vaapi-driver
+      libva
+      libva-utils
+
       # editors
       vim
       neovim
