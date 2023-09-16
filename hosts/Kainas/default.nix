@@ -534,6 +534,7 @@
       sassc
 
       # browsers
+      nyxt
       firefox
       librewolf
 
