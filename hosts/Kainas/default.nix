@@ -508,6 +508,7 @@
       mpv
       shared-mime-info
       playerctl
+      pulseaudio
       pamixer
       wl-clipboard
       wf-recorder
