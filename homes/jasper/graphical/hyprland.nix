@@ -237,7 +237,7 @@
         mouse_move_focuses_monitor = true;
 
         # window groups
-        render_titles_in_groupbar = true;
+        render_titles_in_groupbar = false;
         group_insert_after_current = true;
         groupbar_gradients = false;
       };
