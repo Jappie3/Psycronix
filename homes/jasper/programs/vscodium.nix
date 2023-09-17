@@ -23,6 +23,8 @@
 
       "extensions.autoUpdate" = false;
       "extensions.autoCheckUpdates" = true;
+      "explorer.confirmDragAndDrop" = false;
+      "explorer.confirmDelete" = false;
 
       "editor.formatOnSave" = true;
       "editor.formatOnPaste" = true;
