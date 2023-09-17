@@ -561,6 +561,9 @@
       swww
       noisetorch
       dunst
+      xfce.thunar
+      xfce.thunar-archive-plugin
+      xfce.thunar-media-tags-plugin
       wlsunset
       rofi-wayland
       webcord-vencord
