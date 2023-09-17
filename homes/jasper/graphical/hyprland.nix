@@ -271,8 +271,8 @@
         "$MOD, H, exec, firefox &,"
         "$MOD, D, exec, thunar &,"
         "$MOD, S, exec, wlogout"
-        "$MOD, K, killactive,"
-        "$MOD, I, togglefloating,"
+        "$MOD, I, killactive,"
+        "$MOD, K, togglefloating,"
         "$MOD, X, fullscreen,"
         "$MOD, z, pin"
         #bind = $MOD, M, exit,
