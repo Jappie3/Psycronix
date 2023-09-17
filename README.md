@@ -17,6 +17,7 @@ Some people I stole from:
 
 - https://github.com/notashelf/nyx
 - https://codeberg.org/jacekpoz/niksos
+- https://github.com/end-4/dots-hyprland
 - https://github.com/bddvlpr/nix-dotfiles/
 - https://github.com/the-argus/nixsys
 - https://github.com/n3oney/nixus
