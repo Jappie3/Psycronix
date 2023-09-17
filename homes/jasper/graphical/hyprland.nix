@@ -83,7 +83,7 @@
         "swww img ~/Media/Pictures/Walls/alena-aenami-rooflinesgirl-1k-2.jpg"
         # quit & re-launch ags
         # a window very briefly pops up before the widget shows -> silently send it to special:ags
-        "[ workspace special:ags silent ] sleep .5; ags -q; ags"
+        "[ workspace special:ags silent ] sleep .5; ags -q; sleep .5; ags"
       ];
 
       general = {
