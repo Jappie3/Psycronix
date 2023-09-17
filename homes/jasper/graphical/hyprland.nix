@@ -277,8 +277,7 @@
         "$MOD, z, pin"
         #bind = $MOD, M, exit,
 
-        "$MOD, semicolon, exec, eww open --toggle left_window"
-        "$MOD, Q, exec, eww open --toggle right_window"
+        "$MOD, Q, exec, ags toggle-window SideRight"
 
         # scroll through existing workspaces with MOD + arrow keys
         "$MOD SHIFT, left, workspace, e-1"
