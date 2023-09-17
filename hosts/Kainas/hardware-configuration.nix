@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -13,37 +12,36 @@
   ];
 
   boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/32dd7cd3-ad98-4c55-be93-8fb10e348279";
+  boot.initrd.luks.devices."home".device = "/dev/disk/by-uuid/67a0ff65-c40e-4114-ad95-b2893ccdbb5c";
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["subvol=@"];
+    options = ["noatime" "compress=zstd" "subvol=@"];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["subvol=@nix"];
+    options = ["noatime" "compress=zstd" "subvol=@nix"];
   };
 
   fileSystems."/var/log" = {
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["subvol=@log"];
+    options = ["noatime" "compress=zstd" "subvol=@log"];
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/disk/by-label/NIXHOME";
+    fsType = "btrfs";
+    options = ["noatime" "compress=zstd" "subvol=@home"];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
   };
-
-  # fileSystems."/home" =
-  #   {
-  #     device = "/dev/mapper/vg-home";
-  #     fsType = "ext4";
-  #   };
-
-  # boot.initrd.luks.devices."home".device = "/dev/disk/by-uuid/b34c6a4a-5297-4efe-b93b-b3fe3c95ef4f";
 
   swapDevices = [
     {
