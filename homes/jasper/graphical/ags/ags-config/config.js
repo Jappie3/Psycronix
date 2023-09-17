@@ -1,18 +1,19 @@
-const exampleWindow = ags.Widget.Window({
-    name: 'example-window',
-    child: ags.Widget.Label({
-        label: 'example-content',
-    }),
-});
+const { App } = ags;
+const { exec, execAsync, CONFIG_DIR } = ags.Utils;
+import { BarWindowLeft, BarWindowCenter, BarWindowRight } from './bar.js';
+import { SideRight } from './sideright.js'
+
+exec(`sassc ${App.configDir}/scss/style.scss ${App.configDir}/style.css`);
+ags.App.resetCss();
+ags.App.applyCss(`${App.configDir}/style.css`);
 
 export default {
-    closeWindowDelay: {
-        'window-name': 500, // milliseconds
-    },
-    notificationPopupTimeout: 5000, // milliseconds
-    maxStreamVolume: 1.5, // float
-    style: ags.App.configDir + '/style.css',
+    style: `${App.configDir}/style.css`,
+    stackTraceOnError: true,
     windows: [
-        exampleWindow,
+        BarWindowLeft,
+        BarWindowCenter,
+        BarWindowRight,
+        SideRight,
     ],
 };

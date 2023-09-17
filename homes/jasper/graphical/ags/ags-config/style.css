@@ -1,0 +1,59 @@
+/*  STYLE.CSS IS AUTO-GENERATED
+    see ./scss/scss.js          */
+* {
+  all: unset;
+  font-size: 14px;
+  font-family: 'JetBrains Mono Nerd Font'; }
+
+.material-icon {
+  font-size: 16px;
+  font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', 'Material Symbols Sharp'; }
+
+.nerd-icon {
+  font-family: 'SpaceMono Nerd Font', 'JetBrainsMono Nerd Font', 'monospace'; }
+
+.padding-children-dot2rem > * {
+  padding: 0 .2rem; }
+
+.padding-children-dot5rem > * {
+  padding: 0 .5rem; }
+
+.padding-children-1rem > * {
+  padding: 0 1rem; }
+
+.padding-children-2rem > * {
+  padding: 0 2rem; }
+
+.bar-window-left,
+.bar-window-center,
+.bar-window-right {
+  margin-top: 0.4rem; }
+
+.bar-window-left {
+  margin-left: 0.5rem; }
+
+.bar-window-right {
+  margin-right: 0.5rem; }
+
+.bar-window-group-outer {
+  border-radius: 12px;
+  min-height: 2rem;
+  padding: 0 1.6rem;
+  background-color: black; }
+
+.separator {
+  padding: 0 1rem; }
+
+.bar-left-smalltext {
+  font-size: 12px;
+  padding-bottom: .4rem; }
+
+.red {
+  color: red; }
+
+.side-right {
+  border-radius: 12px;
+  min-width: 16rem;
+  margin-top: 2.8285714286rem;
+  margin-bottom: 0.4285714286rem;
+  margin-right: 0.4285714286rem; }

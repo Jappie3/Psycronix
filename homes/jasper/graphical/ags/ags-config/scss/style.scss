@@ -1,0 +1,118 @@
+/*  STYLE.CSS IS AUTO-GENERATED
+    see ./scss/scss.js          */
+
+// 1rem = 14px
+$root_font_size_px: 14px;
+
+// $rem_value: $px_value / $root_font_size;
+// $px_value: $rem_value * $root_font_size;
+
+// convert hyprland outer gap (6px, see config) to rem
+$hyprland_outer_gap: 6 / 14 * 1rem;
+
+// bar vars
+$bar_height_rem: 2rem;
+$bar_padding_top: .4rem;
+$bar_padding_left_right: .5rem;
+
+* {
+    all: unset;
+    font-size: $root_font_size_px;
+    font-family: 'JetBrains Mono Nerd Font'
+}
+
+@mixin rounding {
+    border-radius: 12px;
+}
+
+// ----------------------------------------
+
+// TODO try lexend, inter, etc.
+
+.material-icon {
+    font-size: 16px;
+    font-family:
+        'Material Symbols Rounded',
+        'Material Symbols Outlined',
+        'Material Symbols Sharp';
+}
+
+.nerd-icon {
+    font-family:
+        'SpaceMono Nerd Font',
+        'JetBrainsMono Nerd Font',
+        'monospace';
+}
+
+// ----------------------------------------
+
+.padding-children-dot2rem>* {
+    padding: 0 .2rem;
+}
+
+.padding-children-dot5rem>* {
+    padding: 0 .5rem;
+}
+
+.padding-children-1rem>* {
+    padding: 0 1rem;
+}
+
+.padding-children-2rem>* {
+    padding: 0 2rem;
+}
+
+// ----------------------------------------
+
+.bar-window {}
+
+// margin above bar
+.bar-window-left,
+.bar-window-center,
+.bar-window-right {
+    margin-top: $bar_padding_top;
+}
+
+// margin to the left of the bar
+.bar-window-left {
+    margin-left: $bar_padding_left_right;
+}
+
+// margin to the right of the bar
+.bar-window-right {
+    margin-right: $bar_padding_left_right;
+}
+
+// outer box of every bar window (left, center, right)
+.bar-window-group-outer {
+    @include rounding;
+    // height of the bar
+    min-height: $bar_height_rem;
+    // left and right padding
+    padding: 0 1.6rem;
+    background-color: black;
+}
+
+// < on bar-window-right
+.separator {
+    padding: 0 1rem;
+}
+
+.bar-left-smalltext {
+    font-size: 12px;
+    padding-bottom: .4rem;
+}
+
+.red {
+    color: red;
+}
+
+// ----------------------------------------
+
+.side-right {
+    @include rounding;
+    min-width: 16rem;
+    margin-top: $hyprland_outer_gap + $bar_height_rem + $bar_padding_top;
+    margin-bottom: $hyprland_outer_gap;
+    margin-right: $hyprland_outer_gap
+}
