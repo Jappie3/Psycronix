@@ -581,6 +581,7 @@
     packages = with pkgs; [
       # icon fonts
       material-symbols
+      material-icons
       material-design-icons
 
       # normal fonts
@@ -618,9 +619,9 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = ["Roboto Serif"];
-        sansSerif = ["Inter"];
-        monospace = ["JetBrainsMono Nerd Font"];
+        serif = ["Roboto Serif" "Noto Color Emoji"];
+        sansSerif = ["Inter" "Lexend" "Noto Color Emoji"];
+        monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
         emoji = ["Symbols Nerd Font" "Material Symbols Rounded" "Noto Color Emoji" "FireCode Nerd Font"];
       };
     };
