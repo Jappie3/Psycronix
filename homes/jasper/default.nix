@@ -44,6 +44,14 @@
     };
   };
 
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+
   home = {
     username = "jasper";
     homeDirectory = "/home/jasper";
