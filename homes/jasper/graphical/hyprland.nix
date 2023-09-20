@@ -268,7 +268,7 @@
 
         "$MOD, U, exec, alacritty msg create-window || alacritty &,"
         "$MOD, Escape, togglespecialworkspace"
-        "$MOD, J, exec, killall rofi || rofi -show drun"
+        "$MOD, J, exec, killall anyrun || anyrun"
         "$MOD, H, exec, firefox &,"
         "$MOD, D, exec, thunar &,"
         "$MOD, S, exec, wlogout"

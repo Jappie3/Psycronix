@@ -565,7 +565,6 @@
       xfce.thunar-archive-plugin
       xfce.thunar-media-tags-plugin
       wlsunset
-      rofi-wayland
       webcord-vencord
       signal-desktop
       obsidian
