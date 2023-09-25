@@ -38,6 +38,8 @@
       "workbench.startupEditor" = "none";
       "workbench.colorTheme" = "Dark Modern";
 
+      "redhat.telemetry.enabled" = false;
+
       # use Nil as LSP
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
