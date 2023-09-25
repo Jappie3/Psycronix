@@ -25,15 +25,15 @@
       y.fraction = 0.2;
       # whether to hide icons
       hideIcons = false;
-      # ignore e.g. waybar, eww, ags
+      # whether to ignore e.g. waybar, eww, ags
       ignoreExclusiveZones = true;
       # background, bottom, top, overlay
       layer = "overlay";
-      # hide the plugins info panel
+      # whether to hide the plugins info panel
       hidePluginInfo = false;
-      # close on click outside of anyrun
+      # whether to close on click outside of anyrun
       closeOnClick = false;
-      # don't show results on start
+      # whether to show results on start
       showResultsImmediately = false;
       maxEntries = null;
     };
@@ -110,7 +110,7 @@
     extraConfigFiles."applications.ron".text = ''
       Config(
         // also show the Desktop Actions defined in the desktop files, e.g. "New Window" from LibreWolf
-        desktop_actions: true,
+        desktop_actions: false,
         max_entries: 5,
         // terminal used for running terminal based desktop entries, if left as `None` a static list of terminals is used
         terminal: Some("alacritty"),
