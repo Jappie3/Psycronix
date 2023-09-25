@@ -15,6 +15,7 @@
       l = "ls -lah --color=auto";
 
       search = "nix search nixpkgs";
+      copy = "copy() { cat \"$1\" | wl-copy; }; copy";
 
       svim = "sudo -E vim";
       snvim = "sudo -E nvim";
