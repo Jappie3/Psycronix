@@ -561,6 +561,7 @@
       blueman
       tidal-hifi
       swww
+      swaylock-effects
       noisetorch
       dunst
       xfce.thunar
