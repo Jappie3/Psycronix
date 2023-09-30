@@ -75,7 +75,8 @@
         "[ workspace special:alacritty silent ] alacritty"
 
         # Swayidle
-        "swayidle -w timeout 180 'if [ $(dunstctl is-paused) == false ]; then dunstctl set-paused true; touch /tmp/swayidle_paused_notifs_true; fi; gtklock' resume 'if [ -e /tmp/swayidle_paused_notifs_true ]; then dunstctl set-paused false; rm /tmp/swayidle_paused_notifs_true; fi'"
+        # only un-pause notifs again if they were un-paused before locking
+        "swayidle -w timeout 180 'if [[ \"$(dunstctl is-paused)\" == \"false\" ]]; then dunstctl set-paused true; touch /tmp/swayidle_paused_notifs_true; fi; hyprctl dispatch exec swaylock' resume 'if [[ -e /tmp/swayidle_paused_notifs_true ]]; then dunstctl set-paused false; rm /tmp/swayidle_paused_notifs_true; fi' before-sleep 'hyprctl dispatch exec swaylock'"
       ];
 
       exec = [

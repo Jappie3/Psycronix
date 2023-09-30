@@ -556,6 +556,8 @@
       pwvucontrol
       pavucontrol
       wdisplays
+      # automatically lock screen
+      swayidle
       blueman
       tidal-hifi
       swww
