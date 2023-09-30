@@ -474,6 +474,8 @@
       less
       git
       alejandra
+      # install NixOS anywhere
+      inputs.nixos-anywhere.packages.${pkgs.system}.nixos-anywhere
       man
       tldr
       file
