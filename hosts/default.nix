@@ -11,6 +11,7 @@
   # flake inputs
   home-manager = inputs.home-manager.nixosModules.home-manager;
   agenix = inputs.agenix.nixosModules.default;
+  disko = inputs.disko.nixosModules.disko;
 
   # extraSpecialArgs that all hosts need
   sharedArgs = {inherit self lib inputs;};
