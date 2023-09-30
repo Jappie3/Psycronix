@@ -63,7 +63,7 @@
     man = {
       enable = true;
       # whether to generate manual page index caches
-      generateCaches = true;
+      generateCaches = false;
       # use man-db (default)
       man-db.enable = true;
     };
