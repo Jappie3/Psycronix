@@ -560,6 +560,8 @@
       pwvucontrol
       pavucontrol
       wdisplays
+      # for e.g. wlroots-idle-inhibit
+      wlroots.examples
       # automatically lock screen
       swayidle
       blueman
