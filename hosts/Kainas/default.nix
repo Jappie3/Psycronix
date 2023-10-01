@@ -14,6 +14,8 @@
     #overlays = [
     #];
 
+    hostPlatform = "x86_64-linux";
+
     # configure nixpkgs instance
     config = {
       # allow proprietary software
