@@ -18,6 +18,8 @@
     config = {
       # allow proprietary software
       allowUnfree = true;
+      # cuda support
+      cudaSupport = true;
 
       # enable nix-helper
       nh = {
@@ -485,6 +487,7 @@
       lshw
       nvtop
       nvtop-amd
+      cudatoolkit
       sysstat
       acpi
       powertop
