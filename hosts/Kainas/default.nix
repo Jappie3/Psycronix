@@ -146,6 +146,8 @@
     # RealtimeKit system service, hands out realtime scheduling priority to user processes on demand
     rtkit.enable = true;
     sudo.package = pkgs.sudo.override {withInsults = true;};
+    # https://github.com/NixOS/nixpkgs/issues/158025
+    pam.services.swaylock = {};
   };
 
   i18n = {
