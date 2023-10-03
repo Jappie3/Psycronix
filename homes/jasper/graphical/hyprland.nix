@@ -158,7 +158,6 @@
         # this value is tied to the Ags config so change it there as well @ future me
         rounding = 12;
         drop_shadow = true;
-        multisample_edges = true;
 
         shadow_range = 20;
         shadow_render_power = 3;
