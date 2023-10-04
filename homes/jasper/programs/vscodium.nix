@@ -39,6 +39,10 @@
       "workbench.startupEditor" = "none";
       "workbench.colorTheme" = "Dark Modern";
 
+      # fix codium crashing on mouse hover
+      # also this looks hella sexy for some reason
+      "window.titleBarStyle" = "custom";
+
       "redhat.telemetry.enabled" = false;
 
       # use Nil as LSP
