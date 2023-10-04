@@ -29,6 +29,7 @@
       "editor.formatOnSave" = true;
       "editor.formatOnPaste" = true;
       "editor.formatOnType" = false;
+      "editor.suggest.showWords" = false;
       "editor.smoothScrolling" = true;
       "editor.inlineSuggest.enabled" = true;
       "editor.minimap.autohide" = true;
