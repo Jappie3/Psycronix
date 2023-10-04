@@ -59,6 +59,7 @@
         naumovs.color-highlight
         pkief.material-icon-theme
         pkief.material-product-icons
+        tomoki1207.pdf
         #hbenl.vscode-test-explorer
         #hbenl.test-adapter-converter
 
