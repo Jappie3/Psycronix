@@ -632,7 +632,8 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = ["Roboto Serif" "Noto Color Emoji"];
+        # placing "Noto Serif" first fixes weird spacing in firefox
+        serif = ["Noto Serif" "Roboto Serif" "Noto Color Emoji"];
         sansSerif = ["Inter" "Lexend" "Noto Color Emoji"];
         monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
         emoji = ["Symbols Nerd Font" "Material Symbols Rounded" "Noto Color Emoji" "FireCode Nerd Font"];
