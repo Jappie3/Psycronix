@@ -11,8 +11,18 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/32dd7cd3-ad98-4c55-be93-8fb10e348279";
-  boot.initrd.luks.devices."home".device = "/dev/disk/by-uuid/67a0ff65-c40e-4114-ad95-b2893ccdbb5c";
+  # bypassWorkqueues -> improves performance on SSDs
+  # https://wiki.archlinux.org/title/Dm-crypt/Specialties#Disable_workqueue_for_increased_solid_state_drive_(SSD)_performance
+  boot.initrd.luks.devices = {
+    "home" = {
+      device = "/dev/disk/by-uuid/67a0ff65-c40e-4114-ad95-b2893ccdbb5c";
+      bypassWorkqueues = true;
+    };
+    "root" = {
+      device = "/dev/disk/by-uuid/32dd7cd3-ad98-4c55-be93-8fb10e348279";
+      bypassWorkqueues = true;
+    };
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXROOT";
