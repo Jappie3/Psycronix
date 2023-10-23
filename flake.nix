@@ -12,11 +12,12 @@
         # systems for which to build the 'perSystem' attribute
         "x86_64-linux"
       ];
-      flake = let
-        inherit (nixpkgs) lib;
-      in {
-        nixosConfigurations = import ./hosts {inherit nixpkgs self lib;};
-      };
+
+      imports = [
+        ./hosts
+        ./modules
+      ];
+
       perSystem = {config, ...}: {
       };
     };
