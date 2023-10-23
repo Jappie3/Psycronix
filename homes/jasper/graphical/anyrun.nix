@@ -102,7 +102,9 @@
         // custom user defined symbols
         symbols: {
           // "name": "text to be copied"
-          "shrug": "¯\\_(ツ)_/¯",
+          "Shrug": "¯\\_(ツ)_/¯",
+          "Tableflip": "(╯°□°)╯︵ ┻━┻",
+          "Unflip": "┬─┬ノ( º _ ºノ)",
         },
         max_entries: 3,
       )
