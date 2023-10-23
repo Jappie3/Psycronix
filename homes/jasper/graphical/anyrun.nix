@@ -23,14 +23,14 @@
       # horizontal & vertical position
       x.fraction = 0.5;
       y.fraction = 0.2;
-      # whether to hide icons
-      hideIcons = false;
       # whether to ignore e.g. waybar, eww, ags
       ignoreExclusiveZones = true;
       # background, bottom, top, overlay
       layer = "overlay";
+      # whether to hide icons
+      hideIcons = false;
       # whether to hide the plugins info panel
-      hidePluginInfo = false;
+      hidePluginInfo = true;
       # whether to close on click outside of anyrun
       closeOnClick = false;
       # whether to show results on start
