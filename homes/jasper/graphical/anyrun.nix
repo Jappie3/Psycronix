@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  osConfig,
   ...
 }: {
   imports = [
@@ -9,17 +10,20 @@
   config.programs.anyrun = {
     enable = true;
     config = {
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
-        applications # search applications
-        shell # > run shell commands
-        randr # :dp rotate & resize, change resolution, etc. (only Hyprland)
-        #dictionary # :def look up definitions for words
-        kidex # file search provided by Kidex
-        rink # calculator & unit conversion
-        symbols # search unicode symbols
-        translate # translate text
-        # :[target lang] [text] OR :[src lang]>[target lang] [text]
-      ];
+      plugins = with inputs.anyrun.packages.${pkgs.system};
+        [
+          applications # search applications
+          shell # > run shell commands
+          randr # :dp rotate & resize, change resolution, etc. (only Hyprland)
+          #dictionary # :def look up definitions for words
+          kidex # file search provided by Kidex
+          rink # calculator & unit conversion
+          symbols # search unicode symbols
+          translate # :[target lang] [text] OR :[src lang]>[target lang] [text]
+        ]
+        ++ [
+          inputs.anyrun-nixos-options.packages.${pkgs.system}.default
+        ];
       # horizontal & vertical position
       x.fraction = 0.5;
       y.fraction = 0.2;
@@ -35,7 +39,7 @@
       closeOnClick = false;
       # whether to show results on start
       showResultsImmediately = false;
-      maxEntries = null;
+      maxEntries = 6;
     };
     extraCss = ''
       * {
@@ -88,53 +92,76 @@
         padding: .3rem;
       }
     '';
-    extraConfigFiles."shell.ron".text = ''
-      Config(
-        // prefix to run shell commands
-        prefix: ">",
-        // shell -> retrieved via env var SHELL
-      )
-    '';
-    extraConfigFiles."symbols.ron".text = ''
-      Config(
-        // prefix for searching symbols
-        prefix: "",
-        // custom user defined symbols
-        symbols: {
-          // "name": "text to be copied"
-          "Shrug": "¯\\_(ツ)_/¯",
-          "Tableflip": "(╯°□°)╯︵ ┻━┻",
-          "Unflip": "┬─┬ノ( º _ ºノ)",
-        },
-        max_entries: 3,
-      )
-    '';
-    extraConfigFiles."applications.ron".text = ''
-      Config(
-        // also show the Desktop Actions defined in the desktop files, e.g. "New Window" from LibreWolf
-        desktop_actions: false,
-        max_entries: 5,
-        // terminal used for running terminal based desktop entries, if left as `None` a static list of terminals is used
-        terminal: Some("alacritty"),
-      )
-    '';
-    extraConfigFiles."randr.ron".text = ''
-      Config(
-        prefix: ":dp",
-        max_entries: 5,
-      )
-    '';
-    extraConfigFiles."kidex.ron".text = ''
-      Config(
-        max_entries: 3,
-      )
-    '';
-    extraConfigFiles."translate.ron".text = ''
-      Config(
-        prefix: ":",
-        language_delimiter: ">",
-        max_entries: 3,
-      )
-    '';
+    extraConfigFiles = {
+      "shell.ron".text = ''
+        Config(
+          // prefix to run shell commands
+          prefix: ">",
+          // shell -> retrieved via env var SHELL
+        )
+      '';
+      "symbols.ron".text = ''
+        Config(
+          // prefix for searching symbols
+          prefix: "",
+          // custom user defined symbols
+          symbols: {
+            // "name": "text to be copied"
+            "Shrug": "¯\\_(ツ)_/¯",
+            "Tableflip": "(╯°□°)╯︵ ┻━┻",
+            "Unflip": "┬─┬ノ( º _ ºノ)",
+          },
+          max_entries: 3,
+        )
+      '';
+      "applications.ron".text = ''
+        Config(
+          // also show the Desktop Actions defined in the desktop files, e.g. "New Window" from LibreWolf
+          desktop_actions: false,
+          max_entries: 5,
+          // terminal used for running terminal based desktop entries, if left as `None` a static list of terminals is used
+          terminal: Some("alacritty"),
+        )
+      '';
+      "randr.ron".text = ''
+        Config(
+          prefix: ":dp",
+          max_entries: 5,
+        )
+      '';
+      "kidex.ron".text = ''
+        Config(
+          max_entries: 3,
+        )
+      '';
+      "translate.ron".text = ''
+        Config(
+          prefix: ":",
+          language_delimiter: ">",
+          max_entries: 3,
+        )
+      '';
+      "nixos-options.ron".text = let
+        #               ↓ home-manager refers to the nixos configuration as osConfig
+        nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
+        # merge your options
+        options = builtins.toJSON {
+          ":nix" = [nixos-options];
+        };
+        # or alternatively if you wish to read any other documentation options, such as home-manager
+        # get the docs-json package from the home-manager flake
+        # hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
+        # options = builtins.toJSON {
+        #   ":nix" = [nixos-options];
+        #   ":hm" = [hm-options];
+        #   ":something-else" = [some-other-option];
+        #   ":nall" = [nixos-options hm-options some-other-option];
+        # };
+      in ''
+        Config(
+            options: ${options},
+         )
+      '';
+    };
   };
 }
