@@ -14,6 +14,9 @@
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
 
+    # whether to allow updating/installing extensions via the GUI
+    mutableExtensionsDir = false;
+
     userSettings = {
       # keycodes cuz position of key > what letter pressed
       "keyboard.dispatch" = "keyCode";
