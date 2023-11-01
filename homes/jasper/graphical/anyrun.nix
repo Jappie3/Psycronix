@@ -16,7 +16,7 @@
           shell # > run shell commands
           randr # :dp rotate & resize, change resolution, etc. (only Hyprland)
           #dictionary # :def look up definitions for words
-          kidex # file search provided by Kidex
+          #kidex # file search provided by Kidex
           rink # calculator & unit conversion
           symbols # search unicode symbols
           translate # :[target lang] [text] OR :[src lang]>[target lang] [text]
@@ -127,11 +127,6 @@
         Config(
           prefix: ":dp",
           max_entries: 5,
-        )
-      '';
-      "kidex.ron".text = ''
-        Config(
-          max_entries: 3,
         )
       '';
       "translate.ron".text = ''
