@@ -59,7 +59,9 @@
       separator-color = "00000000";
 
       # whether to use a screenshot as bg
-      screenshots = true;
+      screenshots = false;
+      # background color
+      color = "00000000";
       # show date & time in indicator and use normal notation
       clock = true;
       datestr = "%d/%m/%Y";
@@ -76,7 +78,7 @@
       grace-no-touch = true;
 
       # effects
-      fade-in = 0.5;
+      fade-in = 1.2;
       effect-blur = "6x7";
       effect-vignette = "0.5:0.5";
     };
