@@ -460,8 +460,11 @@
       ];
 
       layerrule = [
+        # get rid of black border on screenshots
         "noanim, ^(selection)$"
-        "blur, eww"
+        # xray blur for lockscreen
+        "xray on, lockscreen"
+        "blur, lockscreen"
       ];
     };
   };
