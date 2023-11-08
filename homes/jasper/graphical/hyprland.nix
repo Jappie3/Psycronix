@@ -90,16 +90,26 @@
         gaps_in = 2;
         gaps_out = 6;
         border_size = 2;
-
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-        "col.group_border_active" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.group_border" = "rgba(595959aa)";
         layout = "dwindle";
         no_cursor_warps = true;
         no_focus_fallback = true;
         resize_on_border = false;
         #cursor_inactive_timeout = 3;
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
+      };
+
+      group = {
+        insert_after_current = true;
+        "col.border_active" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.border_inactive" = "rgba(595959aa)";
+        # TODO different colors for locked group
+        groupbar = {
+          "col.active" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+          "col.inactive" = "rgba(595959aa)";
+          render_titles = false;
+          gradients = false;
+        };
       };
 
       input = {
@@ -235,11 +245,6 @@
         no_direct_scanout = true;
         # whether mouse moving to different monitor should focus it
         mouse_move_focuses_monitor = true;
-
-        # window groups
-        render_titles_in_groupbar = false;
-        group_insert_after_current = true;
-        groupbar_gradients = false;
       };
 
       debug = {
