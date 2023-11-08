@@ -388,11 +388,10 @@
         "float, class:Steam, title:^(Friends.*)$"
         "float, title:Steam Settings"
         "float, class:^(virt-manager)$"
-        #"float, class:^(libreoffice.*)$"
         "float, class:^(.*polkit-kde-authentication-agent.*)$"
         "float, class:^(pavucontrol)$"
         "float, class:^(com.saivert.pwvucontrol)$"
-        #"float, class:^(Signal)$"
+        "float, class:eid-viewer"
 
         "float, class:^(nm-connection-editor)$"
         "float, class:^(wdisplays)$"
@@ -405,8 +404,10 @@
         "float, class:^(yad)$"
 
         "float, title: Open Folder, class: electron"
+        "float, title: Open folder as vault, class: electron"
 
         "float, title: Open Folder, class:^(codium)$"
+        "float, title: Open File, class:^(codium)$"
 
         "float, title:^(File Operation Progress)$"
         "float, title:^(Compress)$"
@@ -415,6 +416,8 @@
         "float, class:thunderbird, title:^(Edit.*)$"
         "size 860 670, class:thunderbird, title:^(Edit.*)$"
         "center, class:thunderbird, title:^(Edit.*)$"
+        "float, class:thunderbird title:Compact folders"
+        "float, class:thunderbird title:Password Required - Mozilla Thunderbird"
         "nofullscreenrequest, class:thunderbird"
 
         "float, class:wlogout, title:wlogout"
@@ -429,7 +432,7 @@
         "animation popin 80%, class:wlogout, title:wlogout"
 
         # start Discord in workspace 8 by default
-        "workspace 8 silent, title:^(.*(Disc|WebC)ord.*)$"
+        "workspace 8 silent, title:^(.*(Disc|WebC|ArmC)ord.*)$"
         # start Spotify in workspace 9 by default
         "workspace 9 silent, class:^(Spotify)$"
         # start Tidal in workspace 9 by default
