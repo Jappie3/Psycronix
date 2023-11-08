@@ -298,11 +298,13 @@
         # take screenshot of an area & edit it using Swappy
         #''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -''
 
-        # create tabbed window
+        # create window group
         "$MOD, n, togglegroup"
-        # cycle through tabbed windows
+        # cycle through windows in group
         "$MOD, t, changegroupactive, f"
         "$MOD SHIFT, t, changegroupactive, b"
+        # lock active group
+        "$MOD, s, lockactivegroup"
 
         # alt tab behaviour but with $MOD
         "$MOD, Tab, cyclenext"
