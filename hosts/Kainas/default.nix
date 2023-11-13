@@ -35,7 +35,6 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
     settings = {
       substituters = [
         "https://nix-community.cachix.org"

@@ -23,15 +23,9 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/release-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     impermanence.url = "github:nix-community/impermanence";
-
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -81,10 +75,7 @@
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    anyrun-nixos-options = {
-      url = "github:n3oney/anyrun-nixos-options";
-    };
+    anyrun-nixos-options.url = "github:n3oney/anyrun-nixos-options";
 
     ags = {
       url = "github:Aylur/ags";
@@ -105,14 +96,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";

@@ -6,7 +6,7 @@
   programs.swaylock = {
     enable = true;
     # use swaylock-effects instead of the default package
-    package = inputs.nixpkgs-wayland.packages.${pkgs.system}.swaylock-effects;
+    package = pkgs.swaylock-effects;
     settings = {
       # whether to detach from controlling terminal after locking
       daemonize = true;
