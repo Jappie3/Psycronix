@@ -21,7 +21,7 @@
       # allow proprietary software
       allowUnfree = true;
       # cuda support
-      cudaSupport = true;
+      #cudaSupport = true;
 
       # enable nix-helper
       nh = {
