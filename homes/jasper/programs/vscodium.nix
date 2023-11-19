@@ -21,8 +21,12 @@
       # keycodes cuz position of key > what letter pressed
       "keyboard.dispatch" = "keyCode";
       "git.autofetch" = true;
-      "files.autoSave" = "onFocusChange";
       "explorer.autoReveal" = true;
+      "files.autoSave" = "onFocusChange";
+      "files.associations" = {
+        "**/roles/**/*.yaml" = "ansible";
+        "**/roles/**/*.yml" = "ansible";
+      };
 
       "extensions.autoUpdate" = false;
       "extensions.autoCheckUpdates" = true;
@@ -31,6 +35,7 @@
 
       "editor.formatOnSave" = true;
       "editor.formatOnPaste" = true;
+      "[python]"."editor.formatOnPaste" = false; # Black does not support this
       "editor.formatOnType" = false;
       "editor.suggest.showWords" = false;
       "editor.smoothScrolling" = true;
