@@ -1,9 +1,4 @@
-{
-  config,
-  input,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     nil
   ];
