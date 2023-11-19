@@ -92,6 +92,12 @@
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
+          name = "vsliveshare";
+          publisher = "ms-vsliveshare";
+          version = "1.0.5892";
+          sha256 = "sha256-e/cJONR/4Lai18h7kHJU8UEn5yrUZHPoITAyZpLenTA=";
+        }
+        {
           name = "test-adapter-converter";
           publisher = "ms-vscode";
           version = "0.1.8";
