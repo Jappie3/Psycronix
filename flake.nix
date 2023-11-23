@@ -101,6 +101,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     shadower.url = "github:n3oney/shadower";
 
     neovim-flake = {

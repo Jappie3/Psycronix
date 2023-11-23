@@ -6,7 +6,7 @@
   programs.swaylock = {
     enable = true;
     # use swaylock-effects instead of the default package
-    package = pkgs.swaylock-effects;
+    package = inputs.nixpkgs-wayland.packages.${pkgs.system}.swaylock-effects;
     settings = {
       # whether to detach from controlling terminal after locking
       daemonize = true;
@@ -58,15 +58,16 @@
       # lines that separate highlighted segments
       separator-color = "00000000";
 
-      # whether to use a screenshot as bg
       screenshots = false;
+      #image = "$FLAKE/.theme/current_wallpaper";
+
       # background color
       color = "00000000";
-      # show date & time in indicator and use normal notation
+
       clock = true;
       datestr = "%d/%m/%Y";
-      # font size
       font-size = "60";
+
       # indicator active in grace period
       indicator = true;
       # indicator visible only after grace period
