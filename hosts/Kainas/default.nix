@@ -53,6 +53,7 @@
         "nix-command"
         "flakes"
       ];
+      trusted-users = ["jasper"];
       # deduplicate & optimize nix store
       auto-optimise-store = true;
       # sandbox builds (default)
