@@ -338,6 +338,8 @@
       jack.enable = true;
       wireplumber.enable = true;
     };
+    # D-Bus thumbnailer service
+    tumbler.enable = true;
     # CUPS
     printing.enable = true;
     # bluetooth
