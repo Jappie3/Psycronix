@@ -1,12 +1,8 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.swaylock = {
     enable = true;
     # use swaylock-effects instead of the default package
-    package = inputs.nixpkgs-wayland.packages.${pkgs.system}.swaylock-effects;
+    package = pkgs.swaylock-effects;
     settings = {
       # whether to detach from controlling terminal after locking
       daemonize = true;
@@ -59,7 +55,7 @@
       separator-color = "00000000";
 
       screenshots = false;
-      #image = "$FLAKE/.theme/current_wallpaper";
+      image = "$FLAKE/.theme/current_wallpaper";
 
       # background color
       color = "00000000";
