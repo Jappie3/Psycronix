@@ -33,26 +33,7 @@
       env = [
         # log WLR stuff
         #"HYPRLAND_LOG_WLR,1"
-        # avoid loading Nvidia modules - not tested on NixOS
-        #"__EGL_VENDOR_LIBRARY_FILENAMES,/usr/share/glvnd/egl/vendor.d/50_mesa.json"
-        # force GBM as backend (buffer API) - causes problems with Firefox
-        #"GBM_BACKEND,nvidia-drm"
 
-        # add some locations to PATH
-        #"PATH,$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/JetBrains/Toolbox/scripts"
-
-        # SYSTEMD-SSH-AGENT
-        #"SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket"
-
-        # XDG base directory specification
-        #"XDG_DATA_HOME,$HOME/.local/share"
-        #"XDG_CONFIG_HOME,$HOME/.config"
-        #"XDG_STATE_HOME,$HOME/.local/state"
-        #"XDG_CACHE_HOME,$HOME/.cache"
-        #"XDG_CONFIG_DIRS,/etc/xdg"
-        #"XDG_DATA_DIRS,~/.local/share/:/usr/local/share/:/usr/share/"
-        #"XDG_RUNTIME_DIR,"
-        #"XDG_SESSION_TYPE,wayland"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_DESKTOP,Hyprland"
       ];
@@ -60,22 +41,24 @@
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "dunst &"
-        "/usr/lib/polkit-kde-authentication-agent-1"
-        #"blueman-applet"
-        #"discover-overlay &"
-        "sleep 6; noisetorch -i" # -i -> load supressor for input
-        "wlsunset -T 6000 -t 5000 &"
 
+        # "/usr/lib/polkit-kde-authentication-agent-1"
+        # #"blueman-applet"
+        # #"discover-overlay &"
+
+        # Noise suppression
+        "sleep 6; noisetorch -i" # -i -> load suppressor for input
+        # Gamma adjustment
+        "wlsunset -T 6000 -t 5000 &"
         # wallpaper
         "swww init && sleep .5"
-
         # Alacritty (to eliminate future startup delay)
         "[ workspace special:alacritty silent ] alacritty"
-
         # Swayidle
         # only un-pause notifs again if they were un-paused before locking
-        "swayidle -w timeout 180 'if [[ \"$(dunstctl is-paused)\" == \"false\" ]]; then dunstctl set-paused true; touch /tmp/swayidle_paused_notifs_true; fi; hyprctl dispatch exec swaylock' resume 'if [[ -e /tmp/swayidle_paused_notifs_true ]]; then dunstctl set-paused false; rm /tmp/swayidle_paused_notifs_true; fi' before-sleep 'hyprctl dispatch exec swaylock'"
+        # TODO fix notification daemon
+        # "swayidle -w timeout 180 'if [[ \"$(dunstctl is-paused)\" == \"false\" ]]; then dunstctl set-paused true; touch /tmp/swayidle_paused_notifs_true; fi; hyprctl dispatch exec swaylock' resume 'if [[ -e /tmp/swayidle_paused_notifs_true ]]; then dunstctl set-paused false; rm /tmp/swayidle_paused_notifs_true; fi' before-sleep 'hyprctl dispatch exec swaylock'"
+        "swayidle -w timeout 180 'hyprctl dispatch exec swaylock' before-sleep 'hyprctl dispatch exec swaylock'"
       ];
 
       exec = [
