@@ -1,25 +1,30 @@
-# Psycronix - My NixOS config
+# Psycronix
 
-I am still learning Nix, and have a long way to go. Publishing my dots here in the hopes that some other beginner(s) might find it useful.
+I am still learning Nix, and have a long way to go. Still, I hope you'll find something useful in here (:
 
 ## Features
 
 - LUKS & BTRFS
-- Wayland (Hyprland) w/ Nvidia drivers
-- Not much theming atm, I'll add some fancy stuff soon.tm
+- Hyprland w/ Nvidia drivers
+- Ags, Swaylock, Swww, Wlsunset
 
+## Hosts
+
+- Kainas: my main laptop
 
 <br>
 
 ## Credits
 
-Some people I stole from:
+Some people I stole from, in no particular order:
 
 - https://github.com/notashelf/nyx
 - https://codeberg.org/jacekpoz/niksos
 - https://github.com/end-4/dots-hyprland
+- https://github.com/Aylur/dotfiles
 - https://github.com/bddvlpr/nix-dotfiles/
 - https://github.com/the-argus/nixsys
 - https://github.com/n3oney/nixus
 - https://github.com/fufexan/dotfiles
 - https://github.com/sioodmy/dotfiles
+- https://jupblb.prose.sh/nvidia
