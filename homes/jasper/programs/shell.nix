@@ -32,8 +32,8 @@
       ls = "ls --color=auto";
 
       rm = "rm -i";
-      cp = "cp -i";
-      mv = "mv -i";
+      cp = "cp -iv";
+      mv = "mv -iv";
     };
 
     sessionVariables = {
