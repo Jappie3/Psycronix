@@ -38,6 +38,8 @@
 
     sessionVariables = {
       ANSIBLE_COW_SELECTION = "random";
+      STARSHIP_CACHE = "\$XDG_CACHE_HOME/starship";
+      PYWAL_CACHE_DIR = "\$XDG_CACHE_HOME/wal";
     };
 
     # extra commands (interactive shells only)
