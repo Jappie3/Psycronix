@@ -594,7 +594,7 @@
       xfce.thunar-archive-plugin
       xfce.thunar-media-tags-plugin
       wlsunset
-      webcord-vencord
+      starship # customizable shell prompt
       signal-desktop
       obsidian
       steam
