@@ -115,11 +115,13 @@
         numlock_by_default = true;
 
         touchpad = {
-          natural_scroll = true;
+          natural_scroll = true; # the only right way
           disable_while_typing = true;
-          middle_button_emulation = false;
-          clickfinger_behavior = true;
-          drag_lock = false;
+          middle_button_emulation = false; # LMB & RMB simultaneously = middle click, disables middle click touchpad area
+          clickfinger_behavior = false; # 1, 2 & 3-finger button presses -> LMB, RMB & MMB respectively, disables interpretation based on location
+          tap-to-click = true; # 1, 2 & 3-finger taps -> LMB, RMB & MMB respectively
+          drag_lock = false; # lifting finger for a short time won't drop the dragged item
+          #tap-and-drag = true;
         };
       };
 
@@ -139,13 +141,17 @@
       decoration = {
         blur = {
           enabled = true;
-          size = 5;
+          size = 10;
           passes = 3;
+          ignore_opacity = true;
           new_optimizations = true;
-          #xray = true; # why did I ever put this in here lol
+          xray = false;
           noise = 0;
-          contrast = 1;
-          brightness = 0.8;
+          contrast = 1.1;
+          brightness = 1.2;
+          vibrancy = 0.0;
+          vibrancy_darkness = 0.0;
+          special = false;
         };
 
         # this value is tied to the Ags config so change it there as well @ future me
@@ -199,7 +205,7 @@
         # controls vfr, true to conserve resources
         vfr = true;
         # controls vrr, 0-off, 1-on, 2-fullscreen only
-        vrr = 2;
+        vrr = 0;
         # auto-reload config
         disable_autoreload = false;
 
@@ -220,7 +226,7 @@
 
         enable_swallow = true;
         # class regex for windows that should be swallowed
-        swallow_regex = "thunar|thunderbird|alacritty";
+        swallow_regex = "^(thunar|thunderbird|org.remmina.Remmina)$";
 
         # whether to focus an app that sends an activate request
         focus_on_activate = false;
@@ -258,14 +264,13 @@
         "$MOD, J, exec, killall .anyrun-wrapped || anyrun"
         "$MOD, H, exec, firefox &,"
         "$MOD, D, exec, thunar &,"
-        "$MOD, S, exec, wlogout"
         "$MOD, I, killactive,"
         "$MOD, K, togglefloating,"
         "$MOD, X, fullscreen,"
-        "$MOD, z, pin"
+        "$MOD, Z, pin"
         #bind = $MOD, M, exit,
 
-        "$MOD, Q, exec, ags toggle-window SideRight"
+        "$MOD, Q, exec, ags --toggle-window SideRight"
 
         # scroll through existing workspaces with MOD + arrow keys
         "$MOD SHIFT, left, workspace, e-1"
@@ -287,12 +292,12 @@
         #''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -''
 
         # create window group
-        "$MOD, n, togglegroup"
+        "$MOD, N, togglegroup"
         # cycle through windows in group
-        "$MOD, t, changegroupactive, f"
-        "$MOD SHIFT, t, changegroupactive, b"
+        "$MOD, T, changegroupactive, f"
+        "$MOD SHIFT, T, changegroupactive, b"
         # lock active group
-        "$MOD, s, lockactivegroup"
+        "$MOD, S, lockactivegroup"
 
         # alt tab behaviour but with $MOD
         "$MOD, Tab, cyclenext"
@@ -383,10 +388,13 @@
         "float, class:^(com.saivert.pwvucontrol)$"
         "float, class:eid-viewer"
 
+        "nomaximizerequest, class:org.remmina.Remmina"
+
         "float, class:^(nm-connection-editor)$"
         "float, class:^(wdisplays)$"
         "float, class:^(blueman-manager)$"
         "float, class:^(.blueman-manager-wrapped)$"
+        "float, class:^(.blueman-sendto-wrapped)$"
         "float, class:^(wpa_gui)$"
 
         "float, class:^(zenity)$"
@@ -408,18 +416,11 @@
         "center, class:thunderbird, title:^(Edit.*)$"
         "float, class:thunderbird title:Compact folders"
         "float, class:thunderbird title:Password Required - Mozilla Thunderbird"
+        "float, class:thunderbird title:Thunderbird - Choose User Profile"
+        "float, class:thunderbird title:Create New Calendar"
+        "float, class:thunderbird title:Downloading Certificate"
+        "float, class:thunderbird title:Select Certificate"
         "nofullscreenrequest, class:thunderbird"
-
-        "float, class:wlogout, title:wlogout"
-        "nofullscreenrequest, class:wlogout, title:wlogout"
-        #"fullscreen, class:wlogout, title:wlogout"
-        "size 1920 1080, class:wlogout, title:wlogout"
-        "center, class:wlogout, title:wlogout"
-        "noborder, class:wlogout, title:wlogout"
-        #"dimaround, class:wlogout, title:wlogout"
-        #"pin, class:wlogout, title:wlogout"
-        #"noanim, class:wlogout, title:wlogout"
-        "animation popin 80%, class:wlogout, title:wlogout"
 
         # start Discord in workspace 8 by default
         "workspace 8 silent, title:^(.*(Disc|WebC|ArmC)ord.*)$"
@@ -428,14 +429,18 @@
         # start Tidal in workspace 9 by default
         "workspace 9 silent, class:^(tidal-hifi)$"
 
-        # Alacritty opacity
-        "opacity 0.8 0.6,class:^(Alacritty)$"
+        # opacity
+        "opacity 0.8,class:^(Alacritty|.*codium.*|VSCodium)$"
 
+        # Firefox
+        "float, title:Password Required - Mozilla Firefox"
+        "float, title:Load PKCS#11 Device Driver"
         # Firefox PiP sticky & floating
         "pin, title:^(Picture-in-Picture)$"
         "float, title:^(Picture-in-Picture)$"
         # Firefox opening file
         "nofullscreenrequest, title:^(Opening.*)$, class:firefox"
+        "nomaximizerequest, title:^(Opening.*)$, class:firefox"
         "float, title:^(Opening.*)$, class:firefox"
         # Mic & camera popup
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
