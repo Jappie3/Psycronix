@@ -96,13 +96,6 @@ in {
     homeDirectory = "/home/jasper";
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "23.05";
-
-    packages = with pkgs; [
-      inputs.ags.packages.${pkgs.system}.default
-      # inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-      inputs.shadower.packages.${pkgs.system}.shadower
-      inputs.nh.packages.${pkgs.system}.default
-    ];
   };
 
   manual = {
