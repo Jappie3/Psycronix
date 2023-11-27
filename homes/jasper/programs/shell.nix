@@ -31,7 +31,7 @@
       ip = "ip --color=auto";
       ls = "ls --color=auto";
 
-      rm = "rm -i";
+      rm = "trash -v";
       cp = "cp -iv";
       mv = "mv -iv";
     };

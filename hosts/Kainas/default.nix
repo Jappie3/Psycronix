@@ -512,6 +512,7 @@
       strace
       rsync
       tree
+      trash-cli # cli to freedesktop.org trashcan
       pstree
       killall
       thefuck
