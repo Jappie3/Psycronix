@@ -9,6 +9,7 @@
   homes = import ../homes;
 
   # modules
+  theme = self.homeManagerModules.global_theme;
   sshd = self.nixosModules.sshd;
   web-eid = self.nixosModules.web-eid;
 
@@ -30,6 +31,7 @@ in {
           ./Kainas
           web-eid
           sshd
+          theme
         ]
         ++ [
           home-manager

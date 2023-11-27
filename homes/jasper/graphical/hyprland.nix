@@ -1,8 +1,14 @@
 {
   inputs,
+  config,
+  lib,
   pkgs,
   ...
-}: {
+}: let
+  colors = config.theme.colors;
+  HTMLToRGB = html: "rgb(${lib.strings.removePrefix "#" html})";
+  HTMLToRGBA = html: alfa: "rgba(${lib.strings.removePrefix "#" html}${alfa})";
+in {
   config.wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -62,11 +68,12 @@
       ];
 
       exec = [
-        # set wallpaper
-        "swww img ~/Media/Pictures/Walls/alena-aenami-rooflinesgirl-1k-2.jpg"
-        # quit & re-launch ags
-        # a window very briefly pops up before the widget shows -> silently send it to special:ags
-        "[ workspace special:ags silent ] \"sleep .5; ags -q; sleep .5; ags\""
+        # Swww - a Solution to all your Wayland Wallpaper Woes
+        "swww img $FLAKE/.theme/current_wallpaper"
+        # Ags - Aylur's GTK Shell
+        "WAYLAND_DISPLAY=wayland-1 ags -b hyprland"
+        # set cursor theme
+        "hyprctl setcursor ${config.theme.cursor_name} ${builtins.toString config.theme.cursor_size}"
       ];
 
       general = {
@@ -78,18 +85,25 @@
         no_focus_fallback = true;
         resize_on_border = false;
         #cursor_inactive_timeout = 3;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "${HTMLToRGBA colors.color0 "ff"} ${HTMLToRGBA colors.color5 "ff"} 45deg";
+        "col.inactive_border" = "${HTMLToRGBA colors.color7 "aa"}";
       };
 
       group = {
         insert_after_current = true;
-        "col.border_active" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.border_inactive" = "rgba(595959aa)";
-        # TODO different colors for locked group
+        # group border color
+        "col.border_active" = "${HTMLToRGBA colors.color0 "ff"} ${HTMLToRGBA colors.color5 "ff"} 45deg";
+        "col.border_inactive" = "${HTMLToRGBA colors.color7 "aa"}";
+        # locked group border color
+        "col.border_locked_active" = "";
+        "col.border_locked_inactive" = "";
         groupbar = {
-          "col.active" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive" = "rgba(595959aa)";
+          # group bar color
+          "col.active" = "${HTMLToRGBA colors.color3 "ff"} ${HTMLToRGBA colors.color5 "ff"} 45deg";
+          "col.inactive" = "${HTMLToRGBA colors.color7 "aa"}";
+          # locked group bar color
+          "col.locked_active" = "${HTMLToRGBA colors.color3 "ff"} ${HTMLToRGBA colors.color5 "ff"} 45deg";
+          "col.locked_inactive" = "${HTMLToRGBA colors.color7 "aa"}";
           render_titles = false;
           gradients = false;
         };
