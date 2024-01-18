@@ -5,7 +5,7 @@
       sshd = import ./sshd.nix;
     };
     homeManagerModules = {
-      global_theme = import ./global_theme.nix;
+      theme_config = import ./theme_config.nix;
     };
   };
 }

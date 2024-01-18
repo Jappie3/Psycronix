@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     nil
   ];
@@ -45,6 +49,15 @@
       # fix codium crashing on mouse hover
       # also this looks hella sexy for some reason
       "window.titleBarStyle" = "custom";
+
+      "workbench.startupEditor" = "none";
+      # this somehow doesn't work (I love electron)
+      #"window.autoDetectColorScheme" = true;
+      # so we do this instead
+      "workbench.colorTheme" =
+        if config.theme.variant == "dark"
+        then "Default Dark Modern"
+        else "Default Light Modern";
 
       "redhat.telemetry.enabled" = false;
 

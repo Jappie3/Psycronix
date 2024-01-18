@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/jasper/Media/Pictures/Walls/alena-aenami-full-2924984.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#091A28",
+        "foreground": "#c7bdbe",
+        "cursor": "#c7bdbe"
+    },
+    "colors": {
+        "color0": "#091A28",
+        "color1": "#D3716C",
+        "color2": "#C8847B",
+        "color3": "#32768A",
+        "color4": "#507786",
+        "color5": "#3B8A9F",
+        "color6": "#5E93A1",
+        "color7": "#c7bdbe",
+        "color8": "#8b8485",
+        "color9": "#D3716C",
+        "color10": "#C8847B",
+        "color11": "#32768A",
+        "color12": "#507786",
+        "color13": "#3B8A9F",
+        "color14": "#5E93A1",
+        "color15": "#c7bdbe"
+    }
+}
