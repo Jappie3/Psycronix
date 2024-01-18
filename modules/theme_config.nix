@@ -11,28 +11,28 @@ with lib; {
       type = types.str;
     };
     gtk_package = mkOption {
-      description = "GTK package that supplies the global theme.";
+      description = "GTK package that supplies the global theme";
       type = types.package;
     };
     gtk_name = mkOption {
-      description = "GTK theme that should be used.";
+      description = "GTK theme that should be used";
       type = types.str;
     };
     cursor_package = mkOption {
-      description = "Cursor package that supplies the global theme.";
+      description = "Cursor package that supplies the global theme";
       type = types.package;
     };
     cursor_name = mkOption {
-      description = "Cursor theme that should be used.";
+      description = "Cursor theme that should be used";
       type = types.str;
     };
     cursor_size = mkOption {
-      description = "Cursor size.";
+      description = "Cursor size";
       default = 24;
       type = types.int;
     };
     colors = mkOption {
-      description = "Attribute set containing 16 colours that will be used system-wide for a variety of things.";
+      description = "Attribute set containing 16 colours that will be used system-wide for a variety of things";
       type = types.attrs;
     };
   };
