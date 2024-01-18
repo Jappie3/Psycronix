@@ -311,7 +311,7 @@ in {
         "$MOD, T, changegroupactive, f"
         "$MOD SHIFT, T, changegroupactive, b"
         # lock active group
-        "$MOD, S, lockactivegroup"
+        "$MOD, S, lockactivegroup, toggle"
 
         # alt tab behaviour but with $MOD
         "$MOD, Tab, cyclenext"
