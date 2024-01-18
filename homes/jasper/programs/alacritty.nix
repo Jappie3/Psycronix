@@ -35,8 +35,8 @@
         bold_italic.family = "monospace";
         bold_italic.style = "Bold Italic";
       };
-      draw_bold_text_with_bright_colors = true;
       colors = {
+        draw_bold_text_with_bright_colors = true;
         primary = {
           background = "#1d1f21";
           foreground = "#c5c8c6";
