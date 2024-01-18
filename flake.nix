@@ -18,7 +18,20 @@
         ./modules
       ];
 
-      perSystem = {config, ...}: {
+      perSystem = {
+        config,
+        pkgs,
+        system,
+        ...
+      }: {
+        formatter = pkgs.alejandra;
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            git
+            alejandra
+          ];
+          DIRENV_LOG_FORMAT = "";
+        };
       };
     };
 
