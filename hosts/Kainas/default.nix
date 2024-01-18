@@ -9,6 +9,9 @@
     ./hardware-configuration.nix
   ];
 
+  # enable some modules
+  web-eid.enable = true;
+
   nixpkgs = {
     # add overlays
     #overlays = [
