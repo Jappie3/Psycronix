@@ -13,7 +13,6 @@ in {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
-    enableNvidiaPatches = true;
     xwayland.enable = true;
 
     plugins = [
