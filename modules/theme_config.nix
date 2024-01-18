@@ -3,9 +3,7 @@
   config,
   ...
 }:
-with lib; let
-  inherit (lib) mkOption types;
-in {
+with lib; {
   options.theme = {
     enable = mkEnableOption "Enable system-wide theme config";
     variant = mkOption {
