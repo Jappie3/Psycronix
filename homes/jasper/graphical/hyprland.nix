@@ -207,7 +207,7 @@ in {
         # split doesn't change regardless of what happens to container
         preserve_split = true;
         # window split direction is based on cursor's position on the window
-        smart_split = true;
+        smart_split = false;
         # resizing direction determined by cursor's position on the window
         smart_resizing = true;
       };
