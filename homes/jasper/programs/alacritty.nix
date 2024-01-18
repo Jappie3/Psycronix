@@ -40,9 +40,9 @@
         primary = {
           background = "#1d1f21";
           foreground = "#c5c8c6";
+          dim_foreground = "#828482";
+          bright_foreground = "#eaeaea";
         };
-        dim_foreground = "#828482";
-        bright_foreground = "#eaeaea";
         # CellBackground & CellForeground -> reference the affected cell
         cursor = {
           text = "CellBackground";
