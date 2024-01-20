@@ -293,6 +293,9 @@
   time.timeZone = "Europe/Brussels";
 
   services = {
+    # daemon that allows updating firmware
+    # fwupdmgr [refresh | get-devices | get-updates | update]
+    fwupd.enable = true;
     # NTP
     ntp.enable = true;
     # Gnome keyring
