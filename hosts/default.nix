@@ -1,7 +1,6 @@
 {
   self,
   lib,
-  #inputs,
   ...
 }: let
   inherit (self) inputs; #self = inputs.self;
@@ -11,6 +10,7 @@
   # modules
   sshd = self.nixosModules.sshd;
   web-eid = self.nixosModules.web-eid;
+  secure_boot = self.nixosModules.secure_boot;
 
   # flake inputs
   home-manager = inputs.home-manager.nixosModules.home-manager;
@@ -28,6 +28,7 @@ in {
         [
           {networking.hostName = "Kainas";}
           ./Kainas
+          secure_boot
           web-eid
           sshd
         ]

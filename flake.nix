@@ -71,6 +71,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote.url = "github:nix-community/lanzaboote";
+
     nixos-anywhere = {
       url = "github:nix-community/nixos-anywhere";
       inputs = {

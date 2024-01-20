@@ -11,6 +11,7 @@
 
   # enable some modules
   web-eid.enable = true;
+  secure_boot.enable = true;
 
   nixpkgs = {
     # add overlays
