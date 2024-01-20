@@ -293,35 +293,6 @@
   time.timeZone = "Europe/Brussels";
 
   services = {
-    # OpenSSH daemon
-    openssh = {
-      enable = true;
-      # systemd will start an SSHD instance for each incoming connection
-      startWhenNeeded = true;
-      # port on which SSH daemon listens
-      ports = [22];
-      # automatically open firewall
-      openFirewall = true;
-      # City of Tears
-      banner = "\n\tThe great gates have been sealed.\n\t\tNone shall enter.\n\t\tNone shall leave.\n\n\n";
-      # some security stuff
-      settings = {
-        X11Forwarding = false;
-        UseDns = false;
-        PermitRootLogin = "no";
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-        # key exchange algorithms recommended by nixpkgs#ssh-audit
-        # see https://github.com/numtide/srvos/blob/main/nixos/common/openssh.nix
-        KexAlgorithms = [
-          "curve25519-sha256"
-          "curve25519-sha256@libssh.org"
-          "diffie-hellman-group16-sha512"
-          "diffie-hellman-group18-sha512"
-          "sntrup761x25519-sha512@openssh.com"
-        ];
-      };
-    };
     # NTP
     ntp.enable = true;
     # Gnome keyring
