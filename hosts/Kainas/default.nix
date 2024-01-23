@@ -1,4 +1,5 @@
 {
+  self,
   config,
   inputs,
   lib,
@@ -7,6 +8,9 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    self.nixosModules.sshd
+    self.nixosModules.web-eid
+    self.nixosModules.secure_boot
   ];
 
   # enable some modules
