@@ -20,6 +20,7 @@ Some people I stole from, in no particular order:
 
 - https://github.com/notashelf/nyx
 - https://codeberg.org/jacekpoz/niksos
+- https://git.outfoxxed.me/outfoxxed/nixnew
 - https://github.com/end-4/dots-hyprland
 - https://github.com/Aylur/dotfiles
 - https://github.com/bddvlpr/nix-dotfiles/
