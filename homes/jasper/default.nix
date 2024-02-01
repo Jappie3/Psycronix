@@ -18,6 +18,27 @@
   gtk_package = pkgs.adw-gtk3;
   gtk_name_dark = "adw-gtk3-dark";
   gtk_name_light = "adw-gtk3";
+in let
+  darkConfig = {
+    enable = true;
+    variant = "dark";
+    gtk_package = gtk_package;
+    gtk_name = gtk_name_dark;
+    cursor_package = current_cursor_package;
+    cursor_name = current_cursor_name_dark;
+    cursor_size = current_cursor_size;
+    colors = colors_dark;
+  };
+  lightConfig = {
+    enable = true;
+    variant = "light";
+    gtk_package = gtk_package;
+    gtk_name = gtk_name_light;
+    cursor_package = current_cursor_package;
+    cursor_name = current_cursor_name_light;
+    cursor_size = current_cursor_size;
+    colors = colors_light;
+  };
 in {
   imports = [
     ./xdg.nix
@@ -68,43 +89,12 @@ in {
   };
 
   # default theme is dark
-  theme = {
-    enable = true;
-    variant = "dark";
-    gtk_package = gtk_package;
-    gtk_name = gtk_name_dark;
-    cursor_package = current_cursor_package;
-    cursor_name = current_cursor_name_dark;
-    cursor_size = current_cursor_size;
-    colors = colors_dark;
-  };
+  theme = darkConfig;
 
   specialisation = {
     # we use lib.mkForce to override the default values defined above
-    dark.configuration = {
-      theme = lib.mkForce {
-        enable = true;
-        variant = "dark";
-        gtk_package = gtk_package;
-        gtk_name = gtk_name_dark;
-        cursor_package = current_cursor_package;
-        cursor_name = current_cursor_name_dark;
-        cursor_size = current_cursor_size;
-        colors = colors_dark;
-      };
-    };
-    light.configuration = {
-      theme = lib.mkForce {
-        enable = true;
-        variant = "light";
-        gtk_package = gtk_package;
-        gtk_name = gtk_name_light;
-        cursor_package = current_cursor_package;
-        cursor_name = current_cursor_name_light;
-        cursor_size = current_cursor_size;
-        colors = colors_light;
-      };
-    };
+    dark.configuration.theme = lib.mkForce darkConfig;
+    light.configuration.theme = lib.mkForce lightConfig;
   };
 
   home = {
