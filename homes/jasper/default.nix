@@ -18,6 +18,10 @@
   gtk_package = pkgs.adw-gtk3;
   gtk_name_dark = "adw-gtk3-dark";
   gtk_name_light = "adw-gtk3";
+  # border radius stuff
+  border_radius = 12;
+  window_outer_gap = 6;
+  window_inner_gap = 2;
 in let
   darkConfig = {
     enable = true;
@@ -28,6 +32,9 @@ in let
     cursor_name = current_cursor_name_dark;
     cursor_size = current_cursor_size;
     colors = colors_dark;
+    border_radius = border_radius;
+    window_outer_gap = window_outer_gap;
+    window_inner_gap = window_inner_gap;
   };
   lightConfig = {
     enable = true;
@@ -38,6 +45,9 @@ in let
     cursor_name = current_cursor_name_light;
     cursor_size = current_cursor_size;
     colors = colors_light;
+    border_radius = border_radius;
+    window_outer_gap = window_outer_gap;
+    window_inner_gap = window_inner_gap;
   };
 in {
   imports = [

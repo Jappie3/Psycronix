@@ -96,8 +96,8 @@ in {
       ];
 
       general = {
-        gaps_in = 2;
-        gaps_out = 6;
+        gaps_in = config.theme.window_inner_gap;
+        gaps_out = config.theme.window_outer_gap;
         border_size = 2;
         layout = "dwindle";
         no_cursor_warps = true;
@@ -187,8 +187,7 @@ in {
           special = false;
         };
 
-        # this value is tied to the Ags config so change it there as well @ future me
-        rounding = 12;
+        rounding = config.theme.border_radius;
         drop_shadow = true;
 
         shadow_range = 20;

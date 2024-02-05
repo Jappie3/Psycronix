@@ -35,6 +35,21 @@ with lib; {
       description = "Attribute set containing 16 colours that will be used system-wide for a variety of things";
       type = types.attrs;
     };
+    border_radius = mkOption {
+      description = "Global option for setting the border radius of windows & other graphical elements";
+      type = types.int;
+      default = 12;
+    };
+    window_outer_gap = mkOption {
+      description = "Defines gap between windows & the edge of the screen";
+      type = types.int;
+      default = 2;
+    };
+    window_inner_gap = mkOption {
+      description = "Defines gap between windows";
+      type = types.int;
+      default = 2;
+    };
   };
   config = mkIf config.theme.enable {
     home = {
