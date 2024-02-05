@@ -98,8 +98,15 @@ in {
     };
   };
 
-  # default theme is dark
-  theme = darkConfig;
+  # check which theme is default atm, otherwise throw error
+  theme =
+    if builtins.pathExists ../../.theme/current_theme_dark && builtins.pathExists ../../.theme/current_theme_light
+    then throw ".theme/current_theme_light & .theme/current_theme_dark both exist, remove one"
+    else if builtins.pathExists ../../.theme/current_theme_dark
+    then darkConfig
+    else if builtins.pathExists ../../.theme/current_theme_light
+    then lightConfig
+    else throw "No default theme set in .theme, create .theme/current_theme_dark or .theme/current_theme_light";
 
   specialisation = {
     # we use lib.mkForce to override the default values defined above
