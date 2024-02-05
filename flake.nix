@@ -115,6 +115,10 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+    hycov = {
+      url = "github:DreamMaoMao/hycov";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
