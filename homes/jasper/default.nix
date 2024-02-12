@@ -75,6 +75,8 @@ in {
         # yes master cry about it
         init.defaultBranch = "master";
         url = {
+          "https://git.kernel.org/".insteadOf = "kernel:";
+          "git://git.kernel.org/".pushInsteadOf = "kernel:";
           "https://github.com/".insteadOf = "github:";
           "ssh://git@github.com/".pushInsteadOf = "github:";
           "https://gitlab.com/".insteadOf = "gitlab:";
