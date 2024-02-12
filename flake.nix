@@ -11,6 +11,7 @@
       systems = [
         # systems for which to build the 'perSystem' attribute
         "x86_64-linux"
+        "aarch64-linux"
       ];
 
       imports = [
@@ -21,9 +22,21 @@
       perSystem = {
         config,
         pkgs,
+        lib,
         system,
         ...
       }: {
+        packages.aarch64_sd_image = inputs.nixos-generators.nixosGenerate {
+          # nix build .#aarch64_sd_image
+          # sudo dd if=result/sd-image/nixos-sd-image-[...]-aarch64-linux.img of=/dev/sda status=progress bs=4M
+          format = "sd-aarch64";
+          system = "aarch64-linux";
+          specialArgs = {inherit self lib;};
+          modules = [
+            "${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            ./images/aarch-sd-image
+          ];
+        };
         formatter = pkgs.alejandra;
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
