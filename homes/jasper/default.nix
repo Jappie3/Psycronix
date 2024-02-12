@@ -74,6 +74,23 @@ in {
       extraConfig = {
         # yes master cry about it
         init.defaultBranch = "master";
+        # REuse REcorded REsolution
+        rerere.enabled = true;
+        # git maintenance
+        maintenance = {
+          auto = false;
+          strategy = "incremental";
+        };
+        # saves me some typing
+        push.autoSetupRemote = true;
+        # try to use columns
+        column.ui = "auto";
+        # don't sort alphabetically
+        branch.sort = "committerdate";
+        # sign commits cuz why not
+        commit.gpgsign = true;
+        gpg.format = "ssh";
+        user.signingkey = "~/.ssh/id_ed25519.pub";
         url = {
           "https://git.kernel.org/".insteadOf = "kernel:";
           "git://git.kernel.org/".pushInsteadOf = "kernel:";
