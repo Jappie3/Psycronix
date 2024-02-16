@@ -207,15 +207,26 @@ in {
 
         bezier = [
           "defaultBezier, 0.05, 0.9, 0.1, 1.05"
-          "hyprnostretch, 0.05, 0.9, 0.1, 1;"
+          "overshot_fast, 0.05, 0.9, 0.1, 1.1"
+          "overshot_slow_accel, 0.7, 0.6, 0.1, 1.1"
+          "windowIn, 0.06, 1.2, 0.25, 1"
+          "windowOut, 0.17, 0.69, 0.01, 0.74"
+          "windowResize, 0.04, 0.67, 0.38, 1"
+          "bounce, 1, 1.6, 0.1, 0.85"
+          "hyprnostretch, 0.05, 0.9, 0.1, 1"
+          "md3_accel, 0.3, 0, 0.8, 0.15"
+          "md3_decel, 0.05, 0.7, 0.1, 1"
+          "fluent_decel, 0.1, 1, 0, 1"
         ];
 
         animation = [
-          "windows, 1, 7, hyprnostretch"
-          "windowsOut, 1, 7, default, popin 80%"
+          # NAME, ONOFF, SPEED, CURVE, STYLE
+          "windowsIn, 1, 8, windowIn, slide #popin 20%"
+          "windowsOut, 1, 7, windowOut, slide #popin 70%"
+          "windowsMove, 1, 7, fluent_decel"
           "border, 1, 10, default"
           "fade, 1, 7, default"
-          "workspaces, 1, 6, hyprnostretch"
+          "workspaces, 1, 6, overshot_slow_accel"
         ];
       };
 
