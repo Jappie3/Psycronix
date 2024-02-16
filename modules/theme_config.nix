@@ -53,7 +53,6 @@ with lib; {
   };
   config = mkIf config.theme.enable {
     home = {
-      packages = [];
       sessionVariables.XCURSOR_THEME = config.theme.cursor_name;
       pointerCursor = {
         package = config.theme.cursor_package;
