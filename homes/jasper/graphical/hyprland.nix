@@ -317,7 +317,8 @@ in {
         # m -> mouse
 
         "$MOD, U, exec, alacritty msg create-window || alacritty &,"
-        "$MOD, Escape, togglespecialworkspace"
+        "$MOD, A, togglespecialworkspace, scratchpad"
+        "$MOD SHIFT, A, movetoworkspacesilent, special:scratchpad"
         "$MOD, J, exec, killall .anyrun-wrapped || anyrun"
         "$MOD, H, exec, firefox &,"
         "$MOD, D, exec, thunar &,"
