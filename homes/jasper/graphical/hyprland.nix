@@ -244,7 +244,8 @@ in {
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
-        #force_hypr_chan = true;
+        #force_default_wallpaper = true; # -1 = random [-1 - 3], 0 = disables anime bg
+
         # controls vfr, true to conserve resources
         vfr = true;
         # controls vrr, 0-off, 1-on, 2-fullscreen only
