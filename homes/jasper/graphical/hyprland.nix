@@ -341,7 +341,7 @@ in {
         '', print, exec, grim - | shadower | wl-copy''
         # take screenshot of the entire screen & save it to ~/Pictures/screenshots/
         #"$MOD, print, exec, grimblast --cursor save screen ~/Pictures/screenshots/$(date +'%Y-%m-%dT%H:%M:%S').png"
-        ''$MOD, print, exec, grim - | shadower > "~/Pictures/screenshots/$(date +'%Y-%m-%dT%H:%M:%S').png"''
+        ''$MOD, print, exec, grim - | shadower > "$XDG_SCREENSHOT_DIR/$(date +'%Y-%m-%dT%H:%M:%S').png"''
         # take screenshot of an area & copy it
         #"$MOD, O, exec, grimblast --cursor copy area"
         ''$MOD, O, exec, grim -g "$(slurp)" - | shadower | wl-copy''
