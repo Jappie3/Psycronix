@@ -62,7 +62,7 @@ in {
       # templates, for e.g. LibreOffice
       templates = "$HOME/Templates";
       extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+        XDG_SCREENSHOT_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
         XDG_DEV_DIR = "$HOME/Dev";
       };
     };
