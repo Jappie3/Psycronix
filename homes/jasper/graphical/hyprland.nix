@@ -190,6 +190,10 @@ in {
         rounding = config.theme.border_radius;
         drop_shadow = true;
 
+        active_opacity = 0.9;
+        inactive_opacity = 0.7;
+        fullscreen_opacity = 1.0;
+
         shadow_range = 20;
         shadow_render_power = 3;
         shadow_offset = "0 5";
@@ -472,9 +476,6 @@ in {
         "workspace 9 silent, class:^(Spotify)$"
         # start Tidal in workspace 9 by default
         "workspace 9 silent, class:^(tidal-hifi)$"
-
-        # opacity
-        "opacity 0.8,class:^(Alacritty|.*codium.*|VSCodium)$"
 
         # Firefox
         "float, title:Password Required - Mozilla Firefox"
