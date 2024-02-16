@@ -302,7 +302,11 @@ in {
         enable_stdout_logs = false;
       };
 
-      # this config is for dvorak
+      workspace = [
+        "9, on-created-empty:tidal-hifi"
+        "special:scratchpad, gapsout:50"
+      ];
+
       "$MOD" = "SUPER";
       bind = [
         # flags:
