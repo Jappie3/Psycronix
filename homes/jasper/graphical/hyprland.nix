@@ -440,6 +440,7 @@ in {
         "noshadow, floating:0"
         "float, class:Steam, title:^(Friends.*)$"
         "float, title:Steam Settings"
+        "stayfocused, title:^()$, class:^(steam)$"
         "float, class:^(virt-manager)$"
         "float, class:^(.*polkit-kde-authentication-agent.*)$"
         "float, class:^(pavucontrol)$"
