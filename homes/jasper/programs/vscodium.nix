@@ -4,7 +4,10 @@
   ...
 }: {
   home.packages = with pkgs; [
+    vscodium
     nil
+    black
+    isort
   ];
   programs.vscode = {
     enable = true;
@@ -32,10 +35,24 @@
       "explorer.confirmDragAndDrop" = false;
       "explorer.confirmDelete" = false;
 
-      "editor.formatOnSave" = true;
-      "editor.formatOnPaste" = true;
-      "[python]"."editor.formatOnPaste" = false; # Black does not support this
+      "editor.formatOnSave" = false;
+      "editor.formatOnPaste" = false;
       "editor.formatOnType" = false;
+
+      "[python]" = {
+        "editor.formatOnSave" = true;
+        "editor.formatOnPaste" = false; # Black does not support this
+        "editor.defaultFormatter" = "ms-python.python";
+        "editor.codeActionsOnSave" = {
+          "source.organizeImports" = "explicit";
+        };
+      };
+      "isort.check" = true;
+      "isort.showNotifications" = "always";
+      "isort.args" = ["--profile" "black"];
+      "python.formatting.provider" = "black";
+      #"python.formatting.blackArgs" = ["--quiet"];
+
       "editor.suggest.showWords" = false;
       "editor.smoothScrolling" = true;
       "editor.inlineSuggest.enabled" = true;
@@ -43,11 +60,7 @@
       "editor.minimap.renderCharacters" = true;
       "editor.fontFamily" = "JetBrainsMono Nerd Font, Material Design Icons, 'monospace', monospace";
 
-      "workbench.startupEditor" = "none";
-      "workbench.colorTheme" = "Dark Modern";
-
       # fix codium crashing on mouse hover
-      # also this looks hella sexy for some reason
       "window.titleBarStyle" = "custom";
 
       "workbench.startupEditor" = "none";
@@ -101,7 +114,10 @@
 
         # Python
         ms-python.python
+        ms-python.vscode-pylance
         #ms-python.isort
+
+        golang.go
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -110,6 +126,12 @@
           version = "1.0.5892";
           sha256 = "sha256-e/cJONR/4Lai18h7kHJU8UEn5yrUZHPoITAyZpLenTA=";
         }
+        #{
+        #  name = "black-py";
+        #  publisher = "mikoz";
+        #  version = "1.0.3";
+        #  sha256 = "sha256-88Il9kfSahmexBYUCMfA0mlLCel+9JSwkssBcuEFrt4=";
+        #}
         {
           name = "test-adapter-converter";
           publisher = "ms-vscode";
