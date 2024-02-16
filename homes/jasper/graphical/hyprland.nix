@@ -371,7 +371,7 @@ in {
         "$MOD LEFTCTRL, down, movewindow, d"
         "$MOD LEFTCTRL, up, movewindow, u"
 
-        # switch workspaces with MOD + [0-9]
+        # switch workspaces with MOD + [',.pyfgcrl]
         "$MOD, apostrophe, workspace, 1"
         "$MOD, comma, workspace, 2"
         "$MOD, period, workspace, 3"
@@ -383,7 +383,7 @@ in {
         "$MOD, r, workspace, 9"
         "$MOD, l, workspace, 10"
 
-        # move active window to a workspace with MOD + SHIFT + [0-9]
+        # move active window to a workspace with MOD + SHIFT + [',.pyfgcrl]
         "$MOD SHIFT, apostrophe, movetoworkspace, 1"
         "$MOD SHIFT, comma, movetoworkspace, 2"
         "$MOD SHIFT, period, movetoworkspace, 3"
@@ -395,7 +395,7 @@ in {
         "$MOD SHIFT, r, movetoworkspace, 9"
         "$MOD SHIFT, l, movetoworkspace, 10"
 
-        # move active window silently to a workspace with MOD + LEFTCTRL + [0-9]
+        # move active window silently to a workspace with MOD + LEFTCTRL + [',.pyfgcrl]
         "$MOD LEFTCTRL, apostrophe, movetoworkspacesilent, 1"
         "$MOD LEFTCTRL, comma, movetoworkspacesilent, 2"
         "$MOD LEFTCTRL, period, movetoworkspacesilent, 3"
