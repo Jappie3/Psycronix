@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   browser = ["firefox.desktop"];
 
   # XDG MIME types
@@ -9,23 +13,26 @@
     "application/x-extension-xht" = browser;
     "application/x-extension-xhtml" = browser;
     "application/xhtml+xml" = browser;
+    "application/json" = browser;
+    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
+
     "text/html" = browser;
+    "audio/*" = ["mpv.desktop"];
+    "video/*" = ["mpv.dekstop"];
+    "image/*" = ["imv.desktop"];
+
     "x-scheme-handler/about" = browser;
     #"x-scheme-handler/chrome" = ["chromium-browser.desktop"];
     "x-scheme-handler/ftp" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
-
-    "audio/*" = ["mpv.desktop"];
-    "video/*" = ["mpv.dekstop"];
-    "image/*" = ["imv.desktop"];
-    "application/json" = browser;
-    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
     "x-scheme-handler/discord" = ["WebCord.desktop"];
     "x-scheme-handler/mailto" = ["thunderbird.desktop"];
+    "x-scheme-handler/ror2mm" = ["r2modman.desktop"];
   };
 in {
+  home.packages = [pkgs.xdg-utils];
   xdg = {
     # enable management of XDG base directories
     enable = true;
