@@ -98,12 +98,15 @@ in {
       general = {
         gaps_in = config.theme.window_inner_gap;
         gaps_out = config.theme.window_outer_gap;
+        gaps_workspaces = 0;
         border_size = 2;
+        no_border_on_floating = false;
         layout = "dwindle";
         no_cursor_warps = true;
         no_focus_fallback = true;
         resize_on_border = false;
-        #cursor_inactive_timeout = 3;
+        cursor_inactive_timeout = 0; # 0 = forever
+        allow_tearing = false; # master switch for tearing
         "col.active_border" = "${HTMLToRGBA colors.color0 "ff"} ${HTMLToRGBA colors.color5 "ff"} 45deg";
         "col.inactive_border" = "${HTMLToRGBA colors.color7 "aa"}";
       };
@@ -195,19 +198,21 @@ in {
         fullscreen_opacity = 1.0;
 
         shadow_range = 20;
-        shadow_render_power = 3;
-        shadow_offset = "0 5";
-        shadow_ignore_window = true;
+        shadow_render_power = 3; # power of falloff, [1-4]
+        shadow_ignore_window = true; # only render behind window
+        shadow_offset = "0 5"; # vector for shadow offset
+        shadow_scale = 1.0;
         #"col.shadow" = "rgba(1a1a1aee)";
         "col.shadow" = "rgba(00000099)";
 
-        #dim_inactive = true;
-        #dim_strength = 0.06;
+        dim_inactive = false;
+        dim_special = 0.2; # dim when special workspace open, [0.0 - 1.0]
+        dim_around = 0.4; # dim of dimaround window rule, [0.0 - 1.0]
       };
 
       animations = {
-        # this somehow errors
-        #enabled = true;
+        enabled = true;
+        first_launch_animation = true;
 
         bezier = [
           "defaultBezier, 0.05, 0.9, 0.1, 1.05"
