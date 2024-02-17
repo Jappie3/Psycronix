@@ -303,7 +303,6 @@ in {
       };
 
       workspace = [
-        "9, on-created-empty:tidal-hifi"
         "special:scratchpad, gapsout:50"
       ];
 
