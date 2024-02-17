@@ -446,7 +446,7 @@ in {
         "float, class:^(com.saivert.pwvucontrol)$"
         "float, class:eid-viewer"
 
-        "nomaximizerequest, class:org.remmina.Remmina"
+        "suppressevent maximize, class:org.remmina.Remmina"
 
         "float, class:^(nm-connection-editor)$"
         "float, class:^(wdisplays)$"
@@ -478,7 +478,7 @@ in {
         "float, class:thunderbird title:Create New Calendar"
         "float, class:thunderbird title:Downloading Certificate"
         "float, class:thunderbird title:Select Certificate"
-        "nofullscreenrequest, class:thunderbird"
+        "suppressevent fullscreen, class:thunderbird"
 
         # start Discord in workspace 8 by default
         "workspace 8 silent, title:^(.*(Disc|WebC|ArmC)ord.*)$"
@@ -494,15 +494,15 @@ in {
         "pin, title:^(Picture-in-Picture)$"
         "float, title:^(Picture-in-Picture)$"
         # Firefox opening file
-        "nofullscreenrequest, title:^(Opening.*)$, class:firefox"
-        "nomaximizerequest, title:^(Opening.*)$, class:firefox"
+        "suppressevent fullscreen, title:^(Opening.*)$, class:firefox"
+        "suppressevent maximize, title:^(Opening.*)$, class:firefox"
         "float, title:^(Opening.*)$, class:firefox"
         # Mic & camera popup
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
         # NoScript TODO fix this
         "float, title:^(Extension: \(NoScript\) - NoScript XSS Warning — Mozilla Firefox)$"
-        "nofullscreenrequest, title:^(Extension: \(NoScript\) - NoScript XSS Warning — Mozilla Firefox)$"
+        "suppressevent fullscreen, title:^(Extension: \(NoScript\) - NoScript XSS Warning — Mozilla Firefox)$"
 
         # idle inhibit
         "idleinhibit focus, class:^(mpv|.+exe)$"
