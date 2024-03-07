@@ -119,10 +119,12 @@
       };
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hypridle.url = "github:hyprwm/Hypridle";
 
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";

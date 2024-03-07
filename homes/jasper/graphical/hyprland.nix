@@ -5,11 +5,142 @@
   pkgs,
   ...
 }: let
+  monitor = "eDP-1";
   colors = config.theme.colors;
   HTMLToRGB = html: "rgb(${lib.strings.removePrefix "#" html})";
   HTMLToRGBA = html: alfa: "rgba(${lib.strings.removePrefix "#" html}${alfa})";
 in {
-  config.wayland.windowManager.hyprland = {
+  imports = [
+    inputs.hypridle.homeManagerModules.hypridle
+    inputs.hyprlock.homeManagerModules.hyprlock
+  ];
+  home.packages = [
+    inputs.hypridle.packages.${pkgs.system}.hypridle
+    inputs.hyprlock.packages.${pkgs.system}.hyprlock
+    inputs.wayfreeze.packages.${pkgs.system}.wayfreeze
+    pkgs.grim
+    pkgs.slurp
+    pkgs.wl-clipboard
+  ];
+  services.hypridle = {
+    enable = true;
+    listeners = [
+      {
+        timeout = 300; # 5 mins
+        onTimeout = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
+        onResume = "";
+      }
+      {
+        timeout = 600; # 10 mins
+        onTimeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+        onResume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+      }
+      {
+        timeout = 720; # 12 mins
+        onTimeout = "${pkgs.systemd}/bin/systemctl suspend";
+        onResume = "${pkgs.systemd}/bin/hyprctl dispatch dpms on";
+      }
+    ];
+    lockCmd = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock"; # on dbus lock event, e.g. loginctl lock-session
+    unlockCmd = ""; # on dbus unlock event, e.g. loginctl unlock-session
+    beforeSleepCmd = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock"; # on debus prepare_sleep event
+    afterSleepCmd = ""; # on dbus post prepare_sleep event
+    ignoreDbusInhibit = false; # don't ignore dbus idle-inhibit requests (used by steam, firefox, etc.)
+  };
+  programs.hyprlock = {
+    enable = true;
+    general = {
+      disable_loading_bar = false;
+      grace = 0;
+      hide_cursor = true;
+      no_fade_in = false;
+    };
+    backgrounds = [
+      {
+        #monitor = "";
+        path = "screenshot";
+        blur_size = 12;
+        blur_passes = 3;
+        noise = 0.0117;
+        contrast = 0.8917;
+        brightness = 0.8172;
+        vibrancy = 0.1686;
+        vibrancy_darkness = 0.05;
+        shadow_passes = 3;
+        shadow_size = 3;
+        shadow_color = "rgb(0,0,0)";
+        shadow_boost = 1.2;
+      }
+    ];
+    input-fields = [
+      {
+        monitor = monitor;
+        size = {
+          width = 300;
+          height = 30;
+        };
+        dots_size = 0.33;
+        dots_spacing = 0.15;
+        dots_center = true;
+        dots_rounding = -1; # -1 = circle, -2 = follow input-field rounding
+        outer_color = "rgb(0, 51, 102)";
+        outline_thickness = 2;
+        inner_color = "rgb(6, 10, 15)";
+        font_color = "rgb(255, 255, 255)";
+        fade_on_empty = true;
+        placeholder_text = "";
+        hide_input = false;
+        position = {
+          x = 0;
+          y = -100;
+        };
+        rounding = -1; # -1 = complete rounding (circle)
+        halign = "center";
+        valign = "center";
+        shadow_passes = 3;
+        shadow_size = 3;
+        shadow_color = "rgb(0,0,0)";
+        shadow_boost = 1.2;
+      }
+    ];
+    labels = [
+      {
+        monitor = monitor;
+        text = "<i>The keeper is fading away; the creator has not yet come.</i>";
+        color = "rgb(255, 255, 255)";
+        shadow_passes = 3;
+        shadow_size = 3;
+        shadow_color = "rgb(0,0,0)";
+        shadow_boost = 1.2;
+        font_size = 16;
+        font_family = "Garamond-libre";
+        position = {
+          x = 0;
+          y = -20;
+        };
+        halign = "center";
+        valign = "center";
+      }
+      {
+        monitor = monitor;
+        text = "<i>But the world shall burn no more, for you shall ascend.</i>";
+        color = "rgb(255, 255, 255)";
+        shadow_passes = 3;
+        shadow_size = 3;
+        shadow_color = "rgb(0,0,0)";
+        shadow_boost = 1.2;
+        font_size = 16;
+        font_family = "Garamond-libre";
+        position = {
+          x = 0;
+          y = -50;
+        };
+        halign = "center";
+        valign = "center";
+      }
+    ];
+  };
+  wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
