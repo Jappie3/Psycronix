@@ -468,14 +468,11 @@ in {
         "$MOD, mouse_up, workspace, e+1"
 
         # take screenshot of the entire screen & copy it
-        #", print, exec, grimblast --cursor copy screen"
-        '', print, exec, grim - | shadower | wl-copy''
+        '', print, exec, ${pkgs.grim}/bin/grim - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower | ${pkgs.wl-clipboard}/bin/wl-copy''
         # take screenshot of the entire screen & save it to ~/Pictures/screenshots/
-        #"$MOD, print, exec, grimblast --cursor save screen ~/Pictures/screenshots/$(date +'%Y-%m-%dT%H:%M:%S').png"
-        ''$MOD, print, exec, grim - | shadower > "$XDG_SCREENSHOT_DIR/$(date +'%Y-%m-%dT%H:%M:%S').png"''
+        ''$MOD, print, exec, ${pkgs.grim}/bin/grim - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower > "$XDG_SCREENSHOT_DIR/$(date +'%Y-%m-%dT%H:%M:%S').png"''
         # take screenshot of an area & copy it
-        #"$MOD, O, exec, grimblast --cursor copy area"
-        ''$MOD, O, exec, grim -g "$(slurp)" - | shadower | wl-copy''
+        ''$MOD, O, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower | ${pkgs.wl-clipboard}/bin/wl-copy''
         # take screenshot of an area & edit it using Swappy
         #''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -''
 
