@@ -147,34 +147,10 @@ in {
     xwayland.enable = true;
 
     plugins = [
-      # https://github.com/DreamMaoMao/hycov
-      inputs.hycov.packages.${pkgs.system}.hycov
     ];
 
     settings = {
       plugin = {
-        hycov = {
-          overview_gappo = 60; # gaps width from screen edge
-          overview_gappi = 24; # gaps width from clients
-          enable_hotarea = 1; # enable mouse cursor hotarea
-          hotarea_monitor = "all"; # monitor name which hotarea is in, default is all
-          hotarea_pos = 1; # position of hotarea (1: bottom left, 2: bottom right, 3: top left, 4: top right)
-          hotarea_size = 10; # hotarea size, 10x10
-          swipe_fingers = 4; # finger number of gesture,move any directory
-          move_focus_distance = 100; # distance for movefocus,only can use 3 finger to move
-          enable_gesture = 0; # enable gesture
-          disable_workspace_change = 0; # disable workspace change when in overview mode
-          disable_spawn = 0; # disable bind exec when in overview mode
-          auto_exit = 1; # enable auto exit when no client in overview
-          auto_fullscreen = 0; # auto make active window maximize after exit overview
-          only_active_workspace = 0; # only overview the active workspace
-          only_active_monitor = 0; # only overview the active monitor
-          enable_alt_release_exit = 0; # alt swith mode arg,see readme for detail
-          alt_replace_key = "Alt_L"; # alt swith mode arg,see readme for detail
-          alt_toggle_auto_next = 0; # auto focus next window when toggle overview in alt swith mode
-          click_in_cursor = 1; # when click to jump,the target windwo is find by cursor, not the current foucus window.
-          hight_of_titlebar = 0; # height deviation of title bar hight
-        };
       };
 
       monitor = [
@@ -210,11 +186,6 @@ in {
         "swww init && sleep .5"
         # Alacritty (to eliminate future startup delay)
         "[ workspace special:alacritty silent ] alacritty"
-        # Swayidle
-        # only un-pause notifs again if they were un-paused before locking
-        # TODO fix notification daemon
-        # "swayidle -w timeout 180 'if [[ \"$(dunstctl is-paused)\" == \"false\" ]]; then dunstctl set-paused true; touch /tmp/swayidle_paused_notifs_true; fi; hyprctl dispatch exec swaylock' resume 'if [[ -e /tmp/swayidle_paused_notifs_true ]]; then dunstctl set-paused false; rm /tmp/swayidle_paused_notifs_true; fi' before-sleep 'hyprctl dispatch exec swaylock'"
-        "swayidle -w timeout 180 'hyprctl dispatch exec swaylock' before-sleep 'hyprctl dispatch exec swaylock'"
       ];
 
       exec = [
@@ -280,6 +251,9 @@ in {
         accel_profile = "flat";
         sensitivity = 0;
         numlock_by_default = true;
+
+        # resolve keybinds by symbols, not keycodes
+        resolve_binds_by_sym = 1;
 
         touchpad = {
           natural_scroll = true; # the only right way
@@ -366,7 +340,7 @@ in {
           "windowsMove, 1, 7, fluent_decel"
           "border, 1, 10, default"
           "fade, 1, 7, default"
-          "workspaces, 1, 6, overshot_slow_accel"
+          "workspaces, 1, 6, overshot_slow_accel, slidefade 70%"
         ];
       };
 
@@ -431,6 +405,15 @@ in {
         disable_logs = false;
         disable_time = false;
         enable_stdout_logs = false;
+      };
+
+      xwayland = {};
+      opengl = {
+        # introspection is aimed at reducing GPU usage in certain cases (might cause graphical glitches on nvidia)
+        # 0 - nothing
+        # 1 - force always on
+        # 2 - force always on if nvidia
+        force_introspection = 2;
       };
 
       workspace = [
