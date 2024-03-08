@@ -66,10 +66,6 @@ in {
         brightness = 0.8172;
         vibrancy = 0.1686;
         vibrancy_darkness = 0.05;
-        shadow_passes = 3;
-        shadow_size = 3;
-        shadow_color = "rgb(0,0,0)";
-        shadow_boost = 1.2;
       }
     ];
     input-fields = [
@@ -92,7 +88,7 @@ in {
         hide_input = false;
         position = {
           x = 0;
-          y = -100;
+          y = -210;
         };
         rounding = -1; # -1 = complete rounding (circle)
         halign = "center";
@@ -103,42 +99,78 @@ in {
         shadow_boost = 1.2;
       }
     ];
-    labels = [
-      {
-        monitor = monitor;
-        text = "<i>The keeper is fading away; the creator has not yet come.</i>";
-        color = "rgb(255, 255, 255)";
+    labels = let
+      shadow = {
         shadow_passes = 3;
         shadow_size = 3;
         shadow_color = "rgb(0,0,0)";
         shadow_boost = 1.2;
-        font_size = 16;
-        font_family = "Garamond-libre";
-        position = {
-          x = 0;
-          y = -20;
-        };
-        halign = "center";
-        valign = "center";
-      }
-      {
-        monitor = monitor;
-        text = "<i>But the world shall burn no more, for you shall ascend.</i>";
-        color = "rgb(255, 255, 255)";
-        shadow_passes = 3;
-        shadow_size = 3;
-        shadow_color = "rgb(0,0,0)";
-        shadow_boost = 1.2;
-        font_size = 16;
-        font_family = "Garamond-libre";
-        position = {
-          x = 0;
-          y = -50;
-        };
-        halign = "center";
-        valign = "center";
-      }
-    ];
+      };
+    in
+      builtins.map (i: i // shadow) [
+        {
+          monitor = monitor;
+          text = "$TIME";
+          font_size = 66;
+          font_family = "Jost";
+          position = {
+            x = 0;
+            y = 0;
+          };
+          halign = "center";
+          valign = "center";
+        }
+        {
+          monitor = monitor;
+          text = "   $USER";
+          font_size = 16;
+          font_family = "Roboto";
+          position = {
+            x = 20;
+            y = -10;
+          };
+          halign = "left";
+          valign = "bottom";
+        }
+        {
+          monitor = monitor;
+          text = "cmd[update:600000] echo \"    \"$(${pkgs.acpi}/bin/acpi | ${pkgs.ripgrep}/bin/rg -o '[0-9]*%')\"\"";
+          font_size = 16;
+          font_family = "Roboto";
+          position = {
+            x = -20;
+            y = -65;
+          };
+          halign = "right";
+          valign = "bottom";
+        }
+        {
+          monitor = monitor;
+          text = "<i>The keeper is fading away; the creator has not yet come.</i>";
+          color = "rgb(255, 255, 255)";
+          font_size = 16;
+          font_family = "Garamond-libre";
+          position = {
+            x = 0;
+            y = -130;
+          };
+          halign = "center";
+          valign = "center";
+        }
+        {
+          monitor = monitor;
+          text = "<i>But the world shall burn no more, for you shall ascend.</i>";
+          color = "rgb(255, 255, 255)";
+          font_size = 16;
+          font_family = "Garamond-libre";
+          position = {
+            x = 0;
+            y = -160;
+          };
+          halign = "center";
+          valign = "center";
+        }
+      ];
   };
   wayland.windowManager.hyprland = {
     enable = true;
