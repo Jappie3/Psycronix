@@ -142,6 +142,8 @@
 
     shadower.url = "github:n3oney/shadower";
 
+    wayfreeze.url = "github:jappie3/wayfreeze";
+
     neovim-flake = {
       url = "github:notashelf/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
