@@ -198,8 +198,18 @@ in {
         # log WLR stuff
         #"HYPRLAND_LOG_WLR,1"
 
-        "XDG_CURRENT_DESKTOP,Hyprland"
+        "QT_QPA_PLATFORM, wayland;xcb"
+        "QT_QPA_PLATFORMTHEME, qt5ct"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
+        "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
+
+        "GDK_BACKEND, wayland,x11"
+        "SDL_VIDEODRIVER, wayland"
+        "CLUTTER_BACKEND, wayland"
+        "EGL_PLATFORM, wayland"
+
         "XDG_SESSION_DESKTOP,Hyprland"
+        "XCURSOR_SIZE, 24"
       ];
 
       exec-once = [
