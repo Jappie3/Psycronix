@@ -144,6 +144,8 @@
 
     wayfreeze.url = "github:jappie3/wayfreeze";
 
+    zotero-nix.url = "github:camillemndn/zotero-nix";
+
     neovim-flake = {
       url = "github:notashelf/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";

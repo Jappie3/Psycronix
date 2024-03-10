@@ -457,6 +457,7 @@
       inputs.ags.packages.${pkgs.system}.default # Aylur's GTK shell
       inputs.shadower.packages.${pkgs.system}.shadower # CLI utility to add rounded borders, padding & shadow to images
       inputs.nix-gaming.packages.${pkgs.system}.proton-ge # Custom build of Proton with the most recent bleeding-edge Proton Experimental WINE
+      inputs.zotero-nix.packages.${system}.default # Zotero with a recent Firefox version
 
       # run 'nvidia-offload someProgram' to run it on dGPU
       nvidia-offload
