@@ -407,9 +407,6 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
 
-      # SSH
-      SSH_AUTH_SOCK = "/run/user/\${UID}/keyring/ssh";
-
       # pager
       PAGER = "less -FR";
       SYSTEMD_PAGERSECURE = "true";
