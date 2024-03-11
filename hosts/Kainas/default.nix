@@ -435,7 +435,7 @@
       PYWAL_CACHE_DIR = "\$XDG_CACHE_HOME/wal";
       STARSHIP_CACHE = "\$XDG_CACHE_HOME/starship";
       WINEPREFIX = "\$XDG_DATA_HOME/wine";
-      XCURSOR_PATH = "\$XDG_DATA_HOME/icons";
+      XCURSOR_PATH = lib.mkDefault "\$XDG_DATA_HOME/icons";
       XCOMPOSECACHE = "\$XDG_CACHE_HOME/X11/xcompose";
 
       # NH
