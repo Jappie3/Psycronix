@@ -420,24 +420,6 @@
       # very important
       ANSIBLE_COW_SELECTION = "random";
 
-      # I present to you: the List of Shame
-      # aka applications that don't follow the XDG base directory standard
-      # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-      # also check out https://github.com/b3nj5m1n/xdg-ninja
-      TLDR_CACHE_DIR = "\$XDG_CACHE_HOME/tldr";
-      ANDROID_HOME = "\$XDG_DATA_HOME/android";
-      ANSIBLE_HOME = "\$XDG_DATA_HOME/ansible";
-      CARGO_HOME = "\$XDG_DATA_HOME/cargo";
-      CUDA_CACHE_PATH = "\$XDG_CACHE_HOME/nv";
-      GOPATH = "\$XDG_DATA_HOME/go";
-      GTK2_RC_FILES = "\$XDG_CONFIG_HOME/gtk-2.0/gtkrc";
-      PLATFORMIO_CORE_DIR = "\$XDG_DATA_HOME/platformio";
-      PYWAL_CACHE_DIR = "\$XDG_CACHE_HOME/wal";
-      STARSHIP_CACHE = "\$XDG_CACHE_HOME/starship";
-      WINEPREFIX = "\$XDG_DATA_HOME/wine";
-      XCURSOR_PATH = lib.mkDefault "\$XDG_DATA_HOME/icons";
-      XCOMPOSECACHE = "\$XDG_CACHE_HOME/X11/xcompose";
-
       # NH
       FLAKE = "$HOME/.config/psycronix";
     };
