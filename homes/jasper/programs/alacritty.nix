@@ -3,7 +3,9 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  colors = config.theme.colors;
+in {
   programs.alacritty = {
     enable = true;
     package = pkgs.alacritty;
@@ -38,10 +40,9 @@
       colors = {
         draw_bold_text_with_bright_colors = true;
         primary = {
-          background = "#1d1f21";
-          foreground = "#c5c8c6";
-          dim_foreground = "#828482";
-          bright_foreground = "#eaeaea";
+          background = colors.color0;
+          foreground = colors.color15;
+          # dim_foreground & bright_foreground -> calculated based on foreground
         };
         # CellBackground & CellForeground -> reference the affected cell
         cursor = {
@@ -66,13 +67,13 @@
         # keyboard hints
         hints = {
           start = {
-            foreground = "#1d1f21";
+            foreground = colors.color0;
             background = "#e9ff5e";
           };
           # all characters after the first one in the hint label
           end = {
             foreground = "#e9ff5e";
-            background = "#1d1f21";
+            background = colors.color0;
           };
         };
         # colors for indicator displaying the position in history
@@ -83,8 +84,8 @@
         };
         # colors for footer bar used by search regex input, hyprling preview, etc.
         footer_bar = {
-          foreground = "#c5c8c6";
-          background = "#1d1f21";
+          foreground = colors.color15;
+          background = colors.color0;
         };
         # colors used to draw the selection area
         selection = {
@@ -92,35 +93,27 @@
           background = "CellForeground";
         };
         normal = {
-          black = "#1d1f21";
-          red = "#cc6666";
-          green = "#b5bd68";
-          yellow = "#f0c674";
-          blue = "#81a2be";
-          magenta = "#b294bb";
-          cyan = "#8abeb7";
-          white = "#c5c8c6";
+          black = colors.color0;
+          red = colors.color1;
+          green = colors.color2;
+          yellow = colors.color3;
+          blue = colors.color4;
+          magenta = colors.color5;
+          cyan = colors.color6;
+          white = colors.color7;
         };
         bright = {
-          black = "#666666";
-          red = "#d54e53";
-          green = "#b9ca4a";
-          yellow = "#e7c547";
-          blue = "#7aa6da";
-          magenta = "#c397d8";
-          cyan = "#70c0b1";
-          white = "#eaeaea";
+          black = colors.color8;
+          red = colors.color9;
+          green = colors.color10;
+          yellow = colors.color11;
+          blue = colors.color12;
+          magenta = colors.color13;
+          cyan = colors.color14;
+          white = colors.color15;
         };
-        dim = {
-          black = "#131415";
-          red = "#864343";
-          green = "#777c44";
-          yellow = "#9e824c";
-          blue = "#556a7d";
-          magenta = "#75617b";
-          cyan = "#5b7d78";
-          white = "#828482";
-        };
+        # will be calculated automatically based on normal colors
+        #dim = {};
         # index colors include all colors from 16 to 256
         # not set -> filled with sensible defaults
         indexed_colors = [];
