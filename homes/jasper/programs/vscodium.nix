@@ -63,7 +63,7 @@
       # fix codium crashing on mouse hover
       "window.titleBarStyle" = "custom";
 
-      "workbench.startupEditor" = "none";
+      "workbench.startupEditor" = "welcomePageInEmptyWorkbench";
       # this somehow doesn't work (I love electron)
       #"window.autoDetectColorScheme" = true;
       # so we do this instead
