@@ -471,19 +471,27 @@ in {
         # n -> non-consuming, key/mouse events will be passed to the active window in addition to triggering the dispatcher.
         # m -> mouse
 
-        "$MOD, U, exec, alacritty msg create-window || alacritty &,"
-        "$MOD, A, togglespecialworkspace, scratchpad"
         "$MOD SHIFT, A, movetoworkspacesilent, special:scratchpad"
-        "$MOD, J, exec, killall .anyrun-wrapped || anyrun"
-        "$MOD, H, exec, firefox &,"
-        "$MOD, D, exec, thunar &,"
+        "$MOD, A, togglespecialworkspace, scratchpad"
+        '', print, exec, ${pkgs.grim}/bin/grim - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower | ${pkgs.wl-clipboard}/bin/wl-copy'' # take screenshot of the entire screen & copy it
+        ''$MOD, print, exec, ${pkgs.grim}/bin/grim - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower > "$XDG_SCREENSHOT_DIR/$(date +'%Y-%m-%dT%H:%M:%S').png"'' # take screenshot of the entire screen & save it
+        ''$MOD, O, exec, ${inputs.wayfreeze.packages.${pkgs.system}.wayfreeze}/bin/wayfreeze & PID=$!; sleep .1; ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower | ${pkgs.wl-clipboard}/bin/wl-copy; kill $PID'' # take screenshot of an area & copy it
+        #''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -'' # take screenshot of an area & edit it using Swappy
+        "$MOD, U, exec, alacritty msg create-window || alacritty &,"
         "$MOD, I, killactive,"
-        "$MOD, K, togglefloating,"
-        "$MOD, X, fullscreen,"
-        "$MOD, Z, pin"
-        #bind = $MOD, M, exit,
+        "$MOD, D, exec, thunar &,"
+        "$MOD, H, exec, firefox &,"
+        "$MOD, T, changegroupactive, f" # cycle through windows in group
+        "$MOD SHIFT, T, changegroupactive, b" # cycle through windows in group
+        "$MOD, N, togglegroup" # create window group
+        "$MOD, S, lockactivegroup, toggle" # lock active group
 
         "$MOD, Q, exec, ags --toggle-window SideRight"
+        "$MOD, J, exec, killall .anyrun-wrapped || anyrun"
+        "$MOD, K, togglefloating,"
+        "$MOD, X, fullscreen,"
+        #bind = $MOD, M, exit,
+        "$MOD, Z, pin"
 
         # scroll through existing workspaces with MOD + arrow keys
         "$MOD SHIFT, left, workspace, e-1"
@@ -491,23 +499,6 @@ in {
         # scroll through existing workspaces with MOD + scroll
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
-
-        # take screenshot of the entire screen & copy it
-        '', print, exec, ${pkgs.grim}/bin/grim - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower | ${pkgs.wl-clipboard}/bin/wl-copy''
-        # take screenshot of the entire screen & save it to ~/Pictures/screenshots/
-        ''$MOD, print, exec, ${pkgs.grim}/bin/grim - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower > "$XDG_SCREENSHOT_DIR/$(date +'%Y-%m-%dT%H:%M:%S').png"''
-        # take screenshot of an area & copy it
-        ''$MOD, O, exec, ${inputs.wayfreeze.packages.${pkgs.system}.wayfreeze}/bin/wayfreeze & PID=$!; sleep .1; ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower | ${pkgs.wl-clipboard}/bin/wl-copy; kill $PID''
-        # take screenshot of an area & edit it using Swappy
-        #''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -''
-
-        # create window group
-        "$MOD, N, togglegroup"
-        # cycle through windows in group
-        "$MOD, T, changegroupactive, f"
-        "$MOD SHIFT, T, changegroupactive, b"
-        # lock active group
-        "$MOD, S, lockactivegroup, toggle"
 
         # alt tab behaviour but with $MOD
         "$MOD, Tab, cyclenext"
