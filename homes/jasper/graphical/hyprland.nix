@@ -214,11 +214,6 @@ in {
 
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-
-        # "/usr/lib/polkit-kde-authentication-agent-1"
-        # #"blueman-applet"
-        # #"discover-overlay &"
 
         # Noise suppression
         "sleep 6; noisetorch -i" # -i -> load suppressor for input
@@ -284,9 +279,8 @@ in {
         #kb_rules =;
 
         # 1 -> cursor movement always changes focus
-        follow_mouse = 1;
         # 2 -> cursor focus detached from keyboard focus, clicking a window moves keyboard focus
-        #follow_mouse = 2;
+        follow_mouse = 1;
 
         # mouse scrollwheel feels weird with natural scroll
         natural_scroll = false;
@@ -349,7 +343,6 @@ in {
         shadow_ignore_window = true; # only render behind window
         shadow_offset = "0 5"; # vector for shadow offset
         shadow_scale = 1.0;
-        #"col.shadow" = "rgba(1a1a1aee)";
         "col.shadow" = "rgba(00000099)";
 
         dim_inactive = false;
@@ -567,8 +560,6 @@ in {
       bindle = [
         ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        #, XF86MonBrightnessUp, exec, xbacklight -inc 5
-        #, XF86MonBrightnessDown, exec, xbacklight -dec 5
       ];
 
       bindl = [
@@ -660,9 +651,6 @@ in {
       layerrule = [
         # get rid of black border on screenshots
         "noanim, ^(selection)$"
-        # xray blur for lockscreen
-        "xray on, lockscreen"
-        "blur, lockscreen"
       ];
     };
   };
