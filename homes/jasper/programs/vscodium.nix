@@ -64,6 +64,8 @@
       "window.titleBarStyle" = "custom";
 
       "workbench.startupEditor" = "welcomePageInEmptyWorkbench";
+      # don't show the walkthrough section on the welcome page
+      "workbench.welcomePage.walkthroughs.openOnInstall" = false;
       # this somehow doesn't work (I love electron)
       #"window.autoDetectColorScheme" = true;
       # so we do this instead
