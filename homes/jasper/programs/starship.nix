@@ -3,7 +3,7 @@
     enable = true;
     enableBashIntegration = true;
     settings = {
-      add_newline = true; # black line between shell prompts
+      add_newline = true; # blank line between shell prompts
       scan_timeout = 10;
       format = ''
         ╭─╴\[$username@$hostname\] $directory $git_branch$git_commit$git_state$git_metrics$git_status $nix_shell $cmd_duration
