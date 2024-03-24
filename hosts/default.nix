@@ -15,20 +15,18 @@
   # extraSpecialArgs that all hosts need
   sharedArgs = {inherit self lib inputs;};
 in {
-  flake.nixosConfigurations = {
-    Kainas = lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = sharedArgs;
-      modules =
-        [
-          {networking.hostName = "Kainas";}
-          ./Kainas
-        ]
-        ++ [
-          home-manager
-          homes
-          agenix
-        ];
-    };
+  Kainas = lib.nixosSystem {
+    system = "x86_64-linux";
+    specialArgs = sharedArgs;
+    modules =
+      [
+        {networking.hostName = "Kainas";}
+        ./Kainas
+      ]
+      ++ [
+        home-manager
+        homes
+        agenix
+      ];
   };
 }

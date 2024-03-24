@@ -6,63 +6,57 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        # systems for which to build the 'perSystem' attribute
+  } @ inputs: let
+    inherit (nixpkgs) lib;
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs [
         "x86_64-linux"
         "aarch64-linux"
-      ];
+      ] (system: function nixpkgs.legacyPackages.${system});
+  in {
+    # all my hosts -> ./hosts
+    nixosConfigurations = import ./hosts {inherit nixpkgs self lib;};
 
-      imports = [
-        ./hosts
-        ./modules
-      ];
+    # modules, both NixOS & hm -> ./modules
+    nixosModules = import ./modules/nixos {inherit inputs;};
+    homeManagerModules = import ./modules/home-manager {inherit inputs;};
 
-      perSystem = {
-        config,
-        pkgs,
-        lib,
-        system,
-        ...
-      }: {
-        packages.aarch64_sd_image = inputs.nixos-generators.nixosGenerate {
-          # nix build .#aarch64_sd_image
-          # sudo dd if=result/sd-image/nixos-sd-image-[...]-aarch64-linux.img of=/dev/sda status=progress bs=4M
-          format = "sd-aarch64";
-          system = "aarch64-linux";
-          specialArgs = {inherit self lib;};
-          modules = [
-            "${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            ./images/aarch-sd-image
-          ];
-        };
-        formatter = pkgs.alejandra;
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            git
-            alejandra
-          ];
-          DIRENV_LOG_FORMAT = "";
-        };
+    packages = forAllSystems (pkgs: {
+      aarch64_sd_image = inputs.nixos-generators.nixosGenerate {
+        # nix build .#aarch64_sd_image
+        # sudo dd if=result/sd-image/nixos-sd-image-[...]-aarch64-linux.img of=/dev/sda status=progress bs=4M
+        format = "sd-aarch64";
+        system = "aarch64-linux";
+        specialArgs = {inherit self lib;};
+        modules = [
+          "${inputs.nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          ./images/aarch-sd-image
+        ];
       };
-    };
+    });
+
+    devShells = forAllSystems (pkgs: {
+      default = pkgs.mkShell {
+        packages = with pkgs; [
+          git
+          alejandra
+        ];
+        DIRENV_LOG_FORMAT = "";
+      };
+    });
+
+    formatter = forAllSystems (pkgs: pkgs.alejandra);
+  };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     impermanence.url = "github:nix-community/impermanence";
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
     nixpak = {
       url = "github:nixpak/nixpak";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
       };
     };
 
@@ -90,7 +84,6 @@
       url = "github:nix-community/nixos-anywhere";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
       };
     };
 
@@ -114,7 +107,6 @@
       url = "github:schizofox/schizofox";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
         nixpak.follows = "nixpak";
       };
     };
@@ -155,7 +147,6 @@
       url = "github:fufexan/nix-gaming";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
       };
     };
   };
