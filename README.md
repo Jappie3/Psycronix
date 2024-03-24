@@ -1,16 +1,10 @@
 # Psycronix
 
-I am still learning Nix, and have a long way to go. Still, I hope you'll find something useful in here (:
-
-## Features
-
-- LUKS & BTRFS
-- Hyprland w/ Nvidia drivers
-- Ags, Swaylock, Swww, Wlsunset
-
 ## Hosts
 
 - Kainas: my main laptop
+    - Hyprland w/ Nvidia drivers
+    - Hyprlock, Hypridle, Swww, Ags, Wlsunset
 
 <br>
 
