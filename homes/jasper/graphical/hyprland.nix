@@ -17,6 +17,7 @@ in {
   home.packages = [
     inputs.hypridle.packages.${pkgs.system}.hypridle
     inputs.hyprlock.packages.${pkgs.system}.hyprlock
+    inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
     inputs.wayfreeze.packages.${pkgs.system}.wayfreeze
     pkgs.grim
     pkgs.slurp
@@ -210,6 +211,9 @@ in {
 
         "XDG_SESSION_DESKTOP,Hyprland"
         "XCURSOR_SIZE, 24"
+
+        "HYPRCURSOR_THEME, ${config.theme.cursor_name}"
+        "HYPRCURSOR_SIZE, ${builtins.toString config.theme.cursor_size}"
       ];
 
       exec-once = [

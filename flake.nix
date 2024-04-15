@@ -122,6 +122,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hypridle.url = "github:hyprwm/Hypridle";
+    hyprcursor.url = "github:hyprwm/hyprcursor";
 
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
