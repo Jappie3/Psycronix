@@ -117,15 +117,8 @@ in {
     };
   };
 
-  # check which theme is default atm, otherwise throw error
-  theme =
-    if builtins.pathExists ../../.theme/current_theme_dark && builtins.pathExists ../../.theme/current_theme_light
-    then throw ".theme/current_theme_light & .theme/current_theme_dark both exist, remove one"
-    else if builtins.pathExists ../../.theme/current_theme_dark
-    then darkConfig
-    else if builtins.pathExists ../../.theme/current_theme_light
-    then lightConfig
-    else throw "No default theme set in .theme, create .theme/current_theme_dark or .theme/current_theme_light";
+  # dark is default
+  theme = darkConfig;
 
   specialisation = {
     # we use lib.mkForce to override the default values defined above
@@ -138,6 +131,77 @@ in {
     homeDirectory = "/home/jasper";
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "23.05";
+
+    activation = {
+      # https://nix-community.github.io/home-manager/options.xhtml#opt-home.activation
+      reload-theme = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        ${pkgs.systemd}/bin/systemctl --user start load-theme.service
+      '';
+    };
+
+    packages = [
+      # switch the system theme
+      (pkgs.writeShellScriptBin "switch-theme" ''
+        THEME_FILE="/tmp/theme"
+        if [[ ! -e $THEME_FILE ]]; then
+          # no theme set -> can't switch
+          exit 1
+        else
+          # check what theme is set
+          case "$(< "$THEME_FILE")" in
+            "dark")
+              # switch to light
+              "$(${pkgs.ripgrep}/bin/rg ExecStart /run/current-system/etc/systemd/system/home-manager-jasper.service | ${pkgs.coreutils}/bin/cut -d ' ' -f 2)/specialisation/light/activate"
+              ${pkgs.coreutils}/bin/echo "light" > "$THEME_FILE"
+            ;;
+            "light")
+              # switch to dark
+              "$(${pkgs.ripgrep}/bin/rg ExecStart /run/current-system/etc/systemd/system/home-manager-jasper.service | ${pkgs.coreutils}/bin/cut -d ' ' -f 2)/specialisation/dark/activate"
+              ${pkgs.coreutils}/bin/echo "dark" > "$THEME_FILE"
+            ;;
+            *)
+              exit 1
+            ;;
+          esac
+        fi
+      '')
+    ];
+  };
+
+  systemd.user = {
+    startServices = true;
+    services.load-theme = {
+      Install = {
+        WantedBy = ["multi-user.target"];
+      };
+      Service = {
+        Type = "simple";
+        Restart = "always";
+        ExecStart = pkgs.writeShellScript "load-theme.sh" ''
+          set -e
+          THEME_FILE="/tmp/theme"
+          # only switch themes if the loc file exists
+          if [[ -e "${config.age.secrets.loc.path}" ]]; then
+            # check when sun rises & sets based on the current location
+            case "$(${pkgs.sunwait}/bin/sunwait poll $(<"${config.age.secrets.loc.path}"))" in
+              "NIGHT")
+                # load dark
+                "$(${pkgs.ripgrep}/bin/rg ExecStart /run/current-system/etc/systemd/system/home-manager-jasper.service | ${pkgs.coreutils}/bin/cut -d ' ' -f 2)/specialisation/dark/activate"
+                ${pkgs.coreutils}/bin/echo "dark" > "$THEME_FILE"
+              ;;
+              "DAY")
+                # load light
+                "$(${pkgs.ripgrep}/bin/rg ExecStart /run/current-system/etc/systemd/system/home-manager-jasper.service | ${pkgs.coreutils}/bin/cut -d ' ' -f 2)/specialisation/light/activate"
+                ${pkgs.coreutils}/bin/echo "light" > "$THEME_FILE"
+              ;;
+              *)
+                exit 1
+              ;;
+            esac
+          fi
+        '';
+      };
+    };
   };
 
   manual = {
