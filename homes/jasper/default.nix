@@ -171,11 +171,8 @@ in {
   systemd.user = {
     startServices = true;
     services.load-theme = {
-      Install = {
-        WantedBy = ["multi-user.target"];
-      };
+      Install.WantedBy = ["default.target"];
       Service = {
-        Type = "simple";
         Restart = "always";
         ExecStart = pkgs.writeShellScript "load-theme.sh" ''
           set -e
