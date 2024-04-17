@@ -33,8 +33,8 @@ in {
       }
       {
         timeout = 600; # 10 mins
-        onTimeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-        onResume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        onTimeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
+        onResume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
       }
       {
         timeout = 720; # 12 mins
