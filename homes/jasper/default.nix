@@ -62,11 +62,6 @@ in {
     # let Home Manager manage itself when in standalone mode
     home-manager.enable = true;
 
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
     git = {
       enable = true;
       userName = "Jappie3";
