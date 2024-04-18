@@ -66,7 +66,6 @@ with lib; {
     };
     gtk = {
       enable = true;
-      # TODO theme.package & theme.name
       cursorTheme = {
         name = config.theme.cursor_name;
         package = config.theme.cursor_package;
