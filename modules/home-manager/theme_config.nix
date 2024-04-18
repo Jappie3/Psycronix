@@ -18,6 +18,14 @@ with lib; {
       description = "GTK theme that should be used";
       type = types.str;
     };
+    qt_package = mkOption {
+      description = "QT package that supplies the global theme";
+      type = types.package;
+    };
+    qt_name = mkOption {
+      description = "QT theme that should be used";
+      type = types.str;
+    };
     cursor_package = mkOption {
       description = "Cursor package that supplies the global theme";
       type = types.package;
@@ -79,7 +87,10 @@ with lib; {
     qt = {
       enable = true;
       platformTheme = "gtk";
-      # TODO style.package & style.name
+      style = {
+        name = config.theme.qt_name;
+        package = config.theme.qt_package;
+      };
     };
   };
 }
