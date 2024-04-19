@@ -306,9 +306,10 @@ in {
         };
       };
 
-      "device:foostan-corne" = {
+      device = {
+        name = "corne-keyboard";
         kb_layout = "us";
-        kb_variant = "dvorak";
+        kb_variant = "";
       };
 
       gestures = {
