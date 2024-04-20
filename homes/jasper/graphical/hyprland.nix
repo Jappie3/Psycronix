@@ -137,7 +137,7 @@ in {
         }
         {
           monitor = monitor;
-          text = "cmd[update:600000] echo \"    \"$(${pkgs.acpi}/bin/acpi | ${pkgs.ripgrep}/bin/rg -o '[0-9]*%')\"\"";
+          text = "cmd[update:600000] ${pkgs.coreutils}/bin/echo \"    \"$(${pkgs.acpi}/bin/acpi | ${pkgs.coreutils}/bin/head -n 1 | ${pkgs.ripgrep}/bin/rg -o '[0-9]*%')\"\"";
           font_size = 16;
           font_family = "Roboto";
           position = {
