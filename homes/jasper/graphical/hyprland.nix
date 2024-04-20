@@ -130,7 +130,7 @@ in {
           font_family = "Roboto";
           position = {
             x = 20;
-            y = -10;
+            y = 10;
           };
           halign = "left";
           valign = "bottom";
@@ -142,7 +142,7 @@ in {
           font_family = "Roboto";
           position = {
             x = -20;
-            y = -65;
+            y = -10;
           };
           halign = "right";
           valign = "bottom";
