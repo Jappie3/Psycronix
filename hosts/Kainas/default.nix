@@ -332,7 +332,7 @@
       displayManager.lightdm.enable = false;
       videoDrivers = ["nvidia"]; #"amdgpu"];
       layout = "us";
-      xkbVariant = "dvorak";
+      xkb.variant = "dvorak";
       # touchpad support
       libinput.enable = true;
     };
