@@ -86,7 +86,7 @@ with lib; {
 
     qt = {
       enable = true;
-      platformTheme = "gtk";
+      platformTheme.name = "gtk";
       style = {
         name = config.theme.qt_name;
         package = config.theme.qt_package;
