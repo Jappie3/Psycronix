@@ -23,12 +23,14 @@ in {
     pkgs.slurp
     pkgs.wl-clipboard
   ];
-  services.hypridle = {
+  services.hypridle = let
+    lockcmd = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 1; ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock; ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 0;";
+  in {
     enable = true;
     listeners = [
       {
         timeout = 300; # 5 mins
-        onTimeout = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
+        onTimeout = lockcmd;
         onResume = "";
       }
       {
@@ -42,9 +44,9 @@ in {
         onResume = "${pkgs.systemd}/bin/hyprctl dispatch dpms on";
       }
     ];
-    lockCmd = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock"; # on dbus lock event, e.g. loginctl lock-session
+    lockCmd = lockcmd; # on dbus lock event, e.g. loginctl lock-session
     unlockCmd = ""; # on dbus unlock event, e.g. loginctl unlock-session
-    beforeSleepCmd = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock"; # on debus prepare_sleep event
+    beforeSleepCmd = lockcmd; # on debus prepare_sleep event
     afterSleepCmd = ""; # on dbus post prepare_sleep event
     ignoreDbusInhibit = false; # don't ignore dbus idle-inhibit requests (used by steam, firefox, etc.)
   };
@@ -475,7 +477,7 @@ in {
         ''$MOD, print, exec, ${pkgs.grim}/bin/grim - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower > "$XDG_SCREENSHOT_DIR/$(date +'%Y-%m-%dT%H:%M:%S').png"'' # take screenshot of the entire screen & save it
         ''$MOD, O, exec, ${inputs.wayfreeze.packages.${pkgs.system}.wayfreeze}/bin/wayfreeze & PID=$!; sleep .1; ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower | ${pkgs.wl-clipboard}/bin/wl-copy; kill $PID'' # take screenshot of an area & copy it
         #''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -'' # take screenshot of an area & edit it using Swappy
-        "$MOD, E, exec, hyprlock &,"
+        "$MOD, E, exec, ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 1; ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock; ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 0;,"
         "$MOD, U, exec, alacritty msg create-window || alacritty &,"
         "$MOD, I, killactive,"
         "$MOD, D, exec, thunar &,"
