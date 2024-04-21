@@ -143,6 +143,8 @@ in {
           # no theme set -> can't switch
           exit 1
         else
+          # make sure we don't get stuck in a loop
+          touch /tmp/LOAD_THEME_ACTIVATING
           # check what theme is set
           case "$(< "$THEME_FILE")" in
             "dark")
@@ -159,6 +161,7 @@ in {
               exit 1
             ;;
           esac
+          rm /tmp/LOAD_THEME_ACTIVATING
         fi
       '')
     ];
