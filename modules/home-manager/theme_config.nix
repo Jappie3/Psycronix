@@ -64,6 +64,8 @@ with lib; {
       sessionVariables = {
         XCURSOR_THEME = config.theme.cursor_name;
         XCURSOR_SIZE = config.theme.cursor_size;
+        HYPRCURSOR_THEME = config.theme.cursor_name;
+        HYPRCURSOR_SIZE = builtins.toString config.theme.cursor_size;
       };
       pointerCursor = {
         package = config.theme.cursor_package;

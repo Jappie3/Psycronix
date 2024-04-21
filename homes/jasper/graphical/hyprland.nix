@@ -212,9 +212,6 @@ in {
         "EGL_PLATFORM, wayland"
 
         "XDG_SESSION_DESKTOP,Hyprland"
-
-        "HYPRCURSOR_THEME, ${config.theme.cursor_name}"
-        "HYPRCURSOR_SIZE, ${builtins.toString config.theme.cursor_size}"
       ];
 
       exec-once = [
