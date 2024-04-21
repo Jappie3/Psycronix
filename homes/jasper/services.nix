@@ -8,7 +8,7 @@
     services.load-theme = {
       Install.WantedBy = ["default.target"];
       Service = {
-        Restart = "always";
+        Restart = "on-failure";
         ExecStart = pkgs.writeShellScript "load-theme.sh" ''
           set -e
           THEME_FILE="/tmp/theme"
