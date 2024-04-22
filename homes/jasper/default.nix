@@ -18,6 +18,10 @@
   gtk_package = pkgs.adw-gtk3;
   gtk_name_dark = "adw-gtk3-dark";
   gtk_name_light = "adw-gtk3";
+  # qt theme
+  qt_package = pkgs.adwaita-qt;
+  qt_name_dark = "adwaita-dark";
+  qt_name_light = "adwaita";
   # border radius stuff
   border_radius = 12;
   window_outer_gap = 6;
@@ -28,6 +32,8 @@ in let
     variant = "dark";
     gtk_package = gtk_package;
     gtk_name = gtk_name_dark;
+    qt_package = qt_package;
+    qt_name = qt_name_dark;
     cursor_package = current_cursor_package;
     cursor_name = current_cursor_name_dark;
     cursor_size = current_cursor_size;
@@ -41,6 +47,8 @@ in let
     variant = "light";
     gtk_package = gtk_package;
     gtk_name = gtk_name_light;
+    qt_package = qt_package;
+    qt_name = qt_name_light;
     cursor_package = current_cursor_package;
     cursor_name = current_cursor_name_light;
     cursor_size = current_cursor_size;
