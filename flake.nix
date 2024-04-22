@@ -142,6 +142,11 @@
 
     wayfreeze.url = "github:jappie3/wayfreeze";
 
+    hyprcursor-phinger = {
+      url = "github:jappie3/hyprcursor-phinger";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zotero-nix.url = "github:camillemndn/zotero-nix";
 
     neovim-flake = {
