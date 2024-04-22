@@ -136,13 +136,6 @@ in {
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "23.05";
 
-    activation = {
-      # https://nix-community.github.io/home-manager/options.xhtml#opt-home.activation
-      reload-theme = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        ${pkgs.systemd}/bin/systemctl --user start load-theme.service
-      '';
-    };
-
     packages = [
       # switch the system theme
       (pkgs.writeShellScriptBin "switch-theme" ''
