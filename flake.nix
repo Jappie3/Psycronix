@@ -60,9 +60,7 @@
 
     nixpak = {
       url = "github:nixpak/nixpak";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
@@ -87,9 +85,7 @@
 
     nixos-anywhere = {
       url = "github:nix-community/nixos-anywhere";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     disko = {
@@ -117,21 +113,9 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprlock.url = "github:hyprwm/hyprlock";
     hypridle.url = "github:hyprwm/Hypridle";
     hyprcursor.url = "github:hyprwm/hyprcursor";
-
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hycov = {
-      url = "github:DreamMaoMao/hycov";
-      inputs.hyprland.follows = "hyprland";
-    };
 
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
