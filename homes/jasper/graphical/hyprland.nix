@@ -21,6 +21,7 @@ in {
     inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
     inputs.hyprcursor-phinger.packages.${pkgs.system}.hyprcursor-phinger
     inputs.wayfreeze.packages.${pkgs.system}.wayfreeze
+    inputs.vigiland.packages.${pkgs.system}.vigiland
     pkgs.grim
     pkgs.slurp
     pkgs.wl-clipboard

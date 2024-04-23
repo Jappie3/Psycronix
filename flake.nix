@@ -140,6 +140,7 @@
 
     shadower.url = "github:n3oney/shadower";
 
+    vigiland.url = "github:jappie3/vigiland";
     wayfreeze.url = "github:jappie3/wayfreeze";
 
     hyprcursor-phinger = {
