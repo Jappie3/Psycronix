@@ -123,11 +123,15 @@
         reusePassphrases = true;
       };
       verbose = true;
-      # always loaded in first stage
+      # kernel modules loaded in first stage
       # https://wiki.archlinux.org/title/Kernel_mode_setting#Early_KMS_start
-      # kernelModules = [
-      #   "amdgpu"
-      # ];
+      kernelModules = [
+        "amdgpu"
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_uvm"
+        "nvidia_drm"
+      ];
       # kernel modules available in first stage (loaded when needed)
       availableKernelModules = [
         "btrfs" # butter filesystem
@@ -148,13 +152,6 @@
         "ext4"
       ];
     };
-    # kernel modules for second stage, see hardware-configuration.nix
-    kernelModules = [
-      # load AMD KVM kernel module, see https://wiki.archlinux.org/title/KVM
-      "kvm-amd"
-    ];
-    # https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
-    #kernelParams = [];
   };
 
   networking.networkmanager.enable = true;
