@@ -114,6 +114,7 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprlock.url = "github:hyprwm/hyprlock";
+    hyprlock.inputs.nixpkgs.follows = "nixpkgs"; # mesa version needs to be the same, see https://github.com/hyprwm/hyprlock/issues/239
     hypridle.url = "github:hyprwm/Hypridle";
     hyprcursor.url = "github:hyprwm/hyprcursor";
 
@@ -144,6 +145,11 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
+    };
+
+    conduit = {
+      url = "gitlab:famedly/conduit/next";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
