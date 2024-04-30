@@ -428,7 +428,7 @@ in {
 
         enable_swallow = true;
         # class regex for windows that should be swallowed
-        swallow_regex = "^(thunar|thunderbird|org.remmina.Remmina)$";
+        swallow_regex = "^(thunderbird|org.remmina.Remmina)$";
 
         # whether to focus an app that sends an activate request
         focus_on_activate = false;
