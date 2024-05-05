@@ -50,6 +50,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    stable.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     impermanence.url = "github:nix-community/impermanence";
 
