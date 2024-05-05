@@ -52,22 +52,26 @@
         "viperml.cachix.org-1:qZhKBMTfmcLL+OG6fj/hzsMEedgKvZVFRRAhq7j8Vh8="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       ];
-      # enable flakes & nix command
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      # deduplicate & optimize nix store
+      # deduplicate nix store
       auto-optimise-store = true;
       # sandbox builds (default)
       sandbox = true;
-      # keep build-time dependencies
-      keep-outputs = true;
-      keep-derivations = true;
       # more logs
       log-lines = 25;
       # no dirty git tree warning
       warn-dirty = false;
+    };
+    # keep intermediary dependencies (no re-download after a gc) & enable flakes
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+      experimental-features = nix-command flakes
+    '';
+    # flake registries for nixpkgs unstable & stable
+    # used by e.g. nix shell nixpkgs#hello
+    registry = {
+      nixpkgs.flake = inputs.nixpkgs;
+      stable.flake = inputs.stable;
     };
   };
 
