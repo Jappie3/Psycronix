@@ -22,20 +22,10 @@
   };
 
   nixpkgs = {
-    # add overlays
-    #overlays = [
-    #];
-
     hostPlatform = "x86_64-linux";
-
-    # configure nixpkgs instance
     config = {
-      # allow proprietary software
       allowUnfree = true;
-      # cuda support
       #cudaSupport = true;
-
-      # enable nix-helper
       nh = {
         enable = true;
         clean = {
