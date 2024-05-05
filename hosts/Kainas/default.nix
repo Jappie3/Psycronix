@@ -77,19 +77,10 @@
 
   documentation = {
     enable = true;
-    nixos = {
-      # NixOS' own documentation
-      enable = true;
-      includeAllModules = true;
-      options.splitBuild = true;
-    };
-    man = {
-      enable = true;
-      # whether to generate manual page index caches
-      generateCaches = false;
-      # use man-db (default)
-      man-db.enable = true;
-    };
+    # NixOS' own documentation
+    nixos.enable = true;
+    # man pages
+    man.enable = true;
     # info pages & info command
     info.enable = true;
     # documentation distributed in packages' /share/doc
