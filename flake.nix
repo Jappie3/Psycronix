@@ -112,7 +112,7 @@
       };
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprlock.url = "github:hyprwm/hyprlock";
     hyprlock.inputs.nixpkgs.follows = "nixpkgs"; # mesa version needs to be the same, see https://github.com/hyprwm/hyprlock/issues/239
     hypridle.url = "github:hyprwm/Hypridle";
