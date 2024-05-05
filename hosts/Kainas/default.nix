@@ -6,16 +6,20 @@
   pkgs,
   ...
 }: {
-  imports = [
+  imports = with self.nixosModules; [
     ./hardware-configuration.nix
-    self.nixosModules.sshd
-    self.nixosModules.web-eid
-    self.nixosModules.secure_boot
+    sshd
+    users
+    web-eid
+    secure_boot
+    cpu_amd
+    laptop_power
   ];
 
-  # enable some modules
-  web-eid.enable = true;
-  secure_boot.enable = true;
+  users.jasper = {
+    createUser = true;
+    nixTrusted = true;
+  };
 
   nixpkgs = {
     # add overlays
@@ -61,7 +65,6 @@
         "nix-command"
         "flakes"
       ];
-      trusted-users = ["jasper"];
       # deduplicate & optimize nix store
       auto-optimise-store = true;
       # sandbox builds (default)
@@ -385,19 +388,6 @@
         TimeoutStopSec = 10;
       };
     };
-  };
-
-  users.users.jasper = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"];
-    # don't set this when using NixOps
-    openssh.authorizedKeys.keys = [
-      # my own public key
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1mAN5Db7eZ0iuBGGxdPqQCR2l6jDZBjgX4ZVOcip27 jasper@Kainas"
-    ];
-    packages = with pkgs; [
-      neofetch
-    ];
   };
 
   environment = {
