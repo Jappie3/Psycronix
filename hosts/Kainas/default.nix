@@ -90,6 +90,8 @@
   };
 
   boot = {
+    # emulate aarch64
+    binfmt.emulatedSystems = ["aarch64-linux"];
     # clean /tmp on boot because I fill it with random crap
     tmp.cleanOnBoot = true;
     # kernel console loglevel
