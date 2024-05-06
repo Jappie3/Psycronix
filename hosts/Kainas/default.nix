@@ -223,6 +223,12 @@
         codeberg-ed25519.hostNames = ["codeberg.org"];
         codeberg-ed25519.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIVIC02vnjFyL+I4RHfvIGNtOgJMe769VTF1VR4EB3ZB";
       };
+      # automatically add ssh key to agent
+      extraConfig = ''
+        Host *
+          IdentityFile      ~/.ssh/id_ed25519
+          AddKeysToAgent    yes
+      '';
     };
     steam = {
       # TODO: env var for STEAM_EXTRA_COMPAT_TOOLS_PATHS ?
