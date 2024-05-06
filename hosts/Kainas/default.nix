@@ -124,25 +124,15 @@
       # https://wiki.archlinux.org/title/Kernel_mode_setting#Early_KMS_start
       kernelModules = [
         "amdgpu"
-        "nvidia"
-        "nvidia_modeset"
-        "nvidia_uvm"
-        "nvidia_drm"
       ];
       # kernel modules available in first stage (loaded when needed)
       availableKernelModules = [
-        "btrfs" # butter filesystem
-        "dm_mod" # device mapper
         "nvme" # NVMe drives
         "xhci_pci" # USB 3.0 eXtensible Host Controller Interface
         "ehci_pci" # USB 2.0 Enhanced Host Controller Interface
         "usbhid" # USB Human Interface Device
         "usb_storage" # USB Mass Storage (USB flash drives)
         "ahci" # SATA devices on modern AHCI controllers
-        "sd_mod" # SCSI, SATA & PATA (IDI) devices
-        #"uas" # USB attached SCSI drive
-        #"sdhci_pci" # Secure Digital Host Controller Interface (SD cards)
-        #"rtsx_pci_sdmmc" # Realtek PCI-E SD-MMC card host drive
       ];
       supportedFilesystems = [
         "btrfs"
