@@ -420,6 +420,9 @@
 
       # NH
       FLAKE = "$HOME/.config/psycronix";
+
+      # nixos-rebuild w/ --use-remote-sudo -> needs TTY, can be forced with -tt SSH options
+      NIX_SSHOPTS = "-tt";
     };
 
     systemPackages = with pkgs; let
