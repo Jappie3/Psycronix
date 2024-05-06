@@ -274,7 +274,27 @@
     # support for e.g. Steam Controller
     steam-hardware.enable = true;
     pulseaudio.enable = false;
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false; # sets [Policy] AutoEnable=false in main.conf
+      package = pkgs.bluez5-experimental;
+      # see https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/src/main.conf for the default config file w/ comments
+      disabledPlugins = ["nfc" "sap" "health" "midi"];
+      settings = {
+        General = {
+          # set device class to computer
+          Class = "0x000100";
+          # both BR/EDR & LE enabled if supported by hw (default)
+          ControllerMode = "dual";
+          # always accept JUST-WORKS repairing requests (pairing without entering keys)
+          JustWorksRepairing = "always";
+          # Multi Profile Specification support (device can operate under multiple Bluetooth profiles simultaneously)
+          MultiProfile = "multiple";
+          # enable D-Bus experimental interfaces
+          Experimental = true;
+        };
+      };
+    };
     opengl = {
       enable = true;
       driSupport = true;
