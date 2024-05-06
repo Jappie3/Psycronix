@@ -195,7 +195,7 @@
       # nonmonetary numeric formatting
       LC_NUMERIC = "en_IE.UTF-8";
       # date & time formatting
-      LC_TIME = "en_IE.UTF-8";
+      LC_TIME = "de_DE.UTF-8";
       # not set here: paper, name, address, telephone, measurement, identification
     };
   };
