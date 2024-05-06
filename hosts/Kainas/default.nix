@@ -141,13 +141,22 @@
     };
   };
 
-  networking.networkmanager.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking = {
+    # use nftables instead of iptables
+    nftables.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd"; # iwd instead of wpa_supplicant
+      insertNameservers = ["9.9.9.9"]; # insert before nameservers received via DHCP
+    };
+    # [ip] [hostname]
+    # extraHosts = ''
+    # '';
+    firewall = {
+      allowedTCPPorts = [];
+      enable = true;
+    };
+  };
 
   security = {
     polkit.enable = true;
