@@ -231,6 +231,13 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+      ];
+    };
   };
 
   xdg.portal = {
