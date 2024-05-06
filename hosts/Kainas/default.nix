@@ -105,7 +105,12 @@
       # whether to copy necessary boot files to /boot (/nix/store is not needed by boot loader)
       generationsDir.copyKernels = true;
       # whether to enable the systemd-boot EFI boot manager
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        editor = false; # don't allow editing the kernel command-line before boot
+        configurationLimit = 64; # prevent boot partition running out of disk space
+        consoleMode = "max"; # resolution of console, max -> highest-numbered available mode
+      };
       # whether installation process is allowed to modify EFI boot vars
       efi.canTouchEfiVariables = true;
     };
