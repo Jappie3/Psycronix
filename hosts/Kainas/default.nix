@@ -399,8 +399,9 @@
   };
 
   environment = {
-    # global variables
-    variables = {
+    # env vars set by PAM early in login process
+    # values may not contain the " character
+    sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
 
