@@ -141,6 +141,10 @@
     };
   };
 
+  virtualisation = {
+    libvirtd.enable = true;
+  };
+
   networking = {
     # use nftables instead of iptables
     nftables.enable = true;
@@ -211,6 +215,7 @@
     noisetorch.enable = true;
     thefuck.enable = true;
     less.enable = true;
+    dconf.enable = true; # virt-manager requires dconf to remember settings
     direnv = {
       enable = true;
       silent = true;
