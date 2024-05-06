@@ -211,6 +211,11 @@
     noisetorch.enable = true;
     thefuck.enable = true;
     less.enable = true;
+    direnv = {
+      enable = true;
+      silent = true;
+      nix-direnv.enable = true;
+    };
     ssh = {
       # start OpenSSH agent upon login
       startAgent = true;
