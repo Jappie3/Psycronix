@@ -270,6 +270,7 @@
   };
 
   hardware = {
+    enableRedistributableFirmware = true;
     # support for e.g. Steam Controller
     steam-hardware.enable = true;
     pulseaudio.enable = false;
