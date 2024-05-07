@@ -216,6 +216,7 @@
     thefuck.enable = true;
     less.enable = true;
     dconf.enable = true; # virt-manager requires dconf to remember settings
+    virt-manager.enable = true;
     direnv = {
       enable = true;
       silent = true;
