@@ -15,7 +15,10 @@ in {
     inputs.hyprlock.homeManagerModules.hyprlock
     inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
   ];
-  disabledModules = ["${inputs.home-manager}/modules/services/hypridle.nix"];
+  disabledModules = [
+    "${inputs.home-manager}/modules/services/hypridle.nix"
+    "${inputs.home-manager}/modules/programs/hyprlock.nix"
+  ];
   home.packages = [
     inputs.hypridle.packages.${pkgs.system}.hypridle
     inputs.hyprlock.packages.${pkgs.system}.hyprlock
