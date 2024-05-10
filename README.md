@@ -5,6 +5,7 @@
 - Kainas: my main laptop
     - Hyprland w/ Nvidia drivers
     - Hyprlock, Hypridle, Swww, Ags, Wlsunset
+- Eidolon: small NixOS config for quickly deploying VMs to e.g. Hetzner
 
 <br>
 
