@@ -253,13 +253,20 @@ in {
         border_size = 2;
         no_border_on_floating = false;
         layout = "dwindle";
-        no_cursor_warps = true;
         no_focus_fallback = true;
         resize_on_border = false;
-        cursor_inactive_timeout = 0; # 0 = forever
         allow_tearing = false; # master switch for tearing
         "col.active_border" = "${HTMLToRGBA colors.color0 "ff"} ${HTMLToRGBA colors.color5 "ff"} 45deg";
         "col.inactive_border" = "${HTMLToRGBA colors.color7 "aa"}";
+      };
+
+      cursor = {
+        inactive_timeout = 0; # 0 = forever
+        no_warps = true;
+        default_monitor = "${monitor}";
+        enable_hyprcursor = true;
+        hide_on_key_press = false;
+        hide_on_touch = false;
       };
 
       group = {
