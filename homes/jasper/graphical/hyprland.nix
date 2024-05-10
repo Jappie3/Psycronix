@@ -151,7 +151,7 @@ in {
             font_family = "Roboto";
             position = {
               x = -20;
-              y = -10;
+              y = 10;
             };
             halign = "right";
             valign = "bottom";
