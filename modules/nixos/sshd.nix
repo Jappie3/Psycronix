@@ -31,6 +31,10 @@
         "sntrup761x25519-sha512@openssh.com"
       ];
     };
+    # verify-required -> pub key auth w/ FIDO authenticator algorithm (e.g. ed25519-sk) should require the signature (e.g. pressing YubiKey)
+    extraConfig = ''
+      PubkeyAuthOptions verify-required
+    '';
     hostKeys = [
       {
         type = "rsa";
