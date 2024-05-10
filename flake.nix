@@ -95,7 +95,7 @@
     };
 
     anyrun = {
-      url = "github:Kirottu/anyrun";
+      url = "github:jappie3/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     anyrun-nixos-options.url = "github:n3oney/anyrun-nixos-options";
