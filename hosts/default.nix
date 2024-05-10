@@ -29,4 +29,13 @@ in {
         agenix
       ];
   };
+  Eidolon = lib.nixosSystem {
+    system = "x86_64-linux";
+    specialArgs = sharedArgs;
+    modules = [
+      {networking.hostName = "Eidolon";}
+      ./Eidolon
+      disko
+    ];
+  };
 }
