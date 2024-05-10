@@ -69,13 +69,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
+    agenix.url = "github:ryantm/agenix";
 
     nh = {
       url = "github:viperML/nh";
