@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options.users = lib.attrsets.genAttrs ["jasper"] (
@@ -31,10 +32,7 @@
           extraGroups =
             ["wheel" "input" "video" "audio" "systemd-journal"]
             ++ builtins.filter (g: builtins.hasAttr g config.users.groups) ["libvirtd" "networkmanager" "docker" "podman" "wireshark"];
-          openssh.authorizedKeys.keys = [
-            # don't set this when using NixOps
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1mAN5Db7eZ0iuBGGxdPqQCR2l6jDZBjgX4ZVOcip27 jasper@Kainas"
-          ];
+          openssh.authorizedKeys.keyFiles = [(pkgs.writeText "ssh" "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIDWbDBrUe/wJchfeDajmozOIDKrBN2pftsPqGlAFdnrEAAAABHNzaDo= jasper@Kainas")];
         };
       };
     };
