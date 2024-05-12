@@ -935,11 +935,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714684782,
-        "narHash": "sha256-gCddDZ4NWuUexmjkFePGR/gvdFtv/XV32O2IABEWDIQ=",
+        "lastModified": 1715551938,
+        "narHash": "sha256-2vFNZAA+mIeWvC0sck0NiRFCkbJiyUkZvpvNet+1DoI=",
         "owner": "jappie3",
         "repo": "hyprcursor-phinger",
-        "rev": "d85617adc63791926543c029fbbdb428c31f1754",
+        "rev": "3c2b866a34d84613459c2a6ce361dc1df93688cb",
         "type": "github"
       },
       "original": {
