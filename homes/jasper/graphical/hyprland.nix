@@ -601,6 +601,7 @@ in {
         "float, class:^(pavucontrol)$"
         "float, class:^(com.saivert.pwvucontrol)$"
         "float, class:eid-viewer"
+        "float, class:xdg-desktop-portal-gtk"
 
         "suppressevent maximize, class:org.remmina.Remmina"
 
