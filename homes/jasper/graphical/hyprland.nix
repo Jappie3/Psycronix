@@ -11,13 +11,7 @@
   HTMLToRGBA = html: alfa: "rgba(${lib.strings.removePrefix "#" html}${alfa})";
 in {
   imports = [
-    inputs.hypridle.homeManagerModules.hypridle
-    inputs.hyprlock.homeManagerModules.hyprlock
     inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
-  ];
-  disabledModules = [
-    "${inputs.home-manager}/modules/services/hypridle.nix"
-    "${inputs.home-manager}/modules/programs/hyprlock.nix"
   ];
   home.packages = [
     inputs.hypridle.packages.${pkgs.system}.hypridle
