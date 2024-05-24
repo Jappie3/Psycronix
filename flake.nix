@@ -5,6 +5,7 @@
     self,
     nixpkgs,
     home-manager,
+    agenix-rekey,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;
@@ -20,6 +21,11 @@
     # modules, both NixOS & hm -> ./modules
     nixosModules = import ./modules/nixos {inherit inputs;};
     homeManagerModules = import ./modules/home-manager {inherit inputs;};
+
+    agenix-rekey = agenix-rekey.configure {
+      userFlake = self;
+      nodes = self.nixosConfigurations;
+    };
 
     packages = forAllSystems (pkgs: {
       aarch64_sd_image = inputs.nixos-generators.nixosGenerate {
@@ -70,6 +76,7 @@
     };
 
     agenix.url = "github:ryantm/agenix";
+    agenix-rekey.url = "github:oddlama/agenix-rekey";
 
     nh = {
       url = "github:viperML/nh";
