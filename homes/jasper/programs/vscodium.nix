@@ -23,6 +23,7 @@
       # keycodes cuz position of key > what letter pressed
       "keyboard.dispatch" = "keyCode";
       "git.autofetch" = true;
+      "diffEditor.ignoreTrimWhitespace" = false;
       "explorer.autoReveal" = true;
       "files.autoSave" = "onFocusChange";
       "files.associations" = {
