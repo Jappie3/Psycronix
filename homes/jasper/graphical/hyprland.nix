@@ -14,8 +14,6 @@ in {
     inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
   ];
   home.packages = [
-    inputs.hypridle.packages.${pkgs.system}.hypridle
-    inputs.hyprlock.packages.${pkgs.system}.hyprlock
     inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
     inputs.hyprcursor-phinger.packages.${pkgs.system}.hyprcursor-phinger
     inputs.wayfreeze.packages.${pkgs.system}.wayfreeze
@@ -28,6 +26,7 @@ in {
     lockcmd = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 1; ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock; ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 0;";
   in {
     enable = true;
+    package = inputs.hypridle.packages.${pkgs.system}.hypridle;
     settings = {
       listeners = [
         {
@@ -57,6 +56,7 @@ in {
     hyprcursor-phinger.enable = true;
     hyprlock = {
       enable = true;
+      package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
       settings = {
         general = {
           disable_loading_bar = false;
