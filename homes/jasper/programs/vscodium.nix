@@ -22,7 +22,7 @@
     userSettings = {
       # keycodes cuz position of key > what letter pressed
       "keyboard.dispatch" = "keyCode";
-      "git.autofetch" = true;
+      "git.autofetch" = false;
       "diffEditor.ignoreTrimWhitespace" = false;
       "explorer.autoReveal" = true;
       "files.autoSave" = "onFocusChange";
