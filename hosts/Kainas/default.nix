@@ -343,6 +343,9 @@
   time.timeZone = "Europe/Brussels";
 
   services = {
+    logind.extraConfig = ''
+      RuntimeDirectorySize=8G
+    '';
     # daemon that allows updating firmware
     # fwupdmgr [refresh | get-devices | get-updates | update]
     fwupd.enable = true;
