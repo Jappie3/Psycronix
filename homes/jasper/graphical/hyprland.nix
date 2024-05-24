@@ -28,28 +28,30 @@ in {
     lockcmd = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 1; ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock; ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 0;";
   in {
     enable = true;
-    listeners = [
-      {
-        timeout = 300; # 5 mins
-        onTimeout = lockcmd;
-        onResume = "";
-      }
-      {
-        timeout = 600; # 10 mins
-        onTimeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
-        onResume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
-      }
-      {
-        timeout = 720; # 12 mins
-        onTimeout = "${pkgs.systemd}/bin/systemctl suspend";
-        onResume = "${pkgs.systemd}/bin/hyprctl dispatch dpms on";
-      }
-    ];
-    lockCmd = lockcmd; # on dbus lock event, e.g. loginctl lock-session
-    unlockCmd = ""; # on dbus unlock event, e.g. loginctl unlock-session
-    beforeSleepCmd = lockcmd; # on debus prepare_sleep event
-    afterSleepCmd = ""; # on dbus post prepare_sleep event
-    ignoreDbusInhibit = false; # don't ignore dbus idle-inhibit requests (used by steam, firefox, etc.)
+    settings = {
+      listeners = [
+        {
+          timeout = 300; # 5 mins
+          onTimeout = lockcmd;
+          onResume = "";
+        }
+        {
+          timeout = 600; # 10 mins
+          onTimeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
+          onResume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 720; # 12 mins
+          onTimeout = "${pkgs.systemd}/bin/systemctl suspend";
+          onResume = "${pkgs.systemd}/bin/hyprctl dispatch dpms on";
+        }
+      ];
+      lockCmd = lockcmd; # on dbus lock event, e.g. loginctl lock-session
+      unlockCmd = ""; # on dbus unlock event, e.g. loginctl unlock-session
+      beforeSleepCmd = lockcmd; # on debus prepare_sleep event
+      afterSleepCmd = ""; # on dbus post prepare_sleep event
+      ignoreDbusInhibit = false; # don't ignore dbus idle-inhibit requests (used by steam, firefox, etc.)
+    };
   };
   programs = {
     hyprcursor-phinger.enable = true;
