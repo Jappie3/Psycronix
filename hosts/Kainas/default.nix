@@ -237,6 +237,7 @@
       # automatically add ssh key to agent
       extraConfig = ''
         Host *
+          IdentityFile      ~/.ssh/yubi-fido
           IdentityFile      ~/.ssh/id_ed25519
           AddKeysToAgent    yes
       '';
