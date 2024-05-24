@@ -4201,11 +4201,11 @@
         "nixpkgs": "nixpkgs_14"
       },
       "locked": {
-        "lastModified": 1711827600,
-        "narHash": "sha256-dtOMz/VJxsQ7m0GijsihZk1ZziE0slSNwFv6+/fU63M=",
+        "lastModified": 1716199541,
+        "narHash": "sha256-a+uXutUvKbWILD7AgHknZOmhR9j2B/MUAmp+al5VJrE=",
         "owner": "jappie3",
         "repo": "vigiland",
-        "rev": "d003ae87436d9f5a55fd42b0c13810e8be82df37",
+        "rev": "fcfc563643f7d4d267b3487ef418886b88ac7bb5",
         "type": "github"
       },
       "original": {
@@ -4219,11 +4219,11 @@
         "nixpkgs": "nixpkgs_15"
       },
       "locked": {
-        "lastModified": 1710854320,
-        "narHash": "sha256-uaISHClxtqS3U//moaq4D4HEbULiPX7YvTse2AVXxRI=",
+        "lastModified": 1716499022,
+        "narHash": "sha256-b0yVilXvNIpOPlDHte4xIjzQwRMJ9le2xWn+BG3jwBc=",
         "owner": "jappie3",
         "repo": "wayfreeze",
-        "rev": "1476f54e0113368d7b40c4f070401734ff77d80c",
+        "rev": "6869d428690e35255007508f3809d6f18ac5b164",
         "type": "github"
       },
       "original": {
