@@ -94,7 +94,7 @@ in {
         # sign commits cuz why not
         commit.gpgsign = true;
         gpg.format = "ssh";
-        user.signingkey = "~/.ssh/id_ed25519.pub";
+        user.signingkey = "~/.ssh/yubi-fido.pub";
         url = {
           "https://git.kernel.org/".insteadOf = "kernel:";
           "git://git.kernel.org/".pushInsteadOf = "kernel:";
