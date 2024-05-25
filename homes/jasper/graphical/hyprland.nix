@@ -64,7 +64,7 @@ in {
           hide_cursor = true;
           no_fade_in = false;
         };
-        backgrounds = [
+        background = [
           {
             #monitor = "";
             path = "screenshot";
@@ -77,13 +77,10 @@ in {
             vibrancy_darkness = 0.05;
           }
         ];
-        input-fields = [
+        input-field = [
           {
             monitor = monitor;
-            size = {
-              width = 300;
-              height = 30;
-            };
+            size = "300, 30";
             dots_size = 0.33;
             dots_spacing = 0.15;
             dots_center = true;
@@ -95,10 +92,7 @@ in {
             fade_on_empty = true;
             placeholder_text = "";
             hide_input = false;
-            position = {
-              x = 0;
-              y = -210;
-            };
+            position = "0, -210";
             rounding = -1; # -1 = complete rounding (circle)
             halign = "center";
             valign = "center";
@@ -108,7 +102,7 @@ in {
             shadow_boost = 1.2;
           }
         ];
-        labels = let
+        label = let
           shadow = {
             shadow_passes = 3;
             shadow_size = 3;
@@ -122,10 +116,7 @@ in {
               text = "$TIME";
               font_size = 66;
               font_family = "Jost";
-              position = {
-                x = 0;
-                y = 0;
-              };
+              position = "0, 0";
               halign = "center";
               valign = "center";
             }
@@ -134,10 +125,7 @@ in {
               text = "   $USER";
               font_size = 16;
               font_family = "Roboto";
-              position = {
-                x = 20;
-                y = 10;
-              };
+              position = "20, 10";
               halign = "left";
               valign = "bottom";
             }
@@ -146,10 +134,7 @@ in {
               text = "cmd[update:600000] ${pkgs.coreutils}/bin/echo \"    \"$(${pkgs.acpi}/bin/acpi | ${pkgs.coreutils}/bin/head -n 1 | ${pkgs.ripgrep}/bin/rg -o '[0-9]*%')\"\"";
               font_size = 16;
               font_family = "Roboto";
-              position = {
-                x = -20;
-                y = 10;
-              };
+              position = "-20, 10";
               halign = "right";
               valign = "bottom";
             }
@@ -159,10 +144,7 @@ in {
               color = "rgb(255, 255, 255)";
               font_size = 16;
               font_family = "Garamond-libre";
-              position = {
-                x = 0;
-                y = -130;
-              };
+              position = "0, -130";
               halign = "center";
               valign = "center";
             }
@@ -172,10 +154,7 @@ in {
               color = "rgb(255, 255, 255)";
               font_size = 16;
               font_family = "Garamond-libre";
-              position = {
-                x = 0;
-                y = -160;
-              };
+              position = "0, -160";
               halign = "center";
               valign = "center";
             }
@@ -442,6 +421,7 @@ in {
         swallow_regex = "^(thunderbird|org.remmina.Remmina)$";
 
         # whether to focus an app that sends an activate request
+        # TODO creat a toggle for this in Ags or something
         focus_on_activate = false;
         # enable direct scanout to reduce lag when there is only 1 fullscreen application
         no_direct_scanout = true;
