@@ -243,6 +243,8 @@
         codeberg-ed25519.hostNames = ["codeberg.org"];
         codeberg-ed25519.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIVIC02vnjFyL+I4RHfvIGNtOgJMe769VTF1VR4EB3ZB";
       };
+      # don't set SSH_ASKPASS (just prompt in terminal)
+      enableAskPassword = false;
       # automatically add ssh key to agent
       extraConfig = ''
         Host *
