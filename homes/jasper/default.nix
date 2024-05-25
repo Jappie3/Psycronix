@@ -79,7 +79,10 @@ in {
         # yes master cry about it
         init.defaultBranch = "master";
         # REuse REcorded REsolution
-        rerere.enabled = true;
+        rerere = {
+          enabled = true;
+          autoupdate = true;
+        };
         # git maintenance
         maintenance = {
           auto = false;
