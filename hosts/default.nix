@@ -31,12 +31,21 @@ in {
         agenix-rekey
       ];
   };
-  Eidolon = lib.nixosSystem {
+  Eidolon_x86_64 = lib.nixosSystem {
     system = "x86_64-linux";
     specialArgs = sharedArgs;
     modules = [
       {networking.hostName = "Eidolon";}
-      ./Eidolon
+      ./Eidolon_x86_64
+      disko
+    ];
+  };
+  Eidolon_aarch64 = lib.nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = sharedArgs;
+    modules = [
+      {networking.hostName = "Eidolon";}
+      ./Eidolon_aarch64
       disko
     ];
   };
