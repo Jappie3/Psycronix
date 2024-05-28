@@ -23,7 +23,7 @@ in {
     pkgs.wl-clipboard
   ];
   services.hypridle = let
-    lockcmd = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 1; ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock; ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 0;";
+    lockcmd = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword cursor:inactive_timeout 1; ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock; ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword cursor:inactive_timeout 0;";
   in {
     enable = true;
     package = inputs.hypridle.packages.${pkgs.system}.hypridle;
