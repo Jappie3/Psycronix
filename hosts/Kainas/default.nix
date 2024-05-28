@@ -148,17 +148,70 @@
   networking = {
     # use nftables instead of iptables
     nftables.enable = true;
-    networkmanager = {
-      enable = true;
-      wifi.backend = "iwd"; # iwd instead of wpa_supplicant
-      insertNameservers = ["9.9.9.9"]; # insert before nameservers received via DHCP
-    };
     # [ip] [hostname]
     # extraHosts = ''
     # '';
     firewall = {
       allowedTCPPorts = [];
       enable = true;
+    };
+    nameservers = ["2620:fe::fe" "2620:fe::9" "9.9.9.9" "149.112.112.112"]; # Quad9
+    wireless.iwd = {
+      enable = true;
+      settings = {
+        # https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.network.rst
+        # https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.config.rst
+        Settings.AutoConnect = true;
+        Network.EnableIPv6 = true;
+        General = {
+          ManagementFrameProtection = 1; # 0-> disabled, 1-> enabled (if hardware & AP support it), 2-> always required
+          AddressRandomization = "network"; # MAC address is randomized on each connection to a network
+          AddressRandomizationRange = "full"; # randomize all 6 octets
+          RoamRetryInterval = 20; # how long iwd waits before attempting to roam again if last attempt failed, or if signal of new BSS is still considered weak
+          RoamThreshold = -70; # how agressively iwd should roam when connected to a 2.4GHz AP (rssi dBm value, -100 to 1, default -70)
+          RoamThreshold5G = -76; # how agressively iwd should roam when connected to a 5GHz AP (rssi dBm value, -100 to 1, default -76)
+        };
+        Scan = {
+          DisablePeriodicScan = false;
+          InitialPeriodicScanInterval = 2; # initial periodic scan interval upon disconnect
+          MaximumPeriodicScanInterval = 300; # maximum periodic scan interval
+          DisableRoamingScan = false;
+        };
+      };
+    };
+  };
+  services.resolved = {
+    enable = true;
+    dnssec = "true"; # validate DNS lookups using DNSSEC
+    dnsovertls = "true"; # encrypt DNS lookups using TLS
+    llmnr = "true"; # link-local multicast name resolution (RFC 4795)
+  };
+  systemd = {
+    network = {
+      enable = true;
+      # https://www.freedesktop.org/software/systemd/man/latest/networkd.conf.html#
+      config = {};
+      # https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
+      networks = {
+        "20-lan" = {
+          matchConfig.Type = "ether"; # wired interfaces
+          networkConfig = {
+            DHCP = "yes";
+            IPv6PrivacyExtensions = true; # RFC 4941: Privacy Extensions for Stateless Address Autoconfiguration in IPv6
+            IPv6AcceptRA = true; # Router Advertisement (RA) reception support
+            # IPForward = "yes";
+            # IPMasquerade = "no";
+          };
+        };
+        "30-wan" = {
+          matchConfig.Type = "wlan"; # wireless interfaces
+          networkConfig = {
+            DHCP = "yes";
+            IPv6PrivacyExtensions = true; # RFC 4941: Privacy Extensions for Stateless Address Autoconfiguration in IPv6
+            IPv6AcceptRA = true; # Router Advertisement (RA) reception support
+          };
+        };
+      };
     };
   };
 
