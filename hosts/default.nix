@@ -11,6 +11,7 @@
   home-manager = inputs.home-manager.nixosModules.home-manager;
   agenix = inputs.agenix.nixosModules.default;
   agenix-rekey = inputs.agenix-rekey.nixosModules.default;
+  rekey_conf = self.nixosModules.rekey_conf;
   disko = inputs.disko.nixosModules.disko;
 
   # extraSpecialArgs that all hosts need
@@ -29,6 +30,7 @@ in {
         homes
         agenix
         agenix-rekey
+        rekey_conf
       ];
   };
   Eidolon_x86_64 = lib.nixosSystem {

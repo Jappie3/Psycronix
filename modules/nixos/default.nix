@@ -5,6 +5,7 @@ _: {
   router = import ./router.nix;
   users = import ./users.nix;
   ntp = import ./ntp.nix;
+  rekey_conf = import ./rekey_conf.nix;
   cpu_amd = import ./hardware/cpu_amd.nix;
   laptop_power = import ./hardware/laptop_power.nix;
 }

@@ -22,6 +22,11 @@
     nixosModules = import ./modules/nixos {inherit inputs;};
     homeManagerModules = import ./modules/home-manager {inherit inputs;};
 
+    rekeyConfig = {
+      masterIdentities = ["${self}/secrets/YK1_NIX_RAGE.pub"];
+      extraEncryptionPubkeys = ["${self}/secrets/YK2_NIX_RAGE.pub"];
+    };
+
     agenix-rekey = agenix-rekey.configure {
       userFlake = self;
       nodes = self.nixosConfigurations;

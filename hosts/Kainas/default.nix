@@ -21,15 +21,6 @@
     nixTrusted = true;
   };
 
-  age.rekey = {
-    masterIdentities = ["${self}/secrets/yubi-fido.pub"];
-    extraEncryptionPubkeys = ["${self}/secrets/ssh_bak.pub"];
-    hostPubkey = "./secrets/host.pub";
-    storageMode = "local";
-    generatedSecretsDir = "${self}/secrets/generated/${config.networking.hostName}";
-    localStorageDir = "${self}/secrets/rekeyed/${config.networking.hostName}";
-  };
-
   nixpkgs = {
     hostPlatform = "x86_64-linux";
     config = {
