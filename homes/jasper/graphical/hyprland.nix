@@ -470,7 +470,7 @@ in {
         ''$MOD, print, exec, ${pkgs.grim}/bin/grim - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower > "$XDG_SCREENSHOT_DIR/$(date +'%Y-%m-%dT%H:%M:%S').png"'' # take screenshot of the entire screen & save it
         ''$MOD, O, exec, ${inputs.wayfreeze.packages.${pkgs.system}.wayfreeze}/bin/wayfreeze & PID=$!; sleep .1; ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${inputs.shadower.packages.${pkgs.system}.shadower}/bin/shadower | ${pkgs.wl-clipboard}/bin/wl-copy; kill $PID'' # take screenshot of an area & copy it
         #''$MOD LEFTCTRL, O, exec, grim -g "$(slurp)" - | swappy -f -'' # take screenshot of an area & edit it using Swappy
-        "$MOD, E, exec, ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 1; ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock; ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword general:cursor_inactive_timeout 0;,"
+        "$MOD, E, exec, ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword cursor:inactive_timeout 1; ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock; ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl keyword cursor:inactive_timeout 0;,"
         "$MOD, U, exec, alacritty msg create-window || alacritty &,"
         "$MOD, I, killactive,"
         "$MOD, D, exec, thunar &,"
