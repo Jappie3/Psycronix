@@ -18,7 +18,7 @@
     pcscd.enable = true;
   };
   environment = {
-    # see https://nixos.wiki/wiki/Web_eID
+    # see https://wiki.nixos.org/wiki/Web_eID
     etc."pkcs11/modules/opensc-pkcs11".text = ''
       module: ${pkgs.opensc}/lib/opensc-pkcs11.so
     '';

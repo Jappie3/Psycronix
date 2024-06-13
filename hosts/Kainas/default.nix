@@ -361,7 +361,7 @@
       # support for 32-bit programs (e.g. Wine)
       driSupport32Bit = true;
     };
-    # https://nixos.wiki/wiki/Nvidia
+    # https://wiki.nixos.org/wiki/Nvidia
     nvidia = {
       #package = config.boot.kernelPackages.nvidiaPackages.stable;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -691,6 +691,6 @@
     };
   };
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }
