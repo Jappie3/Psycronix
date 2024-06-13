@@ -146,6 +146,9 @@
   };
 
   networking = {
+    # disable dhcpcd & resolvconf
+    dhcpcd.enable = false;
+    resolvconf.enable = false;
     # use nftables instead of iptables
     nftables.enable = true;
     # [ip] [hostname]
