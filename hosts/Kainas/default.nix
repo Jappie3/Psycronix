@@ -182,7 +182,7 @@
   };
   services.resolved = {
     enable = true;
-    dnssec = "true"; # validate DNS lookups using DNSSEC
+    dnssec = "false"; # validate DNS lookups using DNSSEC
     dnsovertls = "true"; # encrypt DNS lookups using TLS
     llmnr = "true"; # link-local multicast name resolution (RFC 4795)
   };
