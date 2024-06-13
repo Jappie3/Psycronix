@@ -28,28 +28,30 @@ in {
     enable = true;
     package = inputs.hypridle.packages.${pkgs.system}.hypridle;
     settings = {
-      listeners = [
+      listener = [
         {
           timeout = 300; # 5 mins
-          onTimeout = lockcmd;
-          onResume = "";
+          on-timeout = lockcmd;
+          on-resume = "";
         }
         {
           timeout = 600; # 10 mins
-          onTimeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
-          onResume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
+          on-timeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
         }
         {
           timeout = 720; # 12 mins
-          onTimeout = "${pkgs.systemd}/bin/systemctl suspend";
-          onResume = "${pkgs.systemd}/bin/hyprctl dispatch dpms on";
+          on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
+          on-resume = "sleep .5; ${pkgs.systemd}/bin/hyprctl dispatch dpms on";
         }
       ];
-      lockCmd = lockcmd; # on dbus lock event, e.g. loginctl lock-session
-      unlockCmd = ""; # on dbus unlock event, e.g. loginctl unlock-session
-      beforeSleepCmd = lockcmd; # on debus prepare_sleep event
-      afterSleepCmd = ""; # on dbus post prepare_sleep event
-      ignoreDbusInhibit = false; # don't ignore dbus idle-inhibit requests (used by steam, firefox, etc.)
+      general = {
+        lock_cmd = lockcmd; # on dbus lock event, e.g. loginctl lock-session
+        unlock_cmd = ""; # on dbus unlock event, e.g. loginctl unlock-session
+        before_sleep_cmd = lockcmd; # on debus prepare_sleep event
+        after_sleep_cmd = ""; # on dbus post prepare_sleep event
+        ignore_dbus_inhibit = false; # don't ignore dbus idle-inhibit requests (used by steam, firefox, etc.)
+      };
     };
   };
   programs = {
