@@ -421,7 +421,6 @@ in {
         swallow_regex = "^(thunderbird|org.remmina.Remmina)$";
 
         # whether to focus an app that sends an activate request
-        # TODO creat a toggle for this in Ags or something
         focus_on_activate = false;
         # enable direct scanout to reduce lag when there is only 1 fullscreen application
         no_direct_scanout = true;
