@@ -410,6 +410,35 @@
     # sound
     pipewire = {
       enable = true;
+      # pw-config -> see all loaded config files
+      # see https://docs.pipewire.org/page_module_combine_stream.html & https://wiki.nixos.org/w/index.php?title=PipeWire
+      extraConfig.pipewire."10-virt-sink" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-combine-stream";
+            args = {
+              "combine.mode" = "sink";
+              "node.name" = "combine_sink";
+              "node.description" = "Combined sink";
+              "combine.latency-compensate" = false;
+              "combine.props" = {
+                "audio.position" = ["FL" "FR"];
+              };
+              "stream.rules" = [
+                {
+                  "matches" = [{"media.class" = "Audio/Sink";}];
+                  "actions" = {
+                    "create-stream" = {
+                      "combine.audio.position" = ["FL" "FR"];
+                      "audio.position" = ["FL" "FR"];
+                    };
+                  };
+                }
+              ];
+            };
+          }
+        ];
+      };
       alsa = {
         enable = true;
         support32Bit = true;
