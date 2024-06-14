@@ -185,14 +185,16 @@
   };
   services.resolved = {
     enable = true;
-    dnssec = "false"; # validate DNS lookups using DNSSEC
+    domains = ["~."]; # don't use per-link DNS servers if they set "domains=~.", only use them if more specific search domains match
+    fallbackDns = ["1.1.1.1#cloudflare-dns.com" "8.8.8.8#dns.google" "1.0.0.1#cloudflare-dns.com" "8.8.4.4#dns.google" "2606:4700:4700::1111#cloudflare-dns.com" "2001:4860:4860::8888#dns.google" "2606:4700:4700::1001#cloudflare-dns.com" "2001:4860:4860::8844#dns.google"];
+    dnssec = "false"; # validate DNS lookups using DNSSEC - recommended to disable this for now, too many non-compliant servers in the wild
     dnsovertls = "true"; # encrypt DNS lookups using TLS
     llmnr = "true"; # link-local multicast name resolution (RFC 4795)
   };
   systemd = {
     network = {
       enable = true;
-      # https://www.freedesktop.org/software/systemd/man/latest/networkd.conf.html#
+      # https://www.freedesktop.org/software/systemd/man/latest/networkd.conf.html
       config = {};
       # https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
       networks = {
@@ -200,6 +202,7 @@
           matchConfig.Type = "ether"; # wired interfaces
           networkConfig = {
             DHCP = "yes";
+            DNSDefaultRoute = false; # don't use this link's DNS servers for domains that do not match any link's configured Domains= setting, only use them for resolving names that match at least one of the domains configured on this link
             IPv6PrivacyExtensions = true; # RFC 4941: Privacy Extensions for Stateless Address Autoconfiguration in IPv6
             IPv6AcceptRA = true; # Router Advertisement (RA) reception support
             # IPForward = "yes";
@@ -210,6 +213,7 @@
           matchConfig.Type = "wlan"; # wireless interfaces
           networkConfig = {
             DHCP = "yes";
+            DNSDefaultRoute = false; # don't use this link's DNS servers for domains that do not match any link's configured Domains= setting, only use them for resolving names that match at least one of the domains configured on this link
             IPv6PrivacyExtensions = true; # RFC 4941: Privacy Extensions for Stateless Address Autoconfiguration in IPv6
             IPv6AcceptRA = true; # Router Advertisement (RA) reception support
           };
