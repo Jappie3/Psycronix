@@ -51,6 +51,9 @@
         packages = with pkgs; [
           git
           alejandra
+          rage
+          age-plugin-yubikey
+          agenix-rekey.packages.${system}.default
         ];
         DIRENV_LOG_FORMAT = "";
       };
