@@ -11,7 +11,7 @@
       ;
     hostPubkey = "${self}/hosts/${config.networking.hostName}/secrets/host.pub";
     storageMode = "local";
-    generatedSecretsDir = "${self}/secrets/_generated/${config.networking.hostName}";
-    localStorageDir = "${self}/secrets/_rekeyed/${config.networking.hostName}";
+    generatedSecretsDir = self.outPath + "/secrets/_generated/${config.networking.hostName}";
+    localStorageDir = self.outPath + "/secrets/_rekeyed/${config.networking.hostName}";
   };
 }
