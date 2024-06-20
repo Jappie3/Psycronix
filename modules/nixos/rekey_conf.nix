@@ -9,7 +9,7 @@
       masterIdentities
       extraEncryptionPubkeys
       ;
-    hostPubkey = "${self}/hosts/${config.networking.hostName}/secrets/host.pub";
+    hostPubkey = builtins.readFile "${self}/hosts/${config.networking.hostName}/secrets/host.pub";
     storageMode = "local";
     generatedSecretsDir = self.outPath + "/secrets/_generated/${config.networking.hostName}";
     localStorageDir = self.outPath + "/secrets/_rekeyed/${config.networking.hostName}";
