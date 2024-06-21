@@ -146,6 +146,8 @@
   };
 
   networking = {
+    useDHCP = false;
+    useNetworkd = true;
     # disable dhcpcd & resolvconf
     dhcpcd.enable = false;
     resolvconf.enable = false;
