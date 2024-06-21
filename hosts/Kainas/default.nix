@@ -466,9 +466,9 @@
         layout = "us";
         variant = "dvorak";
       };
-      # touchpad support
-      libinput.enable = true;
     };
+    # touchpad support
+    libinput.enable = true;
     btrfs = {
       autoScrub = {
         enable = true;
