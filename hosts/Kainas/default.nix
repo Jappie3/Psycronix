@@ -16,6 +16,8 @@
     laptop_power
   ];
 
+  secrets.localSecretsFile = ./secrets/local.nix.age;
+
   users.jasper = {
     createUser = true;
     nixTrusted = true;
