@@ -14,7 +14,14 @@
   secret_config = self.nixosModules.secret_config;
   disko = inputs.disko.nixosModules.disko;
 
-  # extraSpecialArgs that all hosts need
+  secretModules = [
+    agenix
+    agenix-rekey
+    secret_config
+    {config.secrets.globalSecretsFile = ./global.nix.age;}
+  ];
+
+  # args shared across hosts
   sharedArgs = {inherit self lib inputs;};
 in {
   Kainas = lib.nixosSystem {
@@ -24,14 +31,10 @@ in {
       [
         {networking.hostName = "Kainas";}
         ./Kainas
-      ]
-      ++ [
         home-manager
         homes
-        agenix
-        agenix-rekey
-        rekey_conf
-      ];
+      ]
+      ++ secretModules;
   };
   Eidolon_x86_64 = lib.nixosSystem {
     system = "x86_64-linux";
