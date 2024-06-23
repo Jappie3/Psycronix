@@ -11,7 +11,7 @@
   home-manager = inputs.home-manager.nixosModules.home-manager;
   agenix = inputs.agenix.nixosModules.default;
   agenix-rekey = inputs.agenix-rekey.nixosModules.default;
-  rekey_conf = self.nixosModules.rekey_conf;
+  secret_config = self.nixosModules.secret_config;
   disko = inputs.disko.nixosModules.disko;
 
   # extraSpecialArgs that all hosts need
