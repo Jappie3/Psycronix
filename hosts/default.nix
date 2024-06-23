@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (self) inputs; #self = inputs.self;
+  inherit (self) inputs;
 
   homes = import ../homes;
 
