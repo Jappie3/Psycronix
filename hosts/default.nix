@@ -54,4 +54,16 @@ in {
       disko
     ];
   };
+  Einzig = lib.nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = sharedArgs;
+    modules =
+      [
+        {networking.hostName = "Einzig";}
+        ./Einzig
+        disko
+        # impermanence
+      ]
+      ++ secretModules;
+  };
 }
