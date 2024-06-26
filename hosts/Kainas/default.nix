@@ -62,6 +62,8 @@
       log-lines = 25;
       # no dirty git tree warning
       warn-dirty = false;
+      # respect the xdg base spec
+      use-xdg-base-directories = true;
     };
     # keep intermediary dependencies (no re-download after a gc) & enable flakes
     extraOptions = ''
