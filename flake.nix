@@ -133,6 +133,11 @@
     hypridle.url = "github:hyprwm/Hypridle";
     hyprcursor.url = "github:hyprwm/hyprcursor";
 
+    hypr-dynamic-cursors = {
+      url = "github:VirtCode/hypr-dynamic-cursors";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
