@@ -170,11 +170,52 @@ in {
     systemd.enable = true;
     xwayland.enable = true;
 
-    plugins = [
-    ];
+    plugins = [inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors];
 
     settings = {
       plugin = {
+        dynamic-cursors = {
+          enabled = true;
+          # sets the cursor behaviour, supports these values:
+          # tilt   - tilt the cursor based on x-velocity
+          # rotate - rotate the cursor based on movement direction
+          # none   - do not change the cursors behaviour
+          mode = "tilt";
+
+          # minimum angle difference in degrees after which the shape is changed
+          # smaller values are smoother, but more expensive for hw cursors
+          threshold = 2;
+
+          # for mode = tilt
+          tilt = {
+            # controls how powerful the tilt is, the lower the more power
+            # this value controls at which speed (px/s) the full tilt is reached
+            limit = 5000;
+
+            # relationship between speed and tilt, supports these vaules:
+            # linear             - a linear function is used
+            # quadratic          - a quadratic function is used (most realistic to actual air drag)
+            # negative_quadratic - negative version of the quadratic one, feels more aggressive
+            function = "negative_quadratic";
+          };
+
+          # magnifies the cursor if its is being shaken
+          shake = {
+            # controls how soon a shake is detected
+            # lower values mean sooner
+            threshold = 2.5;
+
+            # controls how fast the cursor gets larger
+            factor = 2.0;
+
+            # show cursor behaviour `tilt`, `rotate`, etc. while shaking
+            effects = false;
+
+            # use nearest-neighbour (pixelated) scaling when shaking
+            # may look weird when effects are enabled
+            nearest = true;
+          };
+        };
       };
 
       monitor = [
