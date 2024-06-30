@@ -537,6 +537,9 @@ in {
         # scroll through existing workspaces with MOD + scroll
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
+        # switch workspace with mouse button + meta key
+        "$MOD, mouse:276, workspace, e+1"
+        "$MOD, mouse:275, workspace, e-1"
 
         # alt tab behaviour but with $MOD
         "$MOD, Tab, cyclenext"
