@@ -478,6 +478,8 @@ in {
         damage_blink = false;
         # redraw only needed bits (2-full, 1-monitor, 0-none), DO NOT CHANGE
         damage_tracking = 2;
+        # display config parsing error overlay on bottom
+        error_position = 1;
 
         disable_logs = false;
         disable_time = false;
