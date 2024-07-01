@@ -343,11 +343,18 @@ in {
         };
       };
 
-      device = {
-        name = "corne-keyboard";
-        kb_layout = "us";
-        kb_variant = "";
-      };
+      device = [
+        {
+          name = "corne-keyboard";
+          kb_layout = "us";
+          kb_variant = "";
+        }
+        {
+          name = "zmk-project-corne-keyboard";
+          kb_layout = "us";
+          kb_variant = "";
+        }
+      ];
 
       gestures = {
         workspace_swipe = true;
