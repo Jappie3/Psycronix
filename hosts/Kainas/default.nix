@@ -365,11 +365,9 @@
         };
       };
     };
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      # support for 32-bit programs (e.g. Wine)
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
     # https://wiki.nixos.org/wiki/Nvidia
     nvidia = {
