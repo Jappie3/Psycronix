@@ -53,7 +53,27 @@
 
 .side-right {
   border-radius: 12px;
-  min-width: 16rem;
+  min-width: 32rem;
   margin-top: 2.8285714286rem;
   margin-bottom: 0.4285714286rem;
-  margin-right: 0.4285714286rem; }
+  margin-right: 0.4285714286rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1.2rem; }
+
+.side-right-system > * {
+  min-width: 16rem; }
+
+.slider {
+  box-shadow: none;
+  border-radius: 12px;
+  min-height: 1rem;
+  min-width: 32rem; }
+  .slider trough {
+    border-radius: 12px;
+    background-color: white;
+    min-height: 1rem; }
+    .slider trough highlight,
+    .slider trough progress {
+      border-radius: 12px;
+      background-color: red;
+      min-width: .5rem; }

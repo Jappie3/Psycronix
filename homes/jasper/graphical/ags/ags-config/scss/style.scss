@@ -1,12 +1,12 @@
 /*  STYLE.CSS IS AUTO-GENERATED
     see ./scss/scss.js          */
 
-// 1rem = 14px
-$root_font_size_px: 14px;
+$border_radius_px: 12px;
 
 // $rem_value: $px_value / $root_font_size;
 // $px_value: $rem_value * $root_font_size;
 
+$root_font_size_px: 14px; // 1rem = 14px
 // convert hyprland outer gap (6px, see config) to rem
 $hyprland_outer_gap: 6 / 14 * 1rem;
 
@@ -15,6 +15,10 @@ $bar_height_rem: 2rem;
 $bar_padding_top: .4rem;
 $bar_padding_left_right: .5rem;
 
+// side right vars
+$side_right_width: 32rem;
+$side_right_padding: 1.2rem;
+
 * {
     all: unset;
     font-size: $root_font_size_px;
@@ -22,7 +26,7 @@ $bar_padding_left_right: .5rem;
 }
 
 @mixin rounding {
-    border-radius: 12px;
+    border-radius: $border_radius_px;
 }
 
 // ----------------------------------------
@@ -45,6 +49,10 @@ $bar_padding_left_right: .5rem;
 }
 
 // ----------------------------------------
+
+// TODO I think this affects ALL children, not just direct children
+// so look into this
+// actually I'm quite sure
 
 .padding-children-dot2rem>* {
     padding: 0 .2rem;
@@ -111,8 +119,38 @@ $bar_padding_left_right: .5rem;
 
 .side-right {
     @include rounding;
-    min-width: 16rem;
+    min-width: $side_right_width;
     margin-top: $hyprland_outer_gap + $bar_height_rem + $bar_padding_top;
     margin-bottom: $hyprland_outer_gap;
-    margin-right: $hyprland_outer_gap
+    margin-right: $hyprland_outer_gap;
+    // background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: $side_right_padding;
+}
+
+.side-right-system>* {
+    min-width: $side_right_width/2;
+}
+
+.slider {
+    box-shadow: none;
+    border-radius: $border_radius_px;
+    min-height: 1rem;
+    min-width: $side_right_width;
+
+    // inner area of the slider
+    trough {
+        border-radius: $border_radius_px;
+        background-color: white;
+        min-height: 1rem;
+
+        // progress of the slider
+        highlight,
+        progress {
+            border-radius: $border_radius_px;
+            // background-image: $gradient;
+            background-color: red;
+            min-width: .5rem;
+        }
+    }
 }
