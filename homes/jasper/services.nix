@@ -24,7 +24,7 @@
           THEME_FILE="/tmp/theme"
 
           # make sure we don't get in a loop by activating hm specialisations later -> create 'lockfile'
-          touch /tmp/LOAD_THEME_ACTIVATING
+          ${pkgs.coreutils}/bin/touch /tmp/LOAD_THEME_ACTIVATING
           # check when sun rises & sets based on the current location
           case "$(${pkgs.sunwait}/bin/sunwait poll $(<"${config.age.secrets.loc.path}"))" in
             "NIGHT")
@@ -41,7 +41,7 @@
               exit 1
             ;;
           esac
-          rm /tmp/LOAD_THEME_ACTIVATING
+          ${pkgs.coreutils}/bin/rm /tmp/LOAD_THEME_ACTIVATING
         '';
       };
     };
