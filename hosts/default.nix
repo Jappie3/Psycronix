@@ -18,7 +18,6 @@
     agenix
     agenix-rekey
     secret_config
-    {config.secrets.globalSecretsFile = ./global.nix.age;}
   ];
 
   # args shared across hosts

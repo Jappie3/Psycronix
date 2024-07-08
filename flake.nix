@@ -56,11 +56,6 @@
           agenix-rekey.packages.${system}.default
         ];
         DIRENV_LOG_FORMAT = "";
-        # configure nix-plugins with the extra builtins file, needed for per-host secret files
-        NIX_CONFIG = ''
-          plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
-          extra-builtins-file = ${./.}/nix/extra-builtins.nix
-        '';
       };
     });
 
