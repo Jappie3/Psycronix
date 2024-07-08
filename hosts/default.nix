@@ -40,20 +40,24 @@ in {
   Eidolon_x86_64 = lib.nixosSystem {
     system = "x86_64-linux";
     specialArgs = sharedArgs;
-    modules = [
-      {networking.hostName = "Eidolon";}
-      ./Eidolon_x86_64
-      disko
-    ];
+    modules =
+      [
+        {networking.hostName = "Eidolon";}
+        ./Eidolon_x86_64
+        disko
+      ]
+      ++ secretModules;
   };
   Eidolon_aarch64 = lib.nixosSystem {
     system = "aarch64-linux";
     specialArgs = sharedArgs;
-    modules = [
-      {networking.hostName = "Eidolon";}
-      ./Eidolon_aarch64
-      disko
-    ];
+    modules =
+      [
+        {networking.hostName = "Eidolon";}
+        ./Eidolon_aarch64
+        disko
+      ]
+      ++ secretModules;
   };
   Einzig = lib.nixosSystem {
     system = "aarch64-linux";
