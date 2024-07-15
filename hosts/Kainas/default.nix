@@ -332,11 +332,6 @@
     ];
   };
 
-  sound = {
-    enable = true;
-    mediaKeys.enable = true;
-  };
-
   hardware = {
     enableRedistributableFirmware = true;
     # support for e.g. Steam Controller
