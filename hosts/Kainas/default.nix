@@ -434,6 +434,10 @@
   time.timeZone = "Europe/Brussels";
 
   services = {
+    fstrim = {
+      enable = true;
+      interval = "weekly";
+    };
     logind.extraConfig = ''
       RuntimeDirectorySize=8G
     '';
