@@ -164,10 +164,6 @@
     };
   };
 
-  virtualisation = {
-    libvirtd.enable = true;
-  };
-
   networking = {
     useDHCP = false;
     useNetworkd = true;
