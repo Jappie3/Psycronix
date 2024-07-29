@@ -572,18 +572,9 @@
       inputs.agenix.packages.${pkgs.system}.agenix # Agenix
       inputs.nh.packages.${pkgs.system}.default # Nix CLI helper
       inputs.ags.packages.${pkgs.system}.default # Aylur's GTK shell
-      inputs.shadower.packages.${pkgs.system}.shadower # CLI utility to add rounded borders, padding & shadow to images
-      inputs.nix-gaming.packages.${pkgs.system}.proton-ge # Custom build of Proton with the most recent bleeding-edge Proton Experimental WINE
-      inputs.zotero-nix.packages.${system}.default # Zotero with a recent Firefox version
 
       # run 'nvidia-offload someProgram' to run it on dGPU
       nvidia-offload
-
-      # drivers
-      mesa
-      nvidia-vaapi-driver
-      libva
-      libva-utils
 
       # editors
       vim
@@ -600,21 +591,15 @@
       less
       git
       alejandra
-      # install NixOS anywhere
-      inputs.nixos-anywhere.packages.${pkgs.system}.nixos-anywhere
       man
       tldr
       file
       pciutils
       lshw
-      nvtop
-      nvtop-amd
-      cudatoolkit
+      usbutils
+      nvtopPackages.full
+      nvtopPackages.amd
       sysstat
-      acpi
-      powertop
-      power-profiles-daemon
-      auto-cpufreq
       strace
       rsync
       tree
@@ -631,40 +616,22 @@
       imv
       feh
       zathura
-      grim
-      slurp
-      swappy
       gimp
       mpv
       shared-mime-info
       playerctl
-      pulseaudio
       pamixer
       wl-clipboard
       wf-recorder
-      ffmpeg
-      neofetch
-      cava
-      sl
-      cowsay
-      lolcat
       wayvnc
       testssl
       mtr
       dig
-      nmap
-      whois
-      ansible
-      kubectl
-      k9s
-      kubectx
       atool
-      bottom
       bandwhich
       sassc
 
       # browsers
-      nyxt
       firefox
       librewolf
       lynx
@@ -672,38 +639,38 @@
       tor-browser-bundle-bin
 
       # programs
-      #hyprland hyprland-protocols hyprland-share-picker xdg-desktop-portal-hyprland
-      #linuxKernel.packages.linux_6_4.ddcci-driver # ddc/ci driver (control protocol for monitor settings)
-      polkit
-      polkit_gnome
       seatd
-      pipewire
-      brightnessctl
       thunderbird
+      brightnessctl
+      onlyoffice-bin
       obs-studio
-      eww-wayland
-      gnome.gucharmap
+      gucharmap
       pwvucontrol
       pavucontrol
-      wdisplays
-      # for e.g. wlroots-idle-inhibit
-      wlroots.examples
-      # automatically lock screen
-      swayidle
       blueman
+      bluez
+      bluez-tools
+      bluez-alsa
       tidal-hifi
       swww
-      swaylock-effects
       noisetorch
-      dunst
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-media-tags-plugin
+      libnotify
+      xfce.tumbler
+      ark # GUI for thunar archive plugin
       wlsunset
+      pywal # colorscheme generator
       starship # customizable shell prompt
+      imagemagick
+      qbittorrent
+      ani-cli
+      armcord
       signal-desktop
-      obsidian
+      logseq
+      notes
+      qalculate-gtk
       steam
+      r2modman # unofficial thunderstore mod manager
+      yubioath-flutter # Yubico Authenticator for Desktop
 
     ];
 
