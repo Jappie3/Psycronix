@@ -21,6 +21,27 @@
     nixTrusted = true;
   };
 
+  age.secrets = {
+    einzig_kainas = {
+      rekeyFile = self.outPath + "/secrets/wg-cluster/psks/einzig_kainas.age";
+      owner = "systemd-network";
+      generator.script = {pkgs, ...}: "${pkgs.wireguard-tools}/bin/wg genpsk";
+    };
+    kainas = {
+      rekeyFile = self.outPath + "/secrets/wg-cluster/keys/kainas.age";
+      owner = "systemd-network";
+      generator.script = {
+        pkgs,
+        file,
+        ...
+      }: ''
+        priv=$(${pkgs.wireguard-tools}/bin/wg genkey)
+        ${pkgs.wireguard-tools}/bin/wg pubkey <<< "$priv" > ${lib.escapeShellArg (lib.removeSuffix ".age" file + ".pub")}
+        echo "$priv"
+      '';
+    };
+  };
+
   nixpkgs = {
     hostPlatform = "x86_64-linux";
     config = {
@@ -221,6 +242,29 @@
             IPv6PrivacyExtensions = true; # RFC 4941: Privacy Extensions for Stateless Address Autoconfiguration in IPv6
             IPv6AcceptRA = true; # Router Advertisement (RA) reception support
           };
+        };
+        "50-wg" = {
+          matchConfig.Name = "wg0";
+          address = ["10.100.0.3/24"];
+        };
+      };
+      netdevs = {
+        "50-wg0" = {
+          netdevConfig = {
+            Kind = "wireguard";
+            Name = "wg0";
+            MTUBytes = "1300";
+          };
+          wireguardConfig.PrivateKeyFile = config.age.secrets.kainas.path;
+          wireguardPeers = [
+            {
+              PublicKey = builtins.readFile "${self}/secrets/wg-cluster/keys/einzig.pub";
+              PresharedKeyFile = config.age.secrets.einzig_kainas.path;
+              Endpoint = "65.21.50.100:51820";
+              AllowedIPs = ["10.100.0.1"];
+              PersistentKeepalive = 25;
+            }
+          ];
         };
       };
     };
