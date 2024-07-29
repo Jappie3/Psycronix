@@ -219,6 +219,7 @@
   systemd = {
     network = {
       enable = true;
+      wait-online.enable = false;
       # https://www.freedesktop.org/software/systemd/man/latest/networkd.conf.html
       config = {};
       # https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html
