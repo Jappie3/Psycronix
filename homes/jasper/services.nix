@@ -11,17 +11,12 @@
         Restart = "on-failure";
         ExecStart = pkgs.writeShellScript "load-theme.sh" ''
           set -e
-          if [[ -e /tmp/LOAD_THEME_ACTIVATING ]]; then
-            # we're changing the theme already, don't do anything
-            exit 0
-          fi
-
-          # only switch themes if the loc file exists
-          if [[ ! -e "${config.age.secrets.loc.path}" ]]; then
-            exit 1
-          fi
-
           THEME_FILE="/tmp/theme"
+
+          # we're changing the theme already, don't do anything
+          [[ -e /tmp/LOAD_THEME_ACTIVATING ]] && exit 0
+          # only switch themes if the loc file exists
+          [[ ! -e "${config.age.secrets.loc.path}" ]] && exit 1
 
           # make sure we don't get in a loop by activating hm specialisations later -> create 'lockfile'
           ${pkgs.coreutils}/bin/touch /tmp/LOAD_THEME_ACTIVATING

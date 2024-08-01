@@ -142,31 +142,36 @@ in {
     packages = [
       # switch the system theme
       (pkgs.writeShellScriptBin "switch-theme" ''
+        set -e
         THEME_FILE="/tmp/theme"
-        if [[ ! -e $THEME_FILE ]]; then
-          # no theme set -> can't switch
-          exit 1
-        else
-          # make sure we don't get stuck in a loop
-          ${pkgs.coreutils}/bin/touch /tmp/LOAD_THEME_ACTIVATING
-          # check what theme is set
-          case "$(< "$THEME_FILE")" in
-            "dark")
-              # switch to light
-              "$(${pkgs.ripgrep}/bin/rg ExecStart /run/current-system/etc/systemd/system/home-manager-jasper.service | ${pkgs.coreutils}/bin/cut -d ' ' -f 2)/specialisation/light/activate"
-              ${pkgs.coreutils}/bin/echo "light" > "$THEME_FILE"
-            ;;
-            "light")
-              # switch to dark
-              "$(${pkgs.ripgrep}/bin/rg ExecStart /run/current-system/etc/systemd/system/home-manager-jasper.service | ${pkgs.coreutils}/bin/cut -d ' ' -f 2)/specialisation/dark/activate"
-              ${pkgs.coreutils}/bin/echo "dark" > "$THEME_FILE"
-            ;;
-            *)
-              exit 1
-            ;;
-          esac
-          ${pkgs.coreutils}/bin/rm /tmp/LOAD_THEME_ACTIVATING
-        fi
+
+        # we're changing the theme already, don't do anything
+        [[ -e /tmp/LOAD_THEME_ACTIVATING ]] && exit 0
+        # no theme set -> can't switch
+        [[ ! -e $THEME_FILE ]] && exit 1
+
+        # make sure we don't get stuck in a loop
+        ${pkgs.coreutils}/bin/touch /tmp/LOAD_THEME_ACTIVATING
+        # check what theme is set
+        case "$(< "$THEME_FILE")" in
+          "dark")
+            # switch to light
+            "$(${pkgs.ripgrep}/bin/rg ExecStart /run/current-system/etc/systemd/system/home-manager-jasper.service | ${pkgs.coreutils}/bin/cut -d ' ' -f 2)/specialisation/light/activate"
+            ${pkgs.coreutils}/bin/echo "light" > "$THEME_FILE"
+          ;;
+          "light")
+            # switch to dark
+            "$(${pkgs.ripgrep}/bin/rg ExecStart /run/current-system/etc/systemd/system/home-manager-jasper.service | ${pkgs.coreutils}/bin/cut -d ' ' -f 2)/specialisation/dark/activate"
+            ${pkgs.coreutils}/bin/echo "dark" > "$THEME_FILE"
+          ;;
+          *)
+            exit 1
+          ;;
+        esac
+        # wait a little, activating a specialisation will also restart user services
+        # and thus trigger load-theme.service, immediately overriding the switch we just did
+        sleep .5
+        ${pkgs.coreutils}/bin/rm /tmp/LOAD_THEME_ACTIVATING
       '')
     ];
   };
