@@ -231,10 +231,6 @@ in {
         # log WLR stuff
         #"HYPRLAND_LOG_WLR,1"
 
-        # Hyprcursor
-        "HYPRCURSOR_THEME, ${config.theme.cursor_name}"
-        "HYPRCURSOR_SIZE, ${builtins.toString config.theme.cursor_size}"
-
         "QT_QPA_PLATFORM, wayland;xcb"
         "QT_QPA_PLATFORMTHEME, qt5ct"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
@@ -266,6 +262,8 @@ in {
         "swww img $FLAKE/.theme/current_wallpaper"
         # Ags - Aylur's GTK Shell
         "WAYLAND_DISPLAY=wayland-1 ags -b hyprland"
+
+        "hyprctl setcursor ${config.theme.cursor_name} ${builtins.toString config.theme.cursor_size}"
       ];
 
       general = {
