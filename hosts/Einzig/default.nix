@@ -80,7 +80,10 @@
   };
 
   networking = {
-    firewall.allowedUDPPorts = [51820];
+    firewall = {
+      allowedTCPPorts = [80 443];
+      allowedUDPPorts = [51820 80 443];
+    };
     useDHCP = false;
     useNetworkd = true;
   };
@@ -131,6 +134,27 @@
         address = ["10.100.0.1/24"];
       };
     };
+  };
+
+  services.nginx = {
+    enable = true;
+    package = pkgs.nginxQuic;
+    recommendedBrotliSettings = true;
+    recommendedGzipSettings = true;
+    recommendedZstdSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    streamConfig = ''
+      server {
+        listen 0.0.0.0:443;
+        proxy_pass 10.100.0.2:443;
+      }
+      server {
+        listen 0.0.0.0:80;
+        proxy_pass 10.100.0.2:80;
+      }
+    '';
   };
 
   console = {
