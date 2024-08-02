@@ -92,6 +92,7 @@
         pkief.material-icon-theme
         pkief.material-product-icons
         tomoki1207.pdf
+        nvarner.typst-lsp
         redhat.vscode-yaml
         ms-kubernetes-tools.vscode-kubernetes-tools
 
