@@ -30,7 +30,6 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
     settings = {
       trusted-users = ["jasper"];
       experimental-features = [
