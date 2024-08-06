@@ -192,7 +192,7 @@
           AddressRandomization = "network"; # MAC address is randomized on each connection to a network
           AddressRandomizationRange = "full"; # randomize all 6 octets
           RoamRetryInterval = 20; # how long iwd waits before attempting to roam again if last attempt failed, or if signal of new BSS is still considered weak
-          RoamThreshold = -70; # how agressively iwd should roam when connected to a 2.4GHz AP (rssi dBm value, -100 to 1, default -70)
+          RoamThreshold = -80; # how agressively iwd should roam when connected to a 2.4GHz AP (rssi dBm value, -100 to 1, default -70)
           RoamThreshold5G = -76; # how agressively iwd should roam when connected to a 5GHz AP (rssi dBm value, -100 to 1, default -76)
         };
         Scan = {
