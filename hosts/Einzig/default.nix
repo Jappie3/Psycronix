@@ -120,11 +120,15 @@
         matchConfig.MACAddress = "96:00:03:59:81:f6";
         networkConfig = {
           Address = ["2a01:4f9:c010:ce49::1/64" "65.21.50.100/32"];
-          # Gateway = "172.31.1.1";
         };
+        # see https://docs.hetzner.com/cloud/servers/primary-ips/primary-ip-configuration/
         routes = [
           {
             Gateway = "172.31.1.1";
+            GatewayOnLink = true;
+          }
+          {
+            Gateway = "fe80::1";
             GatewayOnLink = true;
           }
         ];
