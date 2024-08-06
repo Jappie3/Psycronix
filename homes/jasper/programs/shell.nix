@@ -34,6 +34,10 @@
       rm = "trash -v";
       cp = "cp -iv";
       mv = "mv -iv";
+
+      # more applications that don't respect the XDG base directory standard
+      wget = "wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\"";
+      units = "units --history \"$XDG_DATA_HOME\"/units_history";
     };
 
     sessionVariables = {
