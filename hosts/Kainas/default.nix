@@ -258,7 +258,7 @@
               PublicKey = builtins.readFile "${self}/secrets/wg-cluster/keys/einzig.pub";
               PresharedKeyFile = config.age.secrets.einzig_kainas.path;
               Endpoint = "65.21.50.100:51820";
-              AllowedIPs = ["10.100.0.1"];
+              AllowedIPs = ["10.100.0.0/24"];
               PersistentKeepalive = 25;
             }
           ];

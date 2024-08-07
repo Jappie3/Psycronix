@@ -105,12 +105,12 @@
           {
             PublicKey = builtins.readFile "${self}/secrets/wg-cluster/keys/flugel.pub";
             PresharedKeyFile = config.age.secrets.einzig_flugel.path;
-            AllowedIPs = ["10.100.0.2"];
+            AllowedIPs = ["10.100.0.2/32"];
           }
           {
             PublicKey = builtins.readFile "${self}/secrets/wg-cluster/keys/kainas.pub";
             PresharedKeyFile = config.age.secrets.einzig_kainas.path;
-            AllowedIPs = ["10.100.0.3"];
+            AllowedIPs = ["10.100.0.3/32"];
           }
         ];
       };
