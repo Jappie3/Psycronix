@@ -136,6 +136,7 @@
       "50-wg" = {
         matchConfig.Name = "wg0";
         address = ["10.100.0.1/24"];
+        networkConfig.IPv4Forwarding = true;
       };
     };
   };
